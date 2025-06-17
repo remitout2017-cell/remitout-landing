@@ -46,19 +46,29 @@ export default function ContactSection() {
         </div>
 
         <div className="flex flex-col lg:flex-row items-center gap-8">
-          {/* Image with circular background */}
           <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
-            <div className="relative">
-              {/* Gray Circle Behind Image */}
-              <div className="absolute top-[60%] left-1/3 w-[500px] h-[500px] -translate-x-1/2 -translate-y-1/2 bg-gray-300 rounded-full z-0" />
+            <div className="relative w-[500px] h-[600px]">
+              {/* Gray Circle */}
+              <div className="absolute top-[60%] left-1/3 w-[500px] h-[500px] -translate-x-1/2 -translate-y-1/2 bg-gray-200 rounded-full z-0" />
 
-              {/* Image */}
+              {/* Fade effect (bottom) */}
+              <div className="absolute top-[60%] left-1/3 w-[500px] h-[500px] -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none">
+                <div
+                  className="w-full h-full rounded-full bg-gradient-to-b from-transparent to-white opacity-90"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(to bottom, rgba(255,255,255,0) 10%, rgba(255,255,255,1) 90%)",
+                  }}
+                />
+              </div>
+
+              {/* Foreground Image */}
               <Image
                 src="/contact_Banner.webp"
                 alt="Graduate student"
                 width={500}
                 height={600}
-                className="relative z-10"
+                className="relative z-20"
               />
             </div>
           </div>
@@ -121,19 +131,19 @@ export default function ContactSection() {
                 ></textarea>
               </div>
 
-              <div className="flex items-start">
-                <div className="flex items-center h-5">
+              <div className="flex items-start ">
+                <div className="flex items-center h-5 ">
                   <input
                     id="terms"
                     name="acceptTerms"
                     type="checkbox"
                     checked={formData.acceptTerms}
                     onChange={handleCheckboxChange}
-                    className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-orange-300"
+                    className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-orange-300 cursor-pointer"
                     required
                   />
                 </div>
-                <div className="ml-3 text-sm">
+                <div className="ml-3 text-sm ">
                   <label htmlFor="terms" className="font-medium text-gray-900">
                     I accept the{" "}
                     <Link href="#" className="text-black underline">
