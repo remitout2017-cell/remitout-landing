@@ -54,51 +54,55 @@ export function FaqSection() {
   };
 
   return (
-    <div className="w-full bg-white">
-      <div className="max-w-4xl mx-auto px-6 py-16 ">
+    <div className="w-full bg-white min-h-screen">
+      <div className="px-4 py-8 md:max-w-4xl md:mx-auto md:px-6 md:py-16">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4 text-black">
+        <div className="text-center mb-8 md:mb-12 mt-12">
+          <h1 className="text-[32px] font-bold md:text-4xl font-bold mb-3 md:mb-4 text-black leading-tight">
             Frequently <span className="text-[#45267F]/60 italic">Asked</span>{" "}
             Questions
           </h1>
-          <p className="text-[#8E8E8E] text-lg">We have got you covered.</p>
+          <p className="text-[#8E8E8E] text-base text-[18px] md:text-lg">
+            We have got you covered.
+          </p>
         </div>
 
-        {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => setActiveCategory(category.id)}
-              className={`px-6 py-3 rounded-full border transition-all duration-200 text-[#1A1A1A]/70 ${
-                category.id === activeCategory
-                  ? "border-purple-500 bg-[#45267F17]/9 text-purple-700 cursor-pointer"
-                  : "border-border  bg-[#45267F0A] text-muted-foreground hover:border-purple-500 hover:text-purple-700 cursor-pointer"
-              }`}
-            >
-              {category.label}
-            </button>
-          ))}
+        {/* Category Tabs - Mobile optimized */}
+        <div className="mb-8 md:mb-12">
+          <div className="flex gap-2 md:flex-wrap md:justify-center md:gap-4 overflow-x-auto pb-2 hide-scrollbar">
+            {categories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => setActiveCategory(category.id)}
+                className={`px-4 py-2 text-[16px] text-[#45267F] bg-[#45267f17] md:px-6 md:py-3 rounded-md border transition-all duration-200 text-sm md:text-base whitespace-nowrap flex-shrink-0 text-[#45267F] ${
+                  category.id === activeCategory
+                    ? "border-purple-500 bg-[#45267F17]/9 text-purple-700"
+                    : "border-gray-300 bg-[#45267F0A] text-[#1A1A1A]/70 hover:border-purple-500 hover:text-purple-700"
+                }`}
+              >
+                {category.label}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="space-y-4">
+        {/* FAQ Items - Mobile optimized */}
+        <div className="space-y-3 md:space-y-4">
           {faqData.map((item, index) => {
             const isOpen = openItem === index;
-
             return (
               <div
                 key={index}
-                className="border border-border bg-[#F7F7FB] rounded-lg overflow-hidden"
+                className="border border-gray-200 bg-[#F7F7FB] rounded-lg overflow-hidden"
               >
                 <button
                   onClick={() => toggleItem(index)}
-                  className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-muted/50 transition-colors duration-200 cursor-pointer"
+                  className="w-full px-4 py-4 md:px-6 md:py-5 text-left flex items-start justify-between hover:bg-gray-50/50 transition-colors duration-200"
                 >
-                  <span className="text-[#363636] font-medium text-lg pr-4 md:leading-[21px] md:tracking-[-1px] capitalize">
+                  <span className="text-[#363636] text-[18px] font-medium text-base md:text-lg pr-3 md:pr-4 leading-tight md:leading-[21px] md:tracking-[-1px] capitalize">
                     {item.question}
                   </span>
-                  <div className="flex-shrink-0">
+                  <div className="flex-shrink-0 mt-1 md:mt-0">
                     {isOpen ? (
                       <Minus className="w-5 h-5 text-[#6F25CE]" />
                     ) : (
@@ -111,12 +115,12 @@ export function FaqSection() {
                 <div
                   className={`grid transition-all duration-500 ease-in-out ${
                     isOpen
-                      ? "grid-rows-[1fr] opacity-100 py-5"
-                      : "grid-rows-[0fr] opacity-0 py-0"
-                  } px-6`}
+                      ? "grid-rows-[1fr] opacity-100 pb-4 md:pb-5"
+                      : "grid-rows-[0fr] opacity-0 pb-0"
+                  } px-4 md:px-6`}
                 >
                   <div className="overflow-hidden">
-                    <p className="text-[#2B2B2B]/60 leading-[20px] text-base ">
+                    <p className="text-[#2B2B2B]/60 leading-[20px] font-normal text-[16px] text-sm md:text-base">
                       {item.answer}
                     </p>
                   </div>
