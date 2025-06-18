@@ -109,7 +109,7 @@ export default function TestimonialCarousel() {
         {/* Play/Pause Button */}
         <button
           onClick={togglePlayPause}
-          className="absolute top-8 right-8 w-14 h-14 bg-white rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors z-20 shadow-lg"
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 sm:top-8 sm:right-8 sm:left-auto sm:translate-x-0 w-14 h-14 bg-white rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors z-20 shadow-lg"
           aria-label={isPlaying ? "Pause carousel" : "Play carousel"}
         >
           {isPlaying ? (
@@ -120,17 +120,17 @@ export default function TestimonialCarousel() {
         </button>
 
         {/* Heading */}
-        <div className="absolute  top-20 md:left-[20%] transform -translate-x-1/2 z-20 px-4  max-w-4xl">
-          <h2 className="text-4xl font-semibold text-white leading-[39px] capitalize tracking-[-1px]">
+        <div className="absolute top-20 left-[40%] md:left-[20%] transform -translate-x-1/2 z-20 px-4 md:max-w-6xl">
+          <div className="text-4xl font-semibold text-white leading-[39px] capitalize tracking-[-1px]">
             What Our Students Are <br />
             Saying — <span className="text-[#FF7A00] italic">Voices</span> Of
             Confidence
-          </h2>
+          </div>
         </div>
       </div>
 
       {/* ✅ Carousel Container - overlaps half of background */}
-      <div className="hidden md:absolute bottom-[-30%] left-1/2 transform -translate-x-1/2 w-full px-4 z-30 ">
+      <div className="absolute bottom-[-30%] left-1/2 transform -translate-x-1/2 w-full px-4 z-30 ">
         <div className="max-w-7xl mx-auto">
           {/* Carousel Wrapper */}
           <div className="overflow-hidden">
@@ -167,14 +167,14 @@ export default function TestimonialCarousel() {
                           {/* Avatar */}
                           <div className="flex items-center gap-2">
                             <Image
-                                src={testimonial.avatar}
-                                alt={testimonial.name}
-                                width={48}
-                                height={48}
-                                className="rounded-full object-cover"
+                              src={testimonial.avatar}
+                              alt={testimonial.name}
+                              width={48}
+                              height={48}
+                              className="rounded-full object-cover"
                             />
                             <h4 className="font-bold text-gray-900 text-lg mb-1">
-                                {testimonial.name}
+                              {testimonial.name}
                             </h4>
                           </div>
 

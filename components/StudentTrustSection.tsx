@@ -14,9 +14,9 @@ export default function StudentTrustSection() {
   ];
 
   return (
-    <section className="bg-[#F5F5FA] pb-22 pt-55 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-8xl mx-[10%] ">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
+    <section className="bg-[#F5F5FA] pb-22 pt-55 px-2 md:px-8 ">
+      <div className="max-w-8xl  md:mx-[10%] ">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-32 items-center">
           {/* Left Content */}
           <div className="space-y-8">
             <div className="space-y-4">
@@ -25,7 +25,7 @@ export default function StudentTrustSection() {
                 <span className="text-[#45267f]/60 italic">You&apos;re</span>{" "}
                 Next
               </h2>
-              <p className="text-[#8E8E8E] text-[16px] font-normal leading-[25px] max-w-lg">
+              <p className="text-[#8E8E8E] text-base font-normal leading-[25px] max-w-lg">
                 With RemitOut, your educational pursuits and financial matters
                 are managed with utmost security and professionalism, allowing
                 you to concentrate fully on achieving your academic and career
@@ -50,8 +50,8 @@ export default function StudentTrustSection() {
             {/* CTA Button */}
             <div className="pt-4">
               <button
-                className="bg-[#FF7A00] text-white font-semibold px-6 py-2 text-[16px] rounded-lg transition-colors duration-200 cursor-pointer
-                      sm:px-12 sm:py-3 sm:text-[22px] w-full"
+                className="bg-[#FF7A00] text-white font-semibold px-6 py-2 text-[16px] rounded-sm md:rounded-lg transition-colors duration-200 cursor-pointer
+                      sm:px-12 sm:py-3 sm:text-[20px] w-full"
               >
                 Contact to know more
               </button>
@@ -63,7 +63,7 @@ export default function StudentTrustSection() {
             {/* Main background area */}
             <div className="relative h-96 lg:h-[500px]">
               {/* Top right image - woman with laptop */}
-              <div className="absolute top-0 right-1 md:w-[352px] h-[337px] rounded-lg overflow-hidden shadow-lg ">
+              <div className="absolute top-0 right-1 w-56 h-56 md:w-[352px] md:h-[337px] rounded-lg overflow-hidden shadow-lg ">
                 <Image
                   src="/StudentTrust02.webp"
                   alt="Woman working on laptop"
@@ -73,7 +73,7 @@ export default function StudentTrustSection() {
               </div>
 
               {/* Bottom left image - woman reading */}
-              <div className="absolute bottom-[-60px] left-10 md:w-[416px] md:h-[337px] rounded-lg overflow-hidden shadow-lg ">
+              <div className="absolute bottom-[-60px] left-10 w-56 h-56 md:w-[416px] md:h-[337px] rounded-lg overflow-hidden shadow-lg ">
                 <Image
                   src="/StudentTrust01.webp?height=256&width=320"
                   alt="Woman reading in library"
@@ -84,7 +84,7 @@ export default function StudentTrustSection() {
               </div>
 
               {/* 95% Satisfaction Card */}
-              <div className="absolute top-10 left-40 bg-white rounded-xl shadow-lg p-6 z-10">
+              <div className="absolute top-10 left-15 md:left-40 bg-white md:rounded-xl shadow-lg p-6 z-10">
                 <div className="text-center">
                   <div className="relative w-22 h-22 mx-auto mb-3">
                     <svg
@@ -115,7 +115,7 @@ export default function StudentTrustSection() {
                       </span>
                     </div>
                   </div>
-                  <p className="text-base font-medium text-gray-700">
+                  <p className="text-xs md:text-base font-medium text-gray-700">
                     Highly Satisfied
                     <br />
                     Students
@@ -124,7 +124,7 @@ export default function StudentTrustSection() {
               </div>
 
               {/* Experience Advisor Card */}
-              <div className="absolute bottom-[-15px] right-18 rounded-[7px] bg-[#45267F] shadow-[0_10px_60px_rgba(75,131,252,0.15)] px-6 py-8 text-white z-10">
+              <div className="absolute bottom-[-15px] left-[70%] md:right-18 rounded-[7px] bg-[#45267F] shadow-[0_10px_60px_rgba(75,131,252,0.15)] px-6 py-8 text-white z-10 ">
                 <div className="text-center">
                   <div className=" mx-auto mb-3 bg-white/20 rounded-lg flex items-center justify-center">
                     <Advisor />

@@ -65,8 +65,8 @@ export default function RemitoutLanding() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="px-[131px] ">
-        <div className="max-w-8xl ]">
+      <section className=" px-4 py-5 md:px-[131px] ">
+        <div className="max-w-8xl ">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div className="space-y-8">
@@ -94,14 +94,14 @@ export default function RemitoutLanding() {
               </div>
 
               <div className="space-y-4">
-                <h1 className="md:text-[50px] font-bold text-[#363636] tracking-[-1px] capitalize leading-[55px]">
+                <h1 className="text-[32px] md:text-[50px] font-bold text-[#363636] tracking-[-1px] capitalize leading-[36px] md:leading-[55px]">
                   Transform Your Future With The{" "}
                   <span className="text-[#45267F]/60 italic">Top Online</span>
                   <br />
                   Education Partner
                 </h1>
 
-                <p className="text-[#8E8E8E] text-lg leading-[25PX] max-w-lg">
+                <p className="text-[#8E8E8E] text-base md:text-lg leading-[25PX] max-w-lg">
                   Remitout makes outward remittance easy for students,
                   travelers, and businesses. RBI-approved, bank-level security,
                   and zero paperwork hassle.
@@ -114,14 +114,14 @@ export default function RemitoutLanding() {
             </div>
 
             {/* Right Content */}
-            <div className="relative h-[92vh]">
+            <div className="relative h-[92vh] z-10">
               {/* Image with overlay and CTA */}
               <div className="w-full h-full overflow-hidden relative">
                 <Image
                   src="/hero_section_banner.webp"
                   alt="Graduate Banner"
                   fill
-                  className="object-cover z-5 scale-85 "
+                  className="object-cover z-5 md:scale-85 "
                 />
 
                 {/* Gray radial fade overlay */}
@@ -135,17 +135,17 @@ export default function RemitoutLanding() {
               </div>
 
               {/* CTA Button */}
-              <Button className="absolute top-[50%] right-[6%] bg-[#45267F] hover:bg-[#45267F] text-white text-[20px] font-bold px-6 py-5 rounded-full z-10">
+              <Button className="absolute top-[50%] right-[6%] bg-[#45267F] hover:bg-[#45267F] text-white text-sm md:text-[20px] font-bold px-6 py-5 rounded-full z-10">
                 Join Us Today
               </Button>
 
               {/* CTA Button */}
-              <Button className="absolute top-[32%] right-[60%] bg-white hover:bg-white text-[#45267F] text-[20px] font-bold px-6 py-5 rounded-full z-10">
+              <Button className="absolute top-[32%] right-[60%] bg-white hover:bg-white text-[#45267F] text-sm md:text-[20px] font-bold px-6 py-5 rounded-full z-10">
                 <Tick /> Expert Advisors
               </Button>
 
               {/* Optional: Position testimonial card at the bottom */}
-              <Card className="absolute bottom-[16%] right-[50%] p-4 bg-white shadow-lg max-w-sm z-10">
+              <Card className="hidden md:absolute bottom-[16%] right-[50%] p-4 bg-white shadow-lg max-w-sm z-10">
                 <div className="space-y-3">
                   <p className="text-gray-700 text-xl font-medium">
                     {'"...admission process unbelievably smooth..."'}
@@ -183,7 +183,7 @@ export default function RemitoutLanding() {
       </section>
 
       {/* Services Section */}
-      <section className="bg-[#45267F] text-white py-12">
+      <section className="  bg-[#45267F] text-white py-12 -mt-72 relative z-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid md:grid-cols-3 gap-8">
             {/* Admission Assistance */}
