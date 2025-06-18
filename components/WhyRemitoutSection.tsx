@@ -10,20 +10,22 @@ export default function WhyRemitoutSection() {
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-4">
             {/* Orange diamond icon placeholder */}
-            <div className="w-8 h-8 bg-orange-500 rotate-45 rounded-sm flex items-center justify-center">
+            <div className="w-8 h-8 bg-orange-500 rotate-45 rounded-sm flex items-center justify-center ">
               <div className="w-4 h-4 bg-white rotate-45 rounded-sm"></div>
             </div>
-            <h2 className="text-4xl font-bold text-gray-900">Why Remitout?</h2>
+            <h2 className="text-[32px] font-bold text-[#0B090A]">
+              Why Remitout?
+            </h2>
           </div>
-          <p className="text-gray-600 text-lg">
+          <p className="text-[#8E8E8E] text-[18px] font-medium">
             See why we are the favourite of thousands
           </p>
         </div>
 
         {/* Feature Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-32">
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-6 mb-18">
           {/* RBI-Approved Card */}
-          <div className="relative rounded-xl overflow-hidden h-[403px] group">
+          <div className="relative rounded-xl overflow-hidden h-[300px] sm:h-[300px] md:h-[403px] group">
             {/* Background Image Placeholder */}
             <Image
               src="/why_remitout_01.webp?height=320&width=400"
@@ -42,7 +44,6 @@ export default function WhyRemitoutSection() {
 
             {/* Orange Icon Placeholder */}
             <div className="absolute top-6 left-6 w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center">
-              {/* Icon placeholder - replace with your icon */}
               <Award />
             </div>
 
@@ -57,7 +58,7 @@ export default function WhyRemitoutSection() {
           </div>
 
           {/* Unmatched Expertise Card */}
-          <div className="relative rounded-xl overflow-hidden h-[403px] group">
+          <div className="relative rounded-xl overflow-hidden h-[300px] sm:h-[300px] md:h-[403px] group">
             {/* Background Image Placeholder */}
             <Image
               src="/why_remitout_02.webp??height=320&width=400"
@@ -76,15 +77,13 @@ export default function WhyRemitoutSection() {
 
             {/* Orange Icon Placeholder */}
             <div className="absolute top-6 left-6 w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center">
-              {/* Icon placeholder - replace with your icon */}
               <PersonStar />
             </div>
 
             {/* Content */}
             <div className="absolute bottom-6 left-6 right-6 text-white">
               <h3 className="text-[22px] font-semibold mb-2">
-                Unmatched <br />
-                Expertise
+                Unmatched Expertise
               </h3>
               <p className="text-base text-[#FFFFFF]/60 leading-[19.2px]">
                 Over a decade of excellence in international education.
@@ -93,7 +92,7 @@ export default function WhyRemitoutSection() {
           </div>
 
           {/* Global Network Card */}
-          <div className="relative rounded-xl overflow-hidden h-[403px] group">
+          <div className="relative rounded-xl overflow-hidden h-[300px] sm:h-[300px] md:h-[403px] group">
             {/* Background Image Placeholder */}
             <Image
               src="/why_remitout_03.webp??height=320&width=400"
@@ -112,7 +111,6 @@ export default function WhyRemitoutSection() {
 
             {/* Orange Icon Placeholder */}
             <div className="absolute top-6 left-6 w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center">
-              {/* Icon placeholder - replace with your icon */}
               <PersonStar />
             </div>
 
