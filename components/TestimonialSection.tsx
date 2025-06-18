@@ -91,9 +91,9 @@ export default function TestimonialCarousel() {
   };
 
   return (
-    <div className="relative h-[74vh] mb-[20%]">
+    <div className="relative h-[74vh] mb-10 md:mb-[20%]">
       {/* Background container with max-width and centering */}
-      <div className="max-w-8xl mx-28 h-full relative overflow-hidden rounded-2xl">
+      <div className="max-w-8xl mx-4 md:mx-28 h-full relative overflow-hidden rounded-2xl">
         {/* Background image */}
         <Image
           src="/TestimonialBanner.webp"
@@ -120,7 +120,7 @@ export default function TestimonialCarousel() {
         </button>
 
         {/* Heading */}
-        <div className="absolute top-20 left-[20%] transform -translate-x-1/2 z-20 px-4  max-w-4xl">
+        <div className="absolute  top-20 md:left-[20%] transform -translate-x-1/2 z-20 px-4  max-w-4xl">
           <h2 className="text-4xl font-semibold text-white leading-[39px] capitalize tracking-[-1px]">
             What Our Students Are <br />
             Saying — <span className="text-[#FF7A00] italic">Voices</span> Of
@@ -130,7 +130,7 @@ export default function TestimonialCarousel() {
       </div>
 
       {/* ✅ Carousel Container - overlaps half of background */}
-      <div className="absolute bottom-[-30%] left-1/2 transform -translate-x-1/2 w-full px-4 z-30 ">
+      <div className="hidden md:absolute bottom-[-30%] left-1/2 transform -translate-x-1/2 w-full px-4 z-30 ">
         <div className="max-w-7xl mx-auto">
           {/* Carousel Wrapper */}
           <div className="overflow-hidden">

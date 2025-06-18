@@ -3,7 +3,7 @@ import { ExternalLink } from "lucide-react";
 
 export default function ServicesSection() {
   return (
-    <div className="bg-white w-full pb-39">
+    <div className="bg-white w-full pb-0 md:pb-39">
       <section className="py-16 px-4 max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">

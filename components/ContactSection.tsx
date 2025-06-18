@@ -41,12 +41,14 @@ export default function ContactSection() {
     <section className="py-16 px-4 bg-white">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-10">
-          <h2 className="text-4xl font-bold mb-2 text-black">Get In Touch</h2>
+          <h2 className="text-[32px] md:text-4xl font-bold mb-2 text-black">
+            Get In <span className="text-[#4526FF]/60 md:text-black italic md:not-italic">Touch</span>
+          </h2>
           <p className=" text-[#8E8E8E]">We have got you covered.</p>
         </div>
 
         <div className="flex flex-col lg:flex-row items-center gap-8">
-          <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+          <div className="w-full lg:w-1/2 hidden md:flex justify-center lg:justify-end">
             <div className="relative w-[500px] h-[600px]">
               {/* Gray Circle */}
               <div className="absolute top-[60%] left-1/3 w-[500px] h-[500px] -translate-x-1/2 -translate-y-1/2 bg-gray-200 rounded-full z-0" />
@@ -155,7 +157,7 @@ export default function ContactSection() {
 
               <button
                 type="submit"
-                className="w-full bg-[#FF7A00] cursor-pointer text-white font-bold py-3 px-4 rounded-md transition duration-300"
+                className="w-full bg-[#FF7A00] cursor-pointer text-white text-xl md:text-[22px] font-bold py-3 px-4 rounded-md transition duration-300"
               >
                 Submit
               </button>
