@@ -32,25 +32,25 @@ export default function ServicesSection() {
 
           {/* Visa Guidance Content */}
           <div className="bg-[#F7F7FB] rounded-[10px] p-[20px] shadow-sm border border-gray-100 flex flex-col justify-center min-h-[250px] md:min-h-[300px] order-2 md:order-2">
-            <h3 className="text-[24px] font-semibold text-[#363636] mb-4">
+            <h3 className="text-2xl font-semibold text-[#363636] mb-4">
               Visa{" "}
               <span className="text-[#45267f]/60 italic font-medium">
                 Guidance
               </span>
             </h3>
             <div className="space-y-3 mb-6 flex-1">
-              <p className="text-[#8E8E8E] text-[16px] font-normal text-sm leading-relaxed">
+              <p className="text-[#8E8E8E] font-normal text-base  leading-relaxed">
                 End-to-end visa application management.
               </p>
-              <p className="text-[#8E8E8E] text-[16px] font-normal text-sm leading-relaxed">
+              <p className="text-[#8E8E8E] text-base  font-normal leading-relaxed">
                 Professional support for interview preparation and
                 documentation.
               </p>
-              <p className="text-[#8E8E8E] text-[16px] font-normal text-sm leading-relaxed">
+              <p className="text-[#8E8E8E] text-base  leading-relaxed">
                 Real-time updates on visa regulations and compliance.
               </p>
             </div>
-            <button className="flex items-center gap-2 text-orange-500 font-medium text-[18px] hover:text-orange-600 transition-colors">
+            <button className="flex items-center gap-2 text-orange-500 font-medium text-base hover:text-orange-600 transition-colors cursor-pointer">
               Contact to Know more
               <ExternalLink className="w-4 h-4" />
             </button>
@@ -69,23 +69,25 @@ export default function ServicesSection() {
 
           {/* International Transaction Content */}
           <div className="bg-[#F7F7FB] rounded-[10px] p-[20px] shadow-sm border border-gray-100 flex flex-col justify-center min-h-[250px] md:min-h-[300px] order-4 md:order-4">
-            <h3 className="text-[24px] font-semibold text-[#363636] mb-4">
+            <h3 className="text-2xl font-semibold text-[#363636] mb-4">
               International{" "}
-              <span className="text-[#45267f]/60 italic">Transaction</span>
+              <span className="text-[#45267f]/60 italic font-medium">
+                Transaction
+              </span>
             </h3>
             <div className="space-y-3 mb-6 flex-1">
-              <p className="text-[#8E8E8E] text-[18px] leading-relaxed">
+              <p className="text-[#8E8E8E] text-base  leading-relaxed">
                 Swift and secure international transfers.
               </p>
-              <p className="text-[#8E8E8E] text-[18px] leading-relaxed">
+              <p className="text-[#8E8E8E] text-base  leading-relaxed">
                 Competitive exchange rates with minimal fees.
               </p>
-              <p className="text-[#8E8E8E] text-[18px] leading-relaxed">
+              <p className="text-[#8E8E8E] text-base  leading-relaxed">
                 Our experts provide personalized guidance for a smooth and
                 secure international money transfer experience.
               </p>
             </div>
-            <button className="flex items-center gap-2 text-orange-500 font-medium text-[18px] hover:text-orange-600 transition-colors">
+            <button className="flex items-center gap-2 text-[#FF7A00] font-medium text-base hover:text-[#FF7A00] transition-colors cursor-pointer">
               Contact to Know more
               <ExternalLink className="w-4 h-4" />
             </button>
@@ -104,21 +106,24 @@ export default function ServicesSection() {
 
           {/* Loan Assistance Content */}
           <div className="bg-[#F7F7FB] rounded-[10px] p-[20px] shadow-sm border border-gray-100 flex flex-col justify-center min-h-[250px] md:min-h-[300px] order-6 md:order-5">
-            <h3 className="text-xl font-semibold text-[#363636] mb-4">
-              Loan <span className="text-[#45267f]/60 italic">Assistance</span>
+            <h3 className="text-2xl font-semibold text-[#363636] mb-4">
+              Loan{" "}
+              <span className="text-[#45267f]/60 italic font-medium">
+                Assistance
+              </span>
             </h3>
             <div className="space-y-3 mb-6 flex-1">
-              <p className="text-[#8E8E8E] text-[18px] leading-relaxed">
+              <p className="text-[#8E8E8E] text-base  leading-relaxed">
                 End-to-end loan application management.
               </p>
-              <p className="text-[#8E8E8E] text-[18px] leading-relaxed">
+              <p className="text-[#8E8E8E] text-base  leading-relaxed">
                 Professional support for documentation and approval process.
               </p>
-              <p className="text-[#8E8E8E] text-[18px] leading-relaxed">
+              <p className="text-[#8E8E8E] text-base  leading-relaxed">
                 Competitive rates and flexible repayment options.
               </p>
             </div>
-            <button className="flex items-center gap-2 text-orange-500 font-medium text-sm hover:text-orange-600 transition-colors">
+            <button className="flex items-center gap-2 text-[#FF7A00] font-medium text-base hover:text-[#FF7A00] transition-colors cursor-pointer">
               Contact to Know more
               <ExternalLink className="w-4 h-4" />
             </button>
@@ -137,21 +142,24 @@ export default function ServicesSection() {
 
           {/* Career Assistance Content */}
           <div className="bg-[#F7F7FB] rounded-[10px] p-[20px] shadow-sm border border-gray-100 flex flex-col justify-center min-h-[250px] md:min-h-[300px] order-8 md:order-7">
-            <h3 className="text-xl font-semibold text-[#363636] mb-4">
-              Career <span className="text-[#45267f]/60 italic">Assistance</span>
+            <h3 className="text-2xl font-semibold text-[#363636] mb-4">
+              Career{" "}
+              <span className="text-[#45267f]/60 italic font-medium">
+                Assistance
+              </span>
             </h3>
             <div className="space-y-3 mb-6 flex-1">
-              <p className="text-[#8E8E8E] text-[18px] leading-relaxed">
+              <p className="text-[#8E8E8E] text-base  leading-relaxed">
                 Professional career guidance and mentorship.
               </p>
-              <p className="text-[#8E8E8E] text-[18px] leading-relaxed">
+              <p className="text-[#8E8E8E] text-base  leading-relaxed">
                 Resume building and interview preparation support.
               </p>
-              <p className="text-[#8E8E8E] text-[18px] leading-relaxed">
+              <p className="text-[#8E8E8E] text-base  leading-relaxed">
                 Industry connections and job placement assistance.
               </p>
             </div>
-            <button className="flex items-center gap-2 text-orange-500 font-medium text-sm hover:text-orange-600 transition-colors">
+            <button className="flex items-center gap-2 text-[#FF7A00] font-medium text-base hover:text-[#FF7A00] transition-colors">
               Contact to Know more
               <ExternalLink className="w-4 h-4" />
             </button>
