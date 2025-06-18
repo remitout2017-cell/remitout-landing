@@ -20,11 +20,12 @@ export default function StudentTrustSection() {
           {/* Left Content */}
           <div className="space-y-8">
             <div className="space-y-4">
-              <h2 className=" md:text-4xl  font-semibold text-[#363636] leading-[39.6px] tracking-[-1px] capitalize md:w-[70%]">
+              <h2 className="text-[32px] md:text-4xl  font-semibold text-[#363636] leading-[39.6px] tracking-[-1px] capitalize md:w-[70%]">
                 15,000+ Students Already Trust Us —{" "}
-                <span className="text-purple-600">You&apos;re</span> Next
+                <span className="text-[#45267f]/60 italic">You&apos;re</span>{" "}
+                Next
               </h2>
-              <p className="text-[#8E8E8E] text-lg leading-[25px] max-w-lg">
+              <p className="text-[#8E8E8E] text-[16px] font-normal leading-[25px] max-w-lg">
                 With RemitOut, your educational pursuits and financial matters
                 are managed with utmost security and professionalism, allowing
                 you to concentrate fully on achieving your academic and career
@@ -48,7 +49,10 @@ export default function StudentTrustSection() {
 
             {/* CTA Button */}
             <div className="pt-4">
-              <button className="bg-[#FF7A00] text-white font-semibold px-12 py-3 rounded-lg transition-colors duration-200 cursor-pointer text-[22px]">
+              <button
+                className="bg-[#FF7A00] text-white font-semibold px-6 py-2 text-[16px] rounded-lg transition-colors duration-200 cursor-pointer
+                      sm:px-12 sm:py-3 sm:text-[22px] w-full"
+              >
                 Contact to know more
               </button>
             </div>
