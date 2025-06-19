@@ -132,7 +132,7 @@ const Navbar = () => {
           </div>
 
           {/* CTA Section */}
-          <div className="text-center mt-14">
+          <div className="text-center mt-10">
             <h2 className="text-2xl font-semibold text-gray-900">
               Register With <span className="italic text-[#A593E0]">Us</span>{" "}
               Today
@@ -143,7 +143,7 @@ const Navbar = () => {
           </div>
 
           {/* Contact Info Box */}
-          <div className="mt-16 bg-[#401C78] text-white p-6 rounded-[6px] space-y-6">
+          <div className="mt-10 bg-[#401C78] text-white p-6 rounded-[6px] space-y-6">
             <div className="flex items-start space-x-4">
               <div className="bg-white text-[#401C78] rounded-full p-2">
                 <LocateFixedIcon />
