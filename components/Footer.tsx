@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { MapPin, Mail, Phone, Play, Facebook, Instagram } from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -71,16 +72,13 @@ export default function Footer() {
           {/* Video Section */}
           <div className="order-2 md:order-1">
             <div className="relative rounded-lg overflow-hidden">
-              <video
+              <Image
+                src="/FooterBanner.webp" 
+                alt="Video Thumbnail"
                 width={400}
                 height={300}
-                className="w-full h-auto rounded-lg"
-                controls
-                preload="metadata"
-              >
-                <source src="/videos/demo.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+                className="w-full h-auto rounded-lg object-cover"
+              />
 
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="bg-white rounded-full p-3 cursor-pointer">

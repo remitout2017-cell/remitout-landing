@@ -184,7 +184,7 @@ export default function RemitoutLanding() {
       </section>
 
       {/* Services Section */}
-      <section className="  bg-[#45267F] text-white py-12 -mt-72 relative z-20">
+      <section className="  bg-[#45267F] text-white py-12 -mt-72 md:-mt-0 relative z-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid md:grid-cols-3 gap-8">
             {/* Admission Assistance */}
