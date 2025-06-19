@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Star, } from "lucide-react";
+import { Star } from "lucide-react";
 import Navbar from "./Navbar";
 import Phone from "./icones/Phone";
 import Mail from "./icones/Mail";
@@ -15,7 +15,7 @@ import PigMoney from "./icones/PigMoney";
 
 export default function RemitoutLanding() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white relative z-10">
       <div className="bg-[#3B1D6E] text-white text-sm border-b border-white/20 py-4">
         <div className="max-w-8xl flex flex-row justify-between md:items-center h-10 p-4 md:px-[131px]">
           {/* Left side: Phone and Email */}
@@ -61,8 +61,9 @@ export default function RemitoutLanding() {
           </div>
         </div>
       </div>
-
-      <Navbar />
+      <div className="z-20 relative">
+        <Navbar />
+      </div>
 
       {/* Hero Section */}
       <section className=" px-4 py-5 md:px-[131px] ">
@@ -114,9 +115,9 @@ export default function RemitoutLanding() {
             </div>
 
             {/* Right Content */}
-            <div className="relative h-[92vh] z-10">
+            <div className="relative h-[92vh] z-[1]">
               {/* Image with overlay and CTA */}
-              <div className="w-full h-full overflow-hidden relative">
+              <div className="w-full h-full overflow-hidden relative ">
                 <Image
                   src="/hero_section_banner.webp"
                   alt="Graduate Banner"
