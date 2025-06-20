@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Play, Pause } from "lucide-react";
 import Image from "next/image";
 
@@ -12,16 +12,7 @@ type Testimonial = {
   avatar: string;
 };
 
-// Group flat testimonials into chunks of N
-const groupTestimonials = (items: Testimonial[], size: number) => {
-  const grouped = [];
-  for (let i = 0; i < items.length; i += size) {
-    grouped.push(items.slice(i, i + size));
-  }
-  return grouped;
-};
-
-const testimonials = [
+const testimonials: Testimonial[] = [
   {
     id: 1,
     text: "RemitOut made my admission process abroad so smooth and stress-free...",
@@ -66,28 +57,45 @@ const testimonials = [
   },
 ];
 
+// Helper to group testimonials
+const groupTestimonials = (
+  items: Testimonial[],
+  size: number
+): Testimonial[][] => {
+  const grouped = [];
+  for (let i = 0; i < items.length; i += size) {
+    grouped.push(items.slice(i, i + size));
+  }
+  return grouped;
+};
+
 export default function TestimonialCarousel() {
+  const [cardsPerSlide, setCardsPerSlide] = useState(3); // Default to 3 for SSR
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
 
-  // Number of cards per slide — make responsive
-  const cardsPerSlide =
-    typeof window !== "undefined" && window.innerWidth < 768 ? 1 : 3;
+  // Set cardsPerSlide on mount (client only)
+  useEffect(() => {
+    const updateCardsPerSlide = () => {
+      setCardsPerSlide(window.innerWidth < 768 ? 1 : 3);
+    };
+
+    updateCardsPerSlide(); // Initial set
+    window.addEventListener("resize", updateCardsPerSlide);
+    return () => window.removeEventListener("resize", updateCardsPerSlide);
+  }, []);
+
   const groupedTestimonials = groupTestimonials(testimonials, cardsPerSlide);
 
   useEffect(() => {
     if (!isPlaying) return;
-
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % groupedTestimonials.length);
     }, 5000);
-
     return () => clearInterval(interval);
   }, [isPlaying, groupedTestimonials.length]);
 
-  const togglePlayPause = () => {
-    setIsPlaying((prev) => !prev);
-  };
+  const togglePlayPause = () => setIsPlaying((prev) => !prev);
 
   const renderStars = (rating: number) =>
     Array.from({ length: 5 }, (_, i) => (
@@ -103,7 +111,6 @@ export default function TestimonialCarousel() {
 
   return (
     <div className="relative h-[74vh] mb-55 md:mb-[10%]">
-      {/* Background Section */}
       <div className="max-w-8xl mx-4 md:mx-28 h-full relative overflow-hidden rounded-2xl">
         <Image
           src="/TestimonialBanner.webp"
@@ -135,8 +142,8 @@ export default function TestimonialCarousel() {
         </div>
       </div>
 
-      {/* Carousel Section */}
-      <div className="absolute bottom-[-30%] left-1/2 transform -translate-x-1/2 w-full px-4  z-30">
+      {/* Carousel */}
+      <div className="absolute bottom-[-30%] left-1/2 transform -translate-x-1/2 w-full px-4 z-30">
         <div className="max-w-7xl mx-auto">
           <div className="overflow-hidden">
             <div

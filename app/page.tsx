@@ -7,6 +7,7 @@ import StudentTrustSection from "@/components/StudentTrustSection";
 import TestimonialCarousel from "@/components/TestimonialSection";
 import WhyRemitoutSection from "@/components/WhyRemitoutSection";
 
+
 export default function Home() {
   return (
     <div className="min-h-screen ">
