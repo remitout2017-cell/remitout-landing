@@ -51,6 +51,10 @@
     color: var(--foreground);
     font-family: 'Inter', sans-serif;
   }
+  html {
+    scroll-behavior: smooth;
+  }
+  
 }
 
 /* ✅ Use Tailwind-safe utility classes */

@@ -58,7 +58,9 @@ export default function RegisterPage() {
       </div>
 
       {/* Navigation Links */}
+      <div className="z-20 relative">
       <Navbar />
+      </div>
 
       {/* Main Content */}
       <main className="flex-grow max-w-8xl m-4 md:mr-32">
@@ -228,7 +230,7 @@ export default function RegisterPage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-[#3B1D6E] text-white py-6 mt-16">
+      <footer className="bg-[#3B1D6E] text-white pt-8 pb-12  md:py-6 mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-2 md:gap-0">
             <div>

@@ -9,16 +9,24 @@ import WhyRemitoutSection from "@/components/WhyRemitoutSection";
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen ">
       <RemitoutLanding />
       <WhyRemitoutSection />
       <StudentTrustSection />
       <div className="flex flex-col-reverse md:flex-col">
-        <ServicesSection />
+        <section id="services">
+          <ServicesSection />
+        </section>
+        <section id="testimonials">
         <TestimonialCarousel />
+        </section>
       </div>
+      <section id="faqs">
       <FaqSection />
+      </section>
+      <section id="Contact">
       <ContactSection />
+      </section>
       <Footer />
     </div>
   );

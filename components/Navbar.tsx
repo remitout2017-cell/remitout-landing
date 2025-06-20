@@ -43,25 +43,25 @@ const Navbar = () => {
             Home
           </Link>
           <Link
-            href="#"
+            href="#services"
             className="text-gray-700 hover:text-gray-900 font-medium"
           >
             Our Services
           </Link>
           <Link
-            href="#"
+            href="#testimonials"
             className="text-gray-700 hover:text-gray-900 font-medium"
           >
             Testimonials
           </Link>
           <Link
-            href="#"
+            href="#faqs"
             className="text-gray-700 hover:text-gray-900 font-medium"
           >
             FAQs
           </Link>
           <Link
-            href="#"
+            href="#Contact"
             className="text-gray-700 hover:text-gray-900 font-medium"
           >
             Schedule Call
@@ -107,27 +107,38 @@ const Navbar = () => {
           <div className="space-y-3 mt-4">
             <Link
               href="#"
+              onClick={() => setMobileMenuOpen(false)}
               className="block bg-white border-b px-4 py-3 text-[#45267F] font-medium"
             >
               Home
             </Link>
             <Link
-              href="#"
+              href="#services"
+              onClick={() => setMobileMenuOpen(false)}
               className="block bg-white border-b px-4 py-3 text-[#45267F] font-medium"
             >
               Our Services
             </Link>
             <Link
-              href="#"
+              href="#testimonials"
+              onClick={() => setMobileMenuOpen(false)}
               className="block bg-white border-b px-4 py-3 text-[#45267F] font-medium"
             >
               Testimonials
             </Link>
             <Link
-              href="#"
+              href="#faqs"
+              onClick={() => setMobileMenuOpen(false)}
               className="block bg-white border-b px-4 py-3 text-[#45267F] font-medium"
             >
               FAQs
+            </Link>
+            <Link
+              href="#Contact"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block bg-white border-b px-4 py-3 text-[#45267F] font-medium"
+            >
+              Schedule Call
             </Link>
           </div>
 
