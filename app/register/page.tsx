@@ -90,7 +90,7 @@ export default function RegisterPage() {
           </div>
 
           {/* Right Side - Registration Form */}
-          <div className="w-full md:w-[80%] mx-auto md:ml-auto md:mb-auto mt-10 bg-white p-3 md:px-10 md:py-9 md:rounded-2xl shadow-lg">
+          <div className="w-full md:w-[80%] mx-auto md:ml-auto md:mb-auto md:mt-10 bg-white p-3 md:px-10 md:py-9 md:rounded-2xl shadow-lg">
             <div className="mb-8">
               <h1 className="text-[32px] md:text-4xl text-center font-semibold leading-[40px] capitalize tracking-[-1px] text-[#363636] mb-2 pt-9 md:pt-0">
                 Register With{" "}
@@ -230,7 +230,7 @@ export default function RegisterPage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-[#3B1D6E] text-white pt-8 pb-12  md:py-6 mt-16">
+      <footer className="bg-[#3B1D6E] text-white pt-8 pb-12  md:py-6  ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-2 md:gap-0">
             <div>

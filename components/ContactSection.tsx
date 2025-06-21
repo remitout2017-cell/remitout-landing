@@ -42,7 +42,10 @@ export default function ContactSection() {
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-10">
           <h2 className="text-[32px] md:text-4xl font-bold mb-2 text-black">
-            Get In <span className="text-[#4526FF]/60 md:text-black italic md:not-italic">Touch</span>
+            Get In{" "}
+            <span className="text-[#4526FF]/60 md:text-black italic md:not-italic">
+              Touch
+            </span>
           </h2>
           <p className=" text-[#8E8E8E]">We have got you covered.</p>
         </div>
@@ -68,9 +71,9 @@ export default function ContactSection() {
               <Image
                 src="/contact_Banner.webp"
                 alt="Graduate student"
-                width={500}
-                height={600}
-                className="relative z-20"
+                fill
+                sizes="(max-width: 768px) 100vw, 500px"
+                className="relative z-20 w-[500px] h-auto"
               />
             </div>
           </div>

@@ -21,7 +21,7 @@ const Navbar = () => {
   }, [isMobileMenuOpen]);
 
   return (
-    <nav className="bg-white/35 shadow-[0_2px_8px_0px_#F3F0F7] backdrop-blur-md">
+    <nav className="bg-white/35 shadow-[0_2px_8px_0px_#F3F0F7] backdrop-blur-md font-poppins ">
       <div className="flex items-center justify-between md:px-[131px] px-4 py-4">
         {/* Logo */}
         <div className="flex items-center space-x-2">
@@ -35,34 +35,34 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex text-base items-center space-x-8">
+        <div className="hidden md:flex text-base items-center space-x-8  leading-[19.6px]">
           <Link
             href="#"
-            className="text-gray-700 hover:text-gray-900 font-medium"
+            className="text-[#1A1A1A]  font-medium "
           >
             Home
           </Link>
           <Link
             href="#services"
-            className="text-gray-700 hover:text-gray-900 font-medium"
+            className="ext-[#1A1A1A]  font-medium"
           >
             Our Services
           </Link>
           <Link
             href="#testimonials"
-            className="text-gray-700 hover:text-gray-900 font-medium"
+            className="ext-[#1A1A1A]  font-medium"
           >
             Testimonials
           </Link>
           <Link
             href="#faqs"
-            className="text-gray-700 hover:text-gray-900 font-medium"
+            className="ext-[#1A1A1A] font-medium"
           >
             FAQs
           </Link>
           <Link
             href="#Contact"
-            className="text-gray-700 hover:text-gray-900 font-medium"
+            className="ext-[#1A1A1A] font-medium"
           >
             Schedule Call
           </Link>

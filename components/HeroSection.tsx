@@ -115,14 +115,14 @@ export default function RemitoutLanding() {
             </div>
 
             {/* Right Content */}
-            <div className="relative h-[92vh] z-[1]">
+            <div className="relative h-[48vh] md:h-[92vh] z-[1]">
               {/* Image with overlay and CTA */}
               <div className="w-full h-full overflow-hidden relative ">
                 <Image
                   src="/hero_section_banner.webp"
                   alt="Graduate Banner"
                   fill
-                  className="object-cover z-5 md:scale-85 "
+                  className="object-cover z-5  md:scale-85 "
                 />
 
                 {/* Gray radial fade overlay */}
@@ -146,7 +146,7 @@ export default function RemitoutLanding() {
               </Button>
 
               {/* Optional: Position testimonial card at the bottom */}
-              <Card className="hidden md:absolute bottom-[16%] right-[50%] p-4 bg-white shadow-lg max-w-sm z-10">
+              <Card className="hidden md:block absolute bottom-[16%] right-[50%] p-4 bg-white shadow-lg max-w-sm z-10">
                 <div className="space-y-3">
                   <p className="text-gray-700 text-xl font-medium">
                     {'"...admission process unbelievably smooth..."'}
@@ -184,7 +184,7 @@ export default function RemitoutLanding() {
       </section>
 
       {/* Services Section */}
-      <section className="  bg-[#45267F] text-white py-12 -mt-72 md:-mt-0 relative z-20">
+      <section className="  bg-[#45267F] text-white py-12 -mt-38 md:-mt-0 relative z-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid md:grid-cols-3 gap-8">
             {/* Admission Assistance */}

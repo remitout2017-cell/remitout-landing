@@ -58,7 +58,7 @@ export function FaqSection() {
       <div className="px-4 py-8 md:max-w-4xl md:mx-auto md:px-6 md:py-16">
         {/* Header */}
         <div className="text-center mb-8 md:mb-12 mt-12">
-          <h1 className="text-[32px] font-bold md:text-4xl font-bold mb-3 md:mb-4 text-black leading-tight">
+          <h1 className="text-[32px] font-bold md:text-4xl mb-3 md:mb-4 text-black leading-tight">
             Frequently <span className="text-[#45267F]/60 italic">Asked</span>{" "}
             Questions
           </h1>
@@ -74,7 +74,7 @@ export function FaqSection() {
               <button
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}
-                className={`px-4 py-2 text-[16px] text-[#45267F] bg-[#45267f17] md:px-6 md:py-3 rounded-md border transition-all duration-200 text-sm md:text-base whitespace-nowrap flex-shrink-0 text-[#45267F] ${
+                className={`px-4 py-2 text-[16px] bg-[#45267f17] md:px-6 md:py-3 rounded-md border transition-all duration-200 text-sm md:text-base whitespace-nowrap flex-shrink-0 text-[#45267F] ${
                   category.id === activeCategory
                     ? "border-purple-500 bg-[#45267F17]/9 text-purple-700"
                     : "border-gray-300 bg-[#45267F0A] text-[#1A1A1A]/70 hover:border-purple-500 hover:text-purple-700"

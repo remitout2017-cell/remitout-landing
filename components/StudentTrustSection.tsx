@@ -68,6 +68,7 @@ export default function StudentTrustSection() {
                   src="/StudentTrust02.webp"
                   alt="Woman working on laptop"
                   fill
+                  sizes="(min-width: 768px) 352px, 224px"
                   className="w-full h-full object-cover"
                 />
               </div>

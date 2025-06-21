@@ -38,7 +38,7 @@ export default function ServicesSection() {
                 Guidance
               </span>
             </h3>
-            <div className="space-y-3 mb-6 flex-1">
+            <div className="space-y-1 mb-6 flex-1">
               <p className="text-[#8E8E8E] font-normal text-base  leading-relaxed">
                 End-to-end visa application management.
               </p>
@@ -59,7 +59,7 @@ export default function ServicesSection() {
           {/* International Transaction Image */}
           <div className="bg-white rounded-[5px] shadow-sm border border-gray-100 flex items-center justify-center min-h-[320px] md:min-h-[300px] order-3 md:order-3">
             <Image
-              src="/service_section02.webp"
+              src="/service_section03.webp"
               alt="International money transfer"
               width={200}
               height={250}
@@ -75,7 +75,7 @@ export default function ServicesSection() {
                 Transaction
               </span>
             </h3>
-            <div className="space-y-3 mb-6 flex-1">
+            <div className="space-y-1 mb-6 flex-1">
               <p className="text-[#8E8E8E] text-base  leading-relaxed">
                 Swift and secure international transfers.
               </p>
@@ -96,7 +96,7 @@ export default function ServicesSection() {
           {/* Loan Assistance Image */}
           <div className="bg-white rounded-[5px] shadow-sm border border-gray-100 flex items-center justify-center min-h-[320px] md:min-h-[300px] order-5 md:order-6">
             <Image
-              src="/service_section03.webp"
+              src="/service_section02.webp"
               alt="Loan assistance documentation"
               width={200}
               height={250}
@@ -112,7 +112,7 @@ export default function ServicesSection() {
                 Assistance
               </span>
             </h3>
-            <div className="space-y-3 mb-6 flex-1">
+            <div className="space-y-1 mb-6 flex-1">
               <p className="text-[#8E8E8E] text-base  leading-relaxed">
                 End-to-end loan application management.
               </p>
@@ -148,7 +148,7 @@ export default function ServicesSection() {
                 Assistance
               </span>
             </h3>
-            <div className="space-y-3 mb-6 flex-1">
+            <div className="space-y-1 mb-6 flex-1">
               <p className="text-[#8E8E8E] text-base  leading-relaxed">
                 Professional career guidance and mentorship.
               </p>
