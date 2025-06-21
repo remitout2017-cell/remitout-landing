@@ -144,7 +144,7 @@ export default function TestimonialCarousel() {
 
       {/* Carousel */}
       <div className="absolute bottom-[-30%] left-1/2 transform -translate-x-1/2 w-full px-4 z-30">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl w-[80%] mx-auto">
           <div className="overflow-hidden">
             <div
               className="flex transition-transform duration-700 ease-in-out"
