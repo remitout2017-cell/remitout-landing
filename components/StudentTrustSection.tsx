@@ -19,7 +19,7 @@ export default function StudentTrustSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-32 items-center">
           {/* Left Content */}
           <div className="space-y-8">
-            <div className="space-y-4">
+            <div className="space-y-1">
               <h2 className="text-[32px] md:text-4xl  font-semibold text-[#363636] leading-[39.6px] tracking-[-1px] capitalize md:w-[70%]">
                 15,000+ Students Already Trust Us —{" "}
                 <span className="text-[#45267f]/60 italic">You&apos;re</span>{" "}
