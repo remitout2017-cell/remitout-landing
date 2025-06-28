@@ -88,34 +88,51 @@ export default function ContactUsPage() {
     <div className="flex flex-col min-h-screen bg-gray-50">
       {/* Top bar */}
       <div className="bg-[#3B1D6E] text-white text-sm border-b border-white/20 py-4">
-        <div className="max-w-8xl flex justify-between h-10 p-4 md:px-[131px]">
-          <div className="flex gap-4 font-poppins text-sm md:text-lg">
-            <div className="flex gap-1">
+        <div className="max-w-8xl flex flex-row justify-between md:items-center h-10 p-4 md:px-[131px]">
+          {/* Left side: Phone and Email */}
+          <div className="flex  gap-4 font-poppins text-sm md:text-lg">
+            <div className="flex  gap-1">
               <Phone />
               <span>+91 84519 02017</span>
             </div>
             <span className="hidden sm:inline-block text-white/40">|</span>
-            <div className="hidden sm:flex gap-1">
+            <div className="hidden sm:flex items-center gap-1">
               <Mail />
               <span>Support@remit.com</span>
             </div>
           </div>
-          <div className="flex items-center gap-4">
-            <div className="hidden sm:flex gap-2 font-poppins text-lg">
-              <span>Connect Us</span>
+
+          {/* Right side */}
+          <div className="flex items-center gap-4 mt-2 sm:mt-0">
+            {/* Connect Us & Social Icons - only on desktop */}
+            <div className="hidden sm:flex items-center gap-2 font-poppins text-lg">
+              <a
+                href="/contact-us"
+                className="underline underline-offset-2 hover:text-gray-200"
+              >
+                Contact Us
+              </a>
               <FaceBook />
               <Pinterest />
               <Insta />
             </div>
+
+            {/* Login/Register - visible on all views */}
             <span className="hidden sm:inline-block text-white/40">|</span>
-            <div className="flex gap-2 font-poppins text-sm md:text-lg">
-              <Link href="/login" className="underline hover:text-gray-200">
+            <div className="flex  gap-2 font-poppins text-sm md:text-lg">
+              <a
+                href="/login"
+                className="underline underline-offset-2 hover:text-gray-200"
+              >
                 Login
-              </Link>
+              </a>
               <span className="text-white/50">/</span>
-              <Link href="/register" className="underline hover:text-gray-200">
+              <a
+                href="/register"
+                className="underline underline-offset-2 hover:text-gray-200"
+              >
                 Register
-              </Link>
+              </a>
             </div>
           </div>
         </div>
