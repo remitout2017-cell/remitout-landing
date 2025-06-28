@@ -35,7 +35,12 @@ export default function RemitoutLanding() {
           <div className="flex items-center gap-4 mt-2 sm:mt-0">
             {/* Connect Us & Social Icons - only on desktop */}
             <div className="hidden sm:flex items-center gap-2 font-poppins text-lg">
-              <span>Connect Us</span>
+              <a
+                href="/contact-us"
+                className="underline underline-offset-2 hover:text-gray-200"
+              >
+                Contact Us
+              </a>
               <FaceBook />
               <Pinterest />
               <Insta />
