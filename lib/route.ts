@@ -1,6 +1,9 @@
 // app/api/enquiries/route.ts
 import { NextResponse } from "next/server";
 
+const payloadURL = process.env.PAYLOAD_API || "http://localhost:3001";
+
+
 export async function Enquiry(data: {
   fullName: string;
   email: string;
@@ -9,8 +12,6 @@ export async function Enquiry(data: {
   serviceInterestedIn: string;
   message: string;
 }) {
-
-  const payloadURL = process.env.PAYLOAD_API || "http://localhost:3001";
 
   const res = await fetch(`${payloadURL}/api/enquiries`, {
     method: "POST",
@@ -29,4 +30,19 @@ export async function Enquiry(data: {
 
   const result = await res.json();
   return NextResponse.json(result);
+}
+
+
+export async function getAllFaqs() {
+
+  const res = await fetch(`${payloadURL}/api/faqs?limit=100`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch FAQs");
+  }
+
+  const json = await res.json();
+  return json.docs;
 }
