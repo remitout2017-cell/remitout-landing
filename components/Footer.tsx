@@ -1,17 +1,70 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { MapPin, Mail, Phone, Play, Facebook, Instagram } from "lucide-react";
+import { MapPin, Mail, Phone, Facebook, Instagram } from "lucide-react";
 import Image from "next/image";
+import {
+  Footer as fetchFooterContent,
+  Newsletter as submitNewsletter,
+} from "@/lib/route";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
+  const [message, setMessage] = useState<string | null>(null);
+  const [footerContent, setFooterContent] = useState<{
+    officeAddress: string;
+    email: string;
+    phone: string;
+    videoUrl?: string;
+    videoLink?: string;
+    videoImage?: {
+      url: string;
+      alt?: string;
+    };
+    socialLinks?: {
+      facebook?: string;
+      instagram?: string;
+      customIcon?: string;
+    };
+  }>({
+    officeAddress: "",
+    email: "",
+    phone: "",
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    async function loadFooter() {
+      const res = await fetchFooterContent();
+      const json = await res.json();
+      setFooterContent(json?.docs?.[0] || {});
+    }
+    loadFooter();
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Registering email:", email);
-    setEmail("");
+
+    const res = await submitNewsletter(
+      new Request("", {
+        body: JSON.stringify({ email }),
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      })
+    );
+
+    const json = await res.json();
+
+    if (json?.success) {
+      setMessage("Thank you for subscribing to our newsletter!");
+      setEmail(""); // Clear input
+    } else {
+      setMessage("Something went wrong. Please try again later.");
+    }
+    // Hide message after 4 seconds
+    setTimeout(() => {
+      setMessage(null);
+    }, 4000);                     
   };
 
   return (
@@ -20,54 +73,68 @@ export default function Footer() {
         {/* Contact Info */}
         <div className="bg-[#45267F] rounded-xl p-6 m-2 md:m-0 mb-10">
           <div className="flex flex-col md:flex-row md:justify-around gap-8">
-            {/* Office */}
             <ContactItem
               icon={<MapPin className="h-6 w-6 text-[#4C2A9E]" />}
               title="Office Address"
-              content="4648 Rocky Road PA, 1920"
+              content={footerContent.officeAddress || "Updating..."}
             />
             <ContactItem
               icon={<Mail className="h-6 w-6 text-[#4C2A9E]" />}
               title="Send Email"
-              content="contact@example.com"
+              content={footerContent.email || "Updating..."}
             />
             <ContactItem
               icon={<Phone className="h-6 w-6 text-[#4C2A9E]" />}
               title="Call Emergency"
-              content="+88 0123 654 99"
+              content={footerContent.phone || "Updating..."}
             />
           </div>
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-15 m-4 md:m-0  pt-0 md:pt-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-15 m-4 md:m-0 pt-0 md:pt-10">
           {/* Video + Social */}
           <div className="order-2 md:order-1">
             <div className="relative rounded-lg overflow-hidden">
-              <Image
-                src="/FooterBanner.webp"
-                alt="Video Thumbnail"
-                width={400}
-                height={300}
-                className="w-full h-auto rounded-lg object-cover"
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="bg-white rounded-full p-3 cursor-pointer">
-                  <Play className="h-6 w-6 text-[#4C2A9E] fill-[#4C2A9E]" />
-                </div>
-              </div>
+              {footerContent.videoImage?.url && footerContent.videoLink ? (
+                <a
+                  href={footerContent.videoLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    src={footerContent.videoImage.url}
+                    alt={footerContent.videoImage.alt || "Video thumbnail"}
+                    width={400}
+                    height={300}
+                    className="w-full h-auto rounded-lg object-cover"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="bg-white rounded-full p-3 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6 text-[#4C2A9E] fill-[#4C2A9E]"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+              ) : (
+                <div className="w-full h-[300px] bg-gray-300 rounded-lg" />
+              )}
             </div>
 
-            {/* Mobile: Follow Us below video */}
             <div className="mt-4 md:hidden text-center flex justify-center gap-2">
               <p className="mb-3 text-lg">Follow Us</p>
-              <SocialLinks />
+              <SocialLinks links={footerContent.socialLinks || {}} />
             </div>
 
-            {/* Desktop: Follow Us beside video */}
             <div className="mt-8 hidden md:flex gap-5 items-center">
               <p className="mb-0">Follow on</p>
-              <SocialLinks />
+              <SocialLinks links={footerContent.socialLinks || {}} />
             </div>
           </div>
 
@@ -87,11 +154,16 @@ export default function Footer() {
               />
               <button
                 type="submit"
-                className="w-full bg-[#FF7A00] hover:bg-[#e86c30] text-white font-bold py-3 px-4 rounded-md transition duration-300 text-xl leading-[30px] tracking-[0.6px]"
+                className="w-full bg-[#FF7A00] hover:bg-[#e86c30] text-white font-bold py-3 px-4 rounded-md transition duration-300 text-xl leading-[30px] tracking-[0.6px] cursor-pointer"
               >
                 Register
               </button>
             </form>
+            {message && (
+              <p className="text-green-500 font-medium text-sm md:text-base mt-2">
+                {message}
+              </p>
+            )}
           </div>
 
           {/* Quick Links - Desktop */}
@@ -141,7 +213,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Copyright */}
         <div className="mt-12 pt-6 border-t border-[#4C2A9E] text-center md:text-left">
           <p className="font-kumbh leading-7 text-[#D8D8D8] text-base">
             © 2025 Copyrights by Remitout. All Rights Reserved
@@ -152,7 +223,6 @@ export default function Footer() {
   );
 }
 
-// Reusable Components
 function ContactItem({
   icon,
   title,
@@ -175,32 +245,57 @@ function ContactItem({
   );
 }
 
-function SocialLinks() {
+function SocialLinks({
+  links,
+}: {
+  links: { facebook?: string; instagram?: string; customIcon?: string };
+}) {
   return (
     <div className="flex gap-4 justify-center">
-      <Link href="#" className="hover:opacity-80">
-        <Facebook className="h-6 w-6" />
-      </Link>
-      <Link href="#" className="hover:opacity-80">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="h-6 w-6"
+      {links?.facebook && (
+        <Link
+          href={links.facebook}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:opacity-80"
         >
-          <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z" />
-          <circle cx="12" cy="12" r="4" />
-        </svg>
-      </Link>
-      <Link href="#" className="hover:opacity-80">
-        <Instagram className="h-6 w-6" />
-      </Link>
+          <Facebook className="h-6 w-6" />
+        </Link>
+      )}
+      {links?.instagram && (
+        <Link
+          href={links.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:opacity-80"
+        >
+          <Instagram className="h-6 w-6" />
+        </Link>
+      )}
+      {links?.customIcon && (
+        <Link
+          href={links.customIcon}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:opacity-80"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-6 w-6"
+          >
+            <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z" />
+            <circle cx="12" cy="12" r="4" />
+          </svg>
+        </Link>
+      )}
     </div>
   );
 }

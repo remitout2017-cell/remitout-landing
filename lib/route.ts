@@ -77,3 +77,71 @@ export async function getAllFaqs() {
   const json = await res.json();
   return json.docs;
 }
+
+
+// Get In Touch Form Submission
+
+export async function submitGetInTouchForm(data: {
+  name: string;
+  email: string;
+  message: string;
+  acceptTerms: boolean;
+}) {
+
+  const res = await fetch(`${payloadURL}/api/get-in-touch`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!res.ok) {
+    const error = await res.json();
+    throw new Error(error?.message || 'Failed to submit form');
+  }
+
+  return res.json();
+}
+
+
+// Newsletter Subscription
+export async function Newsletter(req: Request) {
+  const data = await req.json();
+
+  const res = await fetch(`${payloadURL}/api/newsletters`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email: data.email }),
+  });
+
+  if (!res.ok) {
+    return NextResponse.json({ success: false }, { status: res.status });
+  }
+
+  return NextResponse.json({ success: true });
+}
+
+// Footer Content
+export async function Footer() {
+
+  const res = await fetch(`${payloadURL}/api/footer-content`);
+
+  const data = await res.json();
+  return NextResponse.json(data);
+}
+
+//Testimonials
+export async function Testimonials() {
+  try {
+    const res = await fetch(`${payloadURL}/api/testimonial`);
+    const data = await res.json();
+
+    return NextResponse.json(data);
+  } catch (err) {
+    console.error("[ERROR fetching testimonials]", err);
+    return NextResponse.json({ testimonials: [] }, { status: 500 });
+  }
+}

@@ -1,8 +1,7 @@
 "use client";
 
-import type React from "react";
-
-import { useState } from "react";
+import React, { useState } from "react";
+import { submitGetInTouchForm} from "@/lib/route"
 import Image from "next/image";
 import Link from "next/link";
 
@@ -13,6 +12,8 @@ export default function ContactSection() {
     message: "",
     acceptTerms: false,
   });
+
+  const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -31,10 +32,25 @@ export default function ContactSection() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log("Form submitted:", formData);
+    setSubmitting(true);
+
+    try {
+      await submitGetInTouchForm(formData);
+      alert("✅ Thank you for contacting us!");
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+        acceptTerms: false,
+      });
+    } catch (error) {
+      console.error("Form error:", error);
+      alert("❌ Submission failed. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -53,10 +69,7 @@ export default function ContactSection() {
         <div className="flex flex-col lg:flex-row items-center gap-8">
           <div className="w-full lg:w-1/2 hidden md:flex justify-center lg:justify-end">
             <div className="relative w-[500px] h-[600px]">
-              {/* Gray Circle */}
               <div className="absolute top-[60%] left-1/3 w-[500px] h-[500px] -translate-x-1/2 -translate-y-1/2 bg-gray-200 rounded-full z-0" />
-
-              {/* Fade effect (bottom) */}
               <div className="absolute top-[60%] left-1/3 w-[500px] h-[500px] -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none">
                 <div
                   className="w-full h-full rounded-full bg-gradient-to-b from-transparent to-white opacity-90"
@@ -66,8 +79,6 @@ export default function ContactSection() {
                   }}
                 />
               </div>
-
-              {/* Foreground Image */}
               <Image
                 src="/contact_Banner.webp"
                 alt="Graduate student"
@@ -78,7 +89,6 @@ export default function ContactSection() {
             </div>
           </div>
 
-          {/* Contact Form */}
           <div className="w-full lg:w-1/2 max-w-xl">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
@@ -136,8 +146,8 @@ export default function ContactSection() {
                 ></textarea>
               </div>
 
-              <div className="flex items-start ">
-                <div className="flex items-center h-5 ">
+              <div className="flex items-start">
+                <div className="flex items-center h-5">
                   <input
                     id="terms"
                     name="acceptTerms"
@@ -148,7 +158,7 @@ export default function ContactSection() {
                     required
                   />
                 </div>
-                <div className="ml-3 text-sm ">
+                <div className="ml-3 text-sm">
                   <label htmlFor="terms" className="font-medium text-gray-900">
                     I accept the{" "}
                     <Link href="#" className="text-black underline">
@@ -160,9 +170,10 @@ export default function ContactSection() {
 
               <button
                 type="submit"
-                className="w-full bg-[#FF7A00] cursor-pointer text-white text-xl md:text-[22px] font-bold py-3 px-4 rounded-md transition duration-300"
+                disabled={submitting}
+                className="w-full bg-[#FF7A00] cursor-pointer text-white text-xl md:text-[22px] font-bold py-3 px-4 rounded-md transition duration-300 disabled:opacity-50"
               >
-                Submit
+                {submitting ? "Submitting..." : "Submit"}
               </button>
             </form>
           </div>

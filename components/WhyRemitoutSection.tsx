@@ -20,7 +20,6 @@ export default function WhyRemitoutSection() {
   useEffect(() => {
     const fetchData = async () => {
       const data = await getWhyRemitout();
-      console.log("imgurlcheck", data);
       setFeatures(data);
     };
 

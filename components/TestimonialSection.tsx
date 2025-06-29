@@ -3,61 +3,18 @@
 import { useEffect, useState } from "react";
 import { Play, Pause } from "lucide-react";
 import Image from "next/image";
+import { Testimonials } from "@/lib/route";
 
 type Testimonial = {
-  id: number;
+  id?: string;
   text: string;
   name: string;
   rating: number;
-  avatar: string;
+  avatar?: {
+    url?: string;
+  };
 };
 
-const testimonials: Testimonial[] = [
-  {
-    id: 1,
-    text: "RemitOut made my admission process abroad so smooth and stress-free...",
-    name: "Barbara D. Smith",
-    rating: 4,
-    avatar: "/avatar.webp",
-  },
-  {
-    id: 2,
-    text: "Amazing service! The process was seamless...",
-    name: "John M. Wilson",
-    rating: 5,
-    avatar: "/avatar.webp",
-  },
-  {
-    id: 3,
-    text: "Fast, reliable, and trustworthy...",
-    name: "Sarah K. Johnson",
-    rating: 4,
-    avatar: "/avatar.webp",
-  },
-  {
-    id: 4,
-    text: "Outstanding experience with RemitOut...",
-    name: "Traver",
-    rating: 5,
-    avatar: "/avatar.webp",
-  },
-  {
-    id: 5,
-    text: "Outstanding experience with RemitOut...",
-    name: "Davis",
-    rating: 3,
-    avatar: "/avatar.webp",
-  },
-  {
-    id: 6,
-    text: "Outstanding experience with RemitOut...",
-    name: "Rachel R. Davis",
-    rating: 2,
-    avatar: "/avatar.webp",
-  },
-];
-
-// Helper to group testimonials
 const groupTestimonials = (
   items: Testimonial[],
   size: number
@@ -70,30 +27,45 @@ const groupTestimonials = (
 };
 
 export default function TestimonialCarousel() {
-  const [cardsPerSlide, setCardsPerSlide] = useState(3); // Default to 3 for SSR
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [cardsPerSlide, setCardsPerSlide] = useState(3);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
 
-  // Set cardsPerSlide on mount (client only)
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const res = await Testimonials();
+        const json = await res.json();
+        const records = json.docs?.[0]?.testimonials || [];
+        setTestimonials(records);
+      } catch (err) {
+        console.error("Error fetching testimonials", err);
+      }
+    };
+
+    fetchTestimonials();
+  }, []);
+
+
   useEffect(() => {
     const updateCardsPerSlide = () => {
       setCardsPerSlide(window.innerWidth < 768 ? 1 : 3);
     };
-
-    updateCardsPerSlide(); // Initial set
+    updateCardsPerSlide();
     window.addEventListener("resize", updateCardsPerSlide);
     return () => window.removeEventListener("resize", updateCardsPerSlide);
   }, []);
 
-  const groupedTestimonials = groupTestimonials(testimonials, cardsPerSlide);
+  const grouped = groupTestimonials(testimonials, cardsPerSlide);
 
   useEffect(() => {
     if (!isPlaying) return;
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % groupedTestimonials.length);
+      setCurrentSlide((prev) => (prev + 1) % grouped.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, [isPlaying, groupedTestimonials.length]);
+  }, [isPlaying, grouped.length]);
 
   const togglePlayPause = () => setIsPlaying((prev) => !prev);
 
@@ -101,9 +73,7 @@ export default function TestimonialCarousel() {
     Array.from({ length: 5 }, (_, i) => (
       <span
         key={i}
-        className={`text-lg ${
-          i < rating ? "text-orange-400" : "text-gray-300"
-        }`}
+        className={`text-lg ${i < rating ? "text-orange-400" : "text-gray-300"}`}
       >
         ★
       </span>
@@ -150,11 +120,11 @@ export default function TestimonialCarousel() {
               className="flex transition-transform duration-700 ease-in-out"
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
-              {groupedTestimonials.map((group, index) => (
+              {grouped.map((group, index) => (
                 <div key={index} className="w-full flex-shrink-0 flex md:gap-6">
-                  {group.map((testimonial) => (
+                  {group.map((testimonial, i) => (
                     <div
-                      key={testimonial.id}
+                      key={testimonial.id || i}
                       className="w-[90%] md:w-1/2 lg:w-1/3 bg-white rounded-2xl p-4 shadow-xl hover:shadow-2xl transition-shadow duration-300 m-4 md:m-0"
                     >
                       <div className="mb-6">
@@ -172,12 +142,17 @@ export default function TestimonialCarousel() {
                       <div className="flex justify-between items-center">
                         <div className="flex items-center gap-2">
                           <Image
-                            src={testimonial.avatar}
+                            src={
+                              testimonial.avatar?.url
+                                ? `${process.env.NEXT_PUBLIC_PAYLOAD_API || "http://localhost:3001"}${testimonial.avatar.url}`
+                                : "/avatar.webp"
+                            }
                             alt={testimonial.name}
                             width={48}
                             height={48}
                             className="rounded-full object-cover"
                           />
+
                           <h4 className="font-bold text-gray-900 text-lg mb-1">
                             {testimonial.name}
                           </h4>
@@ -193,7 +168,7 @@ export default function TestimonialCarousel() {
 
           {/* Indicators */}
           <div className="flex gap-3 mt-12 justify-start">
-            {groupedTestimonials.map((_, index) => (
+            {grouped.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}

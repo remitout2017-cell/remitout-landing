@@ -4,7 +4,15 @@ const nextConfig: NextConfig = {
   /* config options here */
   devIndicators: false,
   images: {
-    domains: ["http://localhost:3001"],
+    domains: ["localhost"], // 👈 allow localhost
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "3001", // 👈 match your Payload server port
+        pathname: "/media/**",
+      },
+    ],
   },
 };
 

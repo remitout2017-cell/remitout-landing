@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Phone from "@/components/icones/Phone";
 import Mail from "@/components/icones/Mail";
