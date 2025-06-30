@@ -1,7 +1,7 @@
-// app/api/enquiries/route.ts
 import { NextResponse } from "next/server";
 
 const payloadURL = process.env.PAYLOAD_API || "http://localhost:3001";
+
 
 export async function Enquiry(data: {
   fullName: string;
@@ -159,7 +159,7 @@ export async function getHomePageContent() {
     }
 
     const data = await res.json();
-    const homepage = data.docs?.[0]; // just the first doc
+    const homepage = data.docs?.[0] || []; // just the first doc
 
     return NextResponse.json(homepage);
   } catch (error) {
@@ -175,7 +175,7 @@ export async function getNavContactDetails() {
   try {
     const res = await fetch(`${payloadURL}/api/contactDetails`);
     const data = await res.json();
-    const contact = data.docs?.[0]; // assuming only one set of details
+    const contact = data.docs?.[0] || []; // assuming only one set of details
 
     return NextResponse.json(contact);
   } catch (error) {
@@ -191,6 +191,7 @@ export async function getStudentTrustSectionContent() {
     const trustSection = data.docs?.[0];
     return NextResponse.json(trustSection);
   } catch (err) {
+    console.error("Student Trust fetch error:", err);
     return NextResponse.json({ error: "Failed to fetch" }, { status: 500 });
   }
 }

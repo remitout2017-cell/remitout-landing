@@ -54,15 +54,25 @@ export default function RemitoutLanding() {
 
   useEffect(() => {
     const fetchContent = async () => {
-      const res = await getHomePageContent();
-      const json = await res.json();
-      setData(json);
+      try {
+        const res = await getHomePageContent();
+        const json = await res.json();
+        setData(json);
+      } catch (err) {
+        console.error("Failed to fetch home page content", err);
+      }
     };
+
     const fetchNavContactDetails = async () => {
-      const res = await getNavContactDetails();
-      const json = await res.json();
-      setNavContactDetails(json);
+      try {
+        const res = await getNavContactDetails();
+        const json = await res.json();
+        setNavContactDetails(json);
+      } catch (err) {
+        console.error("Failed to fetch nav contact details", err);
+      }
     };
+
     fetchContent();
     fetchNavContactDetails();
   }, []);
@@ -121,9 +131,11 @@ export default function RemitoutLanding() {
               <svg className="w-6 h-6">
                 <circle cx="8" cy="8" r="8" fill="#45267F" />
               </svg>
-              <span className="text-[#45267F] text-[21px] font-bold">
-                {hero.highlight}
-              </span>
+              {hero?.highlight && (
+                <span className="text-[#45267F] text-[21px] font-bold">
+                  {hero.highlight}
+                </span>
+              )}
             </div>
 
             <div className="space-y-4">
@@ -133,20 +145,22 @@ export default function RemitoutLanding() {
                 <br />
                 Education Partner
               </h1>
-              <p className="text-[#8E8E8E] text-base md:text-lg max-w-lg">
-                {hero.description}
-              </p>
+              {hero?.description && (
+                <p className="text-[#8E8E8E] text-base md:text-lg max-w-lg">
+                  {hero.description}
+                </p>
+              )}
             </div>
 
             <Button className="bg-[#FF7A00] text-white text-lg font-semibold px-8 py-4">
-              {hero.ctaText}
+              {hero?.ctaText ?? "Get Started"}
             </Button>
           </div>
 
           {/* Hero Image + CTAs */}
           <div className="relative h-[48vh] md:h-[92vh] z-[1]">
             <div className="w-full h-full relative">
-              {hero.image?.url && (
+              {hero?.image?.url && (
                 <Image
                   src={`http://localhost:3001/${hero.image.url}`}
                   alt="Hero Banner"
@@ -172,25 +186,30 @@ export default function RemitoutLanding() {
               <Tick /> Expert Advisors
             </Button>
 
-            {hero.testimonial && (
+            {hero?.testimonial && (
               <Card className="hidden md:block absolute bottom-[16%] right-[50%] p-4 bg-white shadow-lg max-w-sm">
                 <div className="space-y-3">
                   <p className="text-gray-700 text-xl font-medium">
                     {`"${hero.testimonial.text}"`}
                   </p>
                   <div className="flex items-center space-x-1">
-                    {Array.from({ length: hero.testimonial.rating }, (_, i) => (
-                      <Star
-                        key={i}
-                        className="w-4 h-4 fill-yellow-400 text-yellow-400"
-                      />
-                    ))}
-                    {Array.from(
-                      { length: 5 - hero.testimonial.rating },
-                      (_, i) => (
-                        <Star key={i} className="w-4 h-4 text-gray-300" />
-                      )
-                    )}
+                    {hero.testimonial?.rating &&
+                      Array.from(
+                        { length: hero.testimonial.rating },
+                        (_, i) => (
+                          <Star
+                            key={i}
+                            className="w-4 h-4 fill-yellow-400 text-yellow-400"
+                          />
+                        )
+                      )}
+                    {hero.testimonial?.rating &&
+                      Array.from(
+                        { length: 5 - hero.testimonial.rating },
+                        (_, i) => (
+                          <Star key={i} className="w-4 h-4 text-gray-300" />
+                        )
+                      )}
                   </div>
                   <div className="flex items-center space-x-3">
                     {hero.testimonial.avatar?.url && (
@@ -217,19 +236,20 @@ export default function RemitoutLanding() {
       <section className="bg-[#45267F] text-white py-12">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid md:grid-cols-3 gap-8">
-            {services.map((service, i) => (
-              <div key={i} className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-[#2E175A] rounded-lg flex items-center justify-center flex-shrink-0">
-                  {iconMap[service.iconType]}
+            {services?.length > 0 &&
+              services.map((service, i) => (
+                <div key={i} className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-[#2E175A] rounded-lg flex items-center justify-center flex-shrink-0">
+                    {iconMap[service.iconType]}
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold mb-2">{service.title}</h3>
+                    <p className="text-base text-white/70">
+                      {service.description}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-2xl font-bold mb-2">{service.title}</h3>
-                  <p className="text-base text-white/70">
-                    {service.description}
-                  </p>
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </section>

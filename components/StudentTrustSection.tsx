@@ -38,8 +38,9 @@ export default function StudentTrustSection() {
           <div className="space-y-8">
             <div className="space-y-1">
               <h2 className="text-[32px] md:text-4xl font-semibold text-[#363636] leading-[39.6px] tracking-[-1px] capitalize md:w-[70%]">
-                {data.studentCount?.toLocaleString()}+ Students Already Trust Us —{" "}
-                <span className="text-[#45267f]/60 italic">You're</span> Next
+                {data.studentCount?.toLocaleString()}+ Students Already Trust Us
+                — <span className="text-[#45267f]/60 italic">You&apos;re</span>{" "}
+                Next
               </h2>
               <p className="text-[#8E8E8E] text-base font-normal leading-[25px] max-w-lg">
                 {data.description}
@@ -47,14 +48,15 @@ export default function StudentTrustSection() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-[#45267F0A] p-6">
-              {data.features.map((feature, idx) => (
-                <div key={idx} className="flex items-center space-x-3">
-                  <Tick />
-                  <span className="text-[#45267F] text-base font-medium">
-                    {feature.text}
-                  </span>
-                </div>
-              ))}
+              {Array.isArray(data.features) &&
+                data.features.map((feature, idx) => (
+                  <div key={idx} className="flex items-center space-x-3">
+                    <Tick />
+                    <span className="text-[#45267F] text-base font-medium">
+                      {feature.text}
+                    </span>
+                  </div>
+                ))}
             </div>
 
             <div className="pt-4">
@@ -92,7 +94,10 @@ export default function StudentTrustSection() {
             <div className="absolute top-10 left-15 md:left-40 bg-white md:rounded-xl shadow-lg p-6 z-10">
               <div className="text-center">
                 <div className="relative w-22 h-22 mx-auto mb-3">
-                  <svg className="w-20 h-20 transform -rotate-90" viewBox="0 0 36 36">
+                  <svg
+                    className="w-20 h-20 transform -rotate-90"
+                    viewBox="0 0 36 36"
+                  >
                     <path
                       d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                       fill="none"
