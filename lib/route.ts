@@ -53,7 +53,7 @@ export async function GetServices() {
 
 export async function getWhyRemitout() {
 
-  const res = await fetch(`${payloadURL}/api/why-remitout?limit=10`, {
+  const res = await fetch(`${payloadURL}/api/why-remitout`, {
     headers: { "Content-Type": "application/json" },
   });
 
@@ -65,7 +65,7 @@ export async function getWhyRemitout() {
 
 export async function getAllFaqs() {
 
-  const res = await fetch(`${payloadURL}/api/faqs?limit=100`, {
+  const res = await fetch(`${payloadURL}/api/faqs`, {
     cache: "no-store",
   });
 
