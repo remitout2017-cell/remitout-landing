@@ -127,9 +127,18 @@ export default function RemitoutLanding() {
         <div className="grid md:grid-cols-2 gap-12 items-center max-w-8xl">
           {/* Hero Text */}
           <div className="space-y-8">
-            <div className="bg-[#45267F]/9 rounded-md w-fit p-3 flex items-center space-x-2">
-              <svg className="w-6 h-6">
-                <circle cx="8" cy="8" r="8" fill="#45267F" />
+            <div className="bg-[#45267F]/9  w-fit p-3 flex items-center space-x-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+              >
+                <path
+                  d="M14.6694 4.44644C14.836 4.6131 14.9194 4.81548 14.9194 5.05358C14.9194 5.29167 14.836 5.49406 14.6694 5.66072L8.20508 12.125L6.99079 13.3393C6.82413 13.506 6.62175 13.5893 6.38365 13.5893C6.14555 13.5893 5.94317 13.506 5.77651 13.3393L4.56222 12.125L1.33008 8.89287C1.16341 8.7262 1.08008 8.52382 1.08008 8.28572C1.08008 8.04763 1.16341 7.84525 1.33008 7.67858L2.54436 6.46429C2.71103 6.29763 2.91341 6.21429 3.15151 6.21429C3.3896 6.21429 3.59198 6.29763 3.75865 6.46429L6.38365 9.09822L12.2408 3.23215C12.4075 3.06548 12.6098 2.98215 12.8479 2.98215C13.086 2.98215 13.2884 3.06548 13.4551 3.23215L14.6694 4.44644Z"
+                  fill="#45267F"
+                />
               </svg>
               {hero?.highlight && (
                 <span className="text-[#45267F] text-[21px] font-bold">
@@ -152,7 +161,7 @@ export default function RemitoutLanding() {
               )}
             </div>
 
-            <Button className="bg-[#FF7A00] text-white text-lg font-semibold px-8 py-4">
+            <Button className="bg-[#FF7A00] text-white text-lg font-semibold px-20 py-5 cursor-pointer hover:bg-[#FF7A00] md:rounded-none w-full md:w-[60%] ">
               {hero?.ctaText ?? "Get Started"}
             </Button>
           </div>
@@ -234,10 +243,10 @@ export default function RemitoutLanding() {
 
       {/* Services Section */}
       <section className="bg-[#45267F] text-white py-12">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid md:grid-cols-3 gap-8">
+        <div className="max-w-8xl  px-6 lg:px-32">
+          <div className="grid md:grid-cols-3 gap-8 place-items-center">
             {services?.length > 0 &&
-              services.map((service, i) => (
+              services.map((service,i) => (
                 <div key={i} className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-[#2E175A] rounded-lg flex items-center justify-center flex-shrink-0">
                     {iconMap[service.iconType]}
