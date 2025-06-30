@@ -145,3 +145,52 @@ export async function Testimonials() {
     return NextResponse.json({ testimonials: [] }, { status: 500 });
   }
 }
+
+export async function getHomePageContent() {
+  try {
+    const res = await fetch(`${payloadURL}/api/homepageSections`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch homepage data");
+    }
+
+    const data = await res.json();
+    const homepage = data.docs?.[0]; // just the first doc
+
+    return NextResponse.json(homepage);
+  } catch (error) {
+    console.error("Homepage fetch error:", error);
+    return NextResponse.json(
+      { error: "Failed to fetch homepage data" },
+      { status: 500 }
+    );
+  }
+}
+
+export async function getNavContactDetails() {
+  try {
+    const res = await fetch(`${payloadURL}/api/contactDetails`);
+    const data = await res.json();
+    const contact = data.docs?.[0]; // assuming only one set of details
+
+    return NextResponse.json(contact);
+  } catch (error) {
+    console.error("Contact fetch error:", error);
+    return NextResponse.json({ error: "Failed to fetch contact details" }, { status: 500 });
+  }
+}
+
+export async function getStudentTrustSectionContent() {
+  try {
+    const res = await fetch(`${payloadURL}/api/studentTrustSection`);
+    const data = await res.json();
+    const trustSection = data.docs?.[0];
+    return NextResponse.json(trustSection);
+  } catch (err) {
+    return NextResponse.json({ error: "Failed to fetch" }, { status: 500 });
+  }
+}

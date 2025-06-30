@@ -103,7 +103,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                 >
                   <Image
-                    src={footerContent.videoImage.url}
+                    src={`http://localhost:3001/${footerContent.videoImage.url}`}
                     alt={footerContent.videoImage.alt || "Video thumbnail"}
                     width={400}
                     height={300}
