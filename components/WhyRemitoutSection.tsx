@@ -10,7 +10,7 @@ interface Feature {
   id: string;
   title: string;
   description: string;
-  image: { url: string; alt?: string };
+  image?: { url?: string; alt?: string };
   iconType: "Award" | "PersonStar";
 }
 
@@ -69,7 +69,7 @@ export default function WhyRemitoutSection() {
               >
                 <Image
                   src={`http://localhost:3001/${imageUrl}`}
-                  alt={item.image.alt || item.title}
+                  alt={item.image?.alt || item.title}
                   fill
                   unoptimized
                   sizes="(min-width: 768px) 400px, 100vw"
