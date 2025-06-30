@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 
-const payloadURL = process.env.PAYLOAD_API || "http://localhost:3001";
-
+const payloadURL = process.env.NEXT_PUBLIC_PAYLOAD_API;
 
 export async function Enquiry(data: {
   fullName: string;
@@ -188,7 +187,7 @@ export async function getStudentTrustSectionContent() {
   try {
     const res = await fetch(`${payloadURL}/api/studentTrustSection`);
     const data = await res.json();
-    const trustSection = data.docs?.[0];
+    const trustSection = data.docs?.[0] || [];
     return NextResponse.json(trustSection);
   } catch (err) {
     console.error("Student Trust fetch error:", err);
