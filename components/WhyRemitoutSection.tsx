@@ -58,9 +58,9 @@ export default function WhyRemitoutSection() {
         {/* Feature Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-6 mb-18">
           {features.map((item) => {
-            const imageUrl = item.image?.url?.startsWith("http")
-              ? item.image.url
-              : `${item.image?.url}`;
+            // const imageUrl = item.image?.url?.startsWith("http")
+            //   ? item.image.url
+            //   : `${item.image?.url}`;
 
             return (
               <div
@@ -68,7 +68,11 @@ export default function WhyRemitoutSection() {
                 className="relative rounded-xl overflow-hidden h-[300px] md:h-[403px] group"
               >
                 <Image
-                  src={`http://localhost:3001/${imageUrl}`}
+                  src={
+                    item.image?.url
+                      ? `http://localhost:3001/${item.image.url}`
+                      : "/why_remitout_01.webp"
+                  }
                   alt={item.image?.alt || item.title}
                   fill
                   unoptimized

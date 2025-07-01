@@ -96,15 +96,19 @@ export default function Footer() {
           {/* Video + Social */}
           <div className="order-2 md:order-1">
             <div className="relative rounded-lg overflow-hidden">
-              {footerContent.videoImage?.url && footerContent.videoLink ? (
+              {/* {footerContent.videoImage?.url && footerContent.videoLink ? ( */}
                 <a
                   href={footerContent.videoLink}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <Image
-                    src={`http://localhost:3001/${footerContent.videoImage.url}`}
-                    alt={footerContent.videoImage.alt || "Video thumbnail"}
+                    src={
+                      footerContent.videoImage?.url
+                        ? `http://localhost:3001/${footerContent.videoImage.url}`
+                        : "/Footer_Banner.jpg"
+                    }
+                    alt={footerContent.videoImage?.alt || "Video thumbnail"}
                     width={400}
                     height={300}
                     className="w-full h-auto rounded-lg object-cover"
@@ -122,9 +126,9 @@ export default function Footer() {
                     </div>
                   </div>
                 </a>
-              ) : (
+              {/* ) : (
                 <div className="w-full h-[300px] bg-gray-300 rounded-lg" />
-              )}
+              )} */}
             </div>
 
             <div className="mt-4 md:hidden text-center flex justify-center gap-2">

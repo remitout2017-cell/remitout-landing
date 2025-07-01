@@ -169,15 +169,16 @@ export default function RemitoutLanding() {
           {/* Hero Image + CTAs */}
           <div className="relative h-[48vh] md:h-[92vh] z-[1]">
             <div className="w-full h-full relative">
-              {hero?.image?.url && (
                 <Image
-                  src={`http://localhost:3001/${hero.image.url}`}
+                  src={
+                    hero?.image?.url
+                      ? `http://localhost:3001/${hero.image.url}`
+                      : "/hero_section_banner.webp" 
+                  }
                   alt="Hero Banner"
                   fill
                   className="object-cover"
                 />
-              )}
-
               <Image
                 src="/layer-5.webp"
                 alt="Gray Overlay"
@@ -246,7 +247,7 @@ export default function RemitoutLanding() {
         <div className="max-w-8xl  px-6 lg:px-32">
           <div className="grid md:grid-cols-3 gap-8 place-items-center">
             {services?.length > 0 &&
-              services.map((service,i) => (
+              services.map((service, i) => (
                 <div key={i} className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-[#2E175A] rounded-lg flex items-center justify-center flex-shrink-0">
                     {iconMap[service.iconType]}

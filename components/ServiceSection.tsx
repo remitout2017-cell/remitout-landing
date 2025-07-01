@@ -64,8 +64,9 @@ export default function ServicesSection() {
                     <div className="bg-white rounded-[6px] shadow-sm border border-gray-100 flex items-center justify-center min-h-[300px]">
                       <Image
                         src={
-                          `http://localhost:3001/${imageUrl}` ||
-                          "/placeholder.webp"
+                          service.image?.url
+                            ? `http://localhost:3001/${imageUrl}`
+                            : "/service_section01.webp"
                         }
                         alt={service.image?.alt || service.title}
                         width={200}
@@ -131,8 +132,9 @@ export default function ServicesSection() {
                     <div className="bg-white rounded-[6px] shadow-sm border border-gray-100 flex items-center justify-center min-h-[300px]">
                       <Image
                         src={
-                          `http://localhost:3001/${imageUrl}` ||
-                          "/placeholder.webp"
+                          service.image?.url
+                            ? `http://localhost:3001/${imageUrl}`
+                            : "/service_section02.webp"
                         }
                         alt={service.image?.alt || service.title}
                         width={200}

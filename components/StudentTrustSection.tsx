@@ -68,28 +68,31 @@ export default function StudentTrustSection() {
 
           {/* Right Content */}
           <div className="relative h-96 lg:h-[500px]">
-            {data.imageTopRight?.url && (
               <div className="absolute top-0 right-1 w-56 h-56 md:w-[352px] md:h-[337px] rounded-lg overflow-hidden shadow-lg">
                 <Image
-                  src={`http://localhost:3001/${data.imageTopRight.url}`}
+                  src={
+                    data.imageTopRight?.url
+                      ? `http://localhost:3001/${data.imageTopRight.url}`
+                      : "/StudentTrust02.webp"
+                  }
                   alt="Top Right"
                   fill
                   className="object-cover"
                 />
               </div>
-            )}
 
-            {data.imageBottomLeft?.url && (
-              <div className="absolute bottom-[-60px] left-10 w-56 h-56 md:w-[416px] md:h-[337px] rounded-lg overflow-hidden shadow-lg">
-                <Image
-                  src={`http://localhost:3001/${data.imageBottomLeft.url}`}
-                  alt="Bottom Left"
-                  width={320}
-                  height={256}
-                  className="object-cover"
-                />
-              </div>
-            )}
+            <div className="absolute bottom-[-60px] left-10 w-56 h-56 md:w-[416px] md:h-[337px] rounded-lg overflow-hidden shadow-lg">
+              <Image
+                src={
+                  data.imageTopRight?.url
+                    ? `http://localhost:3001/${data.imageTopRight.url}`
+                    : "/StudentTrust01.webp"
+                }
+                alt="Top Right"
+                fill
+                className="object-cover"
+              />
+            </div>
 
             <div className="absolute top-10 left-15 md:left-40 bg-white md:rounded-xl shadow-lg p-6 z-10">
               <div className="text-center">
