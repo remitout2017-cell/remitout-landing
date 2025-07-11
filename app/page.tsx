@@ -1,4 +1,4 @@
-import ContactSection from "@/components/ContactSection";
+// import ContactSection from "@/components/ContactSection";
 import { FaqSection } from "@/components/FaqSection";
 import Footer from "@/components/Footer";
 import RemitoutLanding from "@/components/HeroSection";
@@ -25,9 +25,9 @@ export default function Home() {
       <section id="faqs">
       <FaqSection />
       </section>
-      <section id="Contact">
+      {/* <section id="Contact">
       <ContactSection />
-      </section>
+      </section> */}
       <Footer />
     </div>
   );

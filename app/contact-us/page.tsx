@@ -117,7 +117,7 @@ export default function ContactUsPage() {
             </div>
 
             {/* Login/Register - visible on all views */}
-            <span className="hidden sm:inline-block text-white/40">|</span>
+            {/* <span className="hidden sm:inline-block text-white/40">|</span>
             <div className="flex  gap-2 font-poppins text-sm md:text-lg">
               <a
                 href="/login"
@@ -132,7 +132,7 @@ export default function ContactUsPage() {
               >
                 Register
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -319,6 +319,20 @@ export default function ContactUsPage() {
           </div>
         </div>
       </main>
+      {/* Footer */}
+      <div className="md:h-[71px] bg-[#45267F] z-10 flex flex-col md:flex-row items-center justify-between py-4 md:px-40">
+        {/* Left: Copyright */}
+        <div className=" text-lg leading-[39px] text-[#E9E8EA] mb-2 md:mb-0">
+          ©Remitout@2025
+        </div>
+
+        {/* Right: Support | Help */}
+        <div className="flex  items-center gap-4 text-[#E9E8EA] text-base font-semibold">
+          <span className="hover:underline cursor-pointer">Support</span>
+          <div className="h-4 w-px bg-[#E9E8EA]"></div>
+          <span className="hover:underline cursor-pointer">Help</span>
+        </div>
+      </div>
     </div>
   );
 }

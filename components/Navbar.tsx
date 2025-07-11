@@ -25,47 +25,34 @@ const Navbar = () => {
       <div className="flex items-center justify-between md:px-[131px] px-4 py-4">
         {/* Logo */}
         <div className="flex items-center space-x-2">
-          <Image
-            src="/remitout_logo.webp"
-            alt="Remitout Logo"
-            width={138}
-            height={48}
-            className="object-contain"
-          />
+          <Link href="/" passHref>
+            <Image
+              src="/remitout_logo.webp"
+              alt="Remitout Logo"
+              width={138}
+              height={48}
+              className="object-contain cursor-pointer"
+            />
+          </Link>
         </div>
 
         {/* Desktop Links */}
         <div className="hidden md:flex text-base items-center space-x-8  leading-[19.6px]">
-          <Link
-            href="#"
-            className="text-[#1A1A1A]  font-medium "
-          >
+          <Link href="#" className="text-[#1A1A1A]  font-medium ">
             Home
           </Link>
-          <Link
-            href="#services"
-            className="ext-[#1A1A1A]  font-medium"
-          >
+          <Link href="#services" className="ext-[#1A1A1A]  font-medium">
             Our Services
           </Link>
-          <Link
-            href="#testimonials"
-            className="ext-[#1A1A1A]  font-medium"
-          >
+          <Link href="#testimonials" className="ext-[#1A1A1A]  font-medium">
             Testimonials
           </Link>
-          <Link
-            href="#faqs"
-            className="ext-[#1A1A1A] font-medium"
-          >
+          <Link href="#faqs" className="ext-[#1A1A1A] font-medium">
             FAQs
           </Link>
-          <Link
-            href="#Contact"
-            className="ext-[#1A1A1A] font-medium"
-          >
+          {/* <Link href="#Contact" className="ext-[#1A1A1A] font-medium">
             Schedule Call
-          </Link>
+          </Link> */}
         </div>
 
         {/* Mobile Hamburger Button */}

@@ -125,7 +125,7 @@ export default function TestimonialCarousel() {
                   {group.map((testimonial, i) => (
                     <div
                       key={testimonial.id || i}
-                      className="w-[90%] md:w-1/2 lg:w-1/3 bg-white rounded-2xl p-4 shadow-xl hover:shadow-2xl transition-shadow duration-300 m-4 md:m-0"
+                      className="w-full md:w-1/2 lg:w-1/3 bg-white rounded-2xl p-4 shadow-xl hover:shadow-2xl transition-shadow duration-300  md:m-0"
                     >
                       <div className="mb-6">
                         <svg

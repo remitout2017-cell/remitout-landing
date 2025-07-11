@@ -16,6 +16,7 @@ import Book from "./icones/Book";
 import Flight from "./icones/Flight";
 import PigMoney from "./icones/PigMoney";
 import { getHomePageContent, getNavContactDetails } from "@/lib/route";
+import Link from "next/link";
 
 // Payload Icon Mapper
 const iconMap: Record<string, React.ReactElement> = {
@@ -82,7 +83,7 @@ export default function RemitoutLanding() {
   const { hero, services } = data;
 
   return (
-    <div className="min-h-screen bg-white relative z-10">
+    <div className="min-h-screen bg-white relative">
       {/* Topbar */}
       <div className="bg-[#3B1D6E] text-white text-sm border-b border-white/20 py-4">
         <div className="max-w-8xl flex justify-between md:items-center h-10 p-4 md:px-[131px]">
@@ -106,8 +107,8 @@ export default function RemitoutLanding() {
               <Pinterest />
               <Insta />
             </div>
-            <span className="hidden sm:inline-block text-white/40">|</span>
-            <div className="flex gap-2 font-poppins text-sm md:text-lg">
+            {/* <span className="hidden sm:inline-block text-white/40">|</span> */}
+            {/* <div className="flex gap-2 font-poppins text-sm md:text-lg">
               <a href="/login" className="underline hover:text-gray-200">
                 Login
               </a>
@@ -115,7 +116,7 @@ export default function RemitoutLanding() {
               <a href="/register" className="underline hover:text-gray-200">
                 Register
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -161,34 +162,36 @@ export default function RemitoutLanding() {
               )}
             </div>
 
-            <Button className="bg-[#FF7A00] text-white text-lg font-semibold px-20 py-5 cursor-pointer hover:bg-[#FF7A00] md:rounded-none w-full md:w-[60%] ">
-              {hero?.ctaText ?? "Get Started"}
-            </Button>
+            <Link href="/contact-us">
+              <Button className="bg-[#FF7A00] text-white text-lg font-semibold px-20 py-5 cursor-pointer hover:bg-[#FF7A00] md:rounded-none w-full md:w-[60%] ">
+                {hero?.ctaText ?? "Get Started"}
+              </Button>
+            </Link>
           </div>
 
           {/* Hero Image + CTAs */}
-          <div className="relative h-[48vh] md:h-[92vh] z-[1]">
+          <div className="relative h-[48vh] md:h-[92vh] z-[8]">
             <div className="w-full h-full relative">
-                <Image
-                  src={
-                    hero?.image?.url
-                      ? `http://localhost:3001/${hero.image.url}`
-                      : "/hero_section_banner.webp" 
-                  }
-                  alt="Hero Banner"
-                  fill
-                  className="object-cover"
-                />
+              <Image
+                src={
+                  hero?.image?.url
+                    ? `http://localhost:3001/${hero.image.url}`
+                    : "/hero_section_banner.webp"
+                }
+                alt="Hero Banner"
+                fill
+                className="object-cover z-[7]"
+              />
               <Image
                 src="/layer-5.webp"
                 alt="Gray Overlay"
                 width={800}
                 height={800}
-                className="absolute top-40 left-0 pointer-events-none"
+                className="absolute top-40 left-0 pointer-events-none "
               />
             </div>
 
-            <Button className="absolute top-[50%] right-[6%] bg-[#45267F] text-white px-6 py-5 rounded-full">
+            <Button className="absolute top-[50%] right-[6%] bg-[#45267F] text-white px-6 py-5 rounded-full z-[21]">
               Join Us Today
             </Button>
 
@@ -197,7 +200,7 @@ export default function RemitoutLanding() {
             </Button>
 
             {hero?.testimonial && (
-              <Card className="hidden md:block absolute bottom-[16%] right-[50%] p-4 bg-white shadow-lg max-w-sm">
+              <Card className="hidden md:block absolute bottom-[16%] right-[50%] p-4 bg-white shadow-lg max-w-sm z-[21]">
                 <div className="space-y-3">
                   <p className="text-gray-700 text-xl font-medium">
                     {`"${hero.testimonial.text}"`}
@@ -243,7 +246,7 @@ export default function RemitoutLanding() {
       </section>
 
       {/* Services Section */}
-      <section className="bg-[#45267F] text-white py-12">
+      <section className="bg-[#45267F] text-white py-12 relative z-[20]">
         <div className="max-w-8xl  px-6 lg:px-32">
           <div className="grid md:grid-cols-3 gap-8 place-items-center">
             {services?.length > 0 &&

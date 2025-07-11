@@ -5,6 +5,7 @@ import Advisor from "./icones/Advisor";
 import Tick from "./icones/Tick";
 import { useEffect, useState } from "react";
 import { getStudentTrustSectionContent } from "@/lib/route";
+import Link from "next/link";
 
 interface TrustData {
   studentCount: number;
@@ -60,26 +61,28 @@ export default function StudentTrustSection() {
             </div>
 
             <div className="pt-4">
-              <button className="bg-[#FF7A00] text-white font-semibold px-6 py-2 text-[16px] rounded-sm md:rounded-lg w-full sm:px-12 sm:py-3 sm:text-[20px]">
-                Contact to know more
-              </button>
+              <Link href="/contact-us">
+                <button className="bg-[#FF7A00] text-white font-semibold px-6 py-2 text-[16px] rounded-sm md:rounded-lg w-full sm:px-12 sm:py-3 sm:text-[20px] cursor-pointer">
+                  Contact to know more
+                </button>
+              </Link>
             </div>
           </div>
 
           {/* Right Content */}
           <div className="relative h-96 lg:h-[500px]">
-              <div className="absolute top-0 right-1 w-56 h-56 md:w-[352px] md:h-[337px] rounded-lg overflow-hidden shadow-lg">
-                <Image
-                  src={
-                    data.imageTopRight?.url
-                      ? `http://localhost:3001/${data.imageTopRight.url}`
-                      : "/StudentTrust02.webp"
-                  }
-                  alt="Top Right"
-                  fill
-                  className="object-cover"
-                />
-              </div>
+            <div className="absolute top-0 right-1 w-56 h-56 md:w-[352px] md:h-[337px] rounded-lg overflow-hidden shadow-lg">
+              <Image
+                src={
+                  data.imageTopRight?.url
+                    ? `http://localhost:3001/${data.imageTopRight.url}`
+                    : "/StudentTrust02.webp"
+                }
+                alt="Top Right"
+                fill
+                className="object-cover"
+              />
+            </div>
 
             <div className="absolute bottom-[-60px] left-10 w-56 h-56 md:w-[416px] md:h-[337px] rounded-lg overflow-hidden shadow-lg">
               <Image
