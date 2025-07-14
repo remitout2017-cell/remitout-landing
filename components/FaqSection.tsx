@@ -42,7 +42,7 @@ export function FaqSection() {
 
   return (
     <div className="w-full bg-white ">
-      <div className="px-4 py-8 md:max-w-4xl md:mx-auto md:px-6 md:py-16">
+      <div className="px-4  md:max-w-4xl md:mx-auto md:px-6 md:py-16">
         <div className="text-center mb-8 md:mb-12 mt-12">
           <h1 className="text-[32px] font-bold md:text-4xl mb-3 md:mb-4 text-black leading-tight">
             Frequently <span className="text-[#45267F]/60 italic">Asked</span>{" "}
