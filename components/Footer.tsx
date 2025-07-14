@@ -143,7 +143,7 @@ export default function Footer() {
           </div>
 
           {/* Newsletter */}
-          <div className="invisible order-1 md:order-2">
+          <div className="hidden md:block md:invisible order-1 md:order-2">
             <h2 className="text-base md:text-lg font-bold mb-4 md:mb-9">
               Register to our Newsletter
             </h2>

@@ -32,7 +32,7 @@ export default function StudentTrustSection() {
   if (!data) return null;
 
   return (
-    <section className="bg-[#F5F5FA] pb-22 pt-55 px-2 md:px-8">
+    <section className="bg-[#F5F5FA] pb-22 pt-42 md:pt-55 px-2 md:px-8  md:mt-0">
       <div className="max-w-8xl md:mx-[10%]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-32 items-center">
           {/* Left Content */}
@@ -71,7 +71,7 @@ export default function StudentTrustSection() {
 
           {/* Right Content */}
           <div className="relative h-96 lg:h-[500px]">
-            <div className="absolute top-0 right-1 w-56 h-56 md:w-[352px] md:h-[337px] rounded-lg overflow-hidden shadow-lg">
+            <div className="absolute top-0 right-0 w-56 h-56 md:w-[352px] md:h-[337px] rounded-md md:rounded-lg overflow-hidden shadow-lg">
               <Image
                 src={
                   data.imageTopRight?.url
@@ -84,7 +84,7 @@ export default function StudentTrustSection() {
               />
             </div>
 
-            <div className="absolute bottom-[-60px] left-10 w-56 h-56 md:w-[416px] md:h-[337px] rounded-lg overflow-hidden shadow-lg">
+            <div className="absolute bottom-[-10px] left-1 w-56 h-56 md:w-[416px] md:h-[337px] rounded-md md:rounded-lg overflow-hidden shadow-lg">
               <Image
                 src={
                   data.imageTopRight?.url
@@ -97,11 +97,11 @@ export default function StudentTrustSection() {
               />
             </div>
 
-            <div className="absolute top-10 left-15 md:left-40 bg-white md:rounded-xl shadow-lg p-6 z-10">
+            <div className="absolute top-15 md:top-10 left-10 md:left-40 bg-white rounded-md md:rounded-xl shadow-lg p-4 md:p-6 z-10">
               <div className="text-center">
-                <div className="relative w-22 h-22 mx-auto mb-3">
+                <div className="relative w-16 md:w-22 h-16 md:h-22 mx-auto mb-3">
                   <svg
-                    className="w-20 h-20 transform -rotate-90"
+                    className="md:w-20 md:h-20 transform -rotate-90"
                     viewBox="0 0 36 36"
                   >
                     <path
@@ -119,7 +119,7 @@ export default function StudentTrustSection() {
                     />
                   </svg>
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-2xl font-bold text-gray-900">
+                    <span className="text-xl md:text-2xl  font-bold text-gray-900">
                       {data.satisfactionPercent}%
                     </span>
                   </div>
@@ -132,7 +132,7 @@ export default function StudentTrustSection() {
               </div>
             </div>
 
-            <div className="absolute bottom-[-15px] left-[70%] md:right-18 bg-[#45267F] shadow-[0_10px_60px_rgba(75,131,252,0.15)] px-6 py-8 text-white z-10 rounded-[7px]">
+            <div className="absolute bottom-[-15px] left-[65%] right-[2%] md:right-18 bg-[#45267F] shadow-[0_10px_60px_rgba(75,131,252,0.15)] px-6 py-8 text-white z-10 rounded-[7px]">
               <div className="text-center">
                 <div className="mx-auto mb-3 bg-white/20 rounded-lg flex items-center justify-center">
                   <Advisor />
