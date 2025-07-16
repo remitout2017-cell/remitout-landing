@@ -17,12 +17,14 @@ import Flight from "./icones/Flight";
 import PigMoney from "./icones/PigMoney";
 import { getHomePageContent, getNavContactDetails } from "@/lib/route";
 import Link from "next/link";
+import VisaAssistance from "./icones/VisaAssistance";
 
 // Payload Icon Mapper
 const iconMap: Record<string, React.ReactElement> = {
   book: <Book />,
   flight: <Flight />,
   pigMoney: <PigMoney />,
+  visaAssistance: <VisaAssistance />,
 };
 
 interface HomePageData {
@@ -42,7 +44,7 @@ interface HomePageData {
   services: {
     title: string;
     description: string;
-    iconType: "book" | "flight" | "pigMoney";
+    iconType: "book" | "flight" | "pigMoney" | "visaAssistance";
   }[];
 }
 
@@ -150,10 +152,12 @@ export default function RemitoutLanding() {
 
             <div className="space-y-4">
               <h1 className="text-[32px] md:text-[50px] font-bold text-[#363636] tracking-[-1px] capitalize leading-[36px] md:leading-[55px]">
-                Transform Your Future With The{" "}
-                <span className="text-[#45267F]/60 italic">Top Online</span>
+                “From Admission to Arrival – We Power Your Entire Study Abroad
+                Journey”
+                <span className="hidden text-[#45267F]/60 italic">Top Online</span>
                 <br />
-                Education Partner
+                University Admissions • Education Loans • Visa Help • Money
+                Transfers — All in One Place
               </h1>
               {hero?.description && (
                 <p className="text-[#8E8E8E] text-base md:text-lg max-w-lg">
@@ -247,8 +251,8 @@ export default function RemitoutLanding() {
 
       {/* Services Section */}
       <section className="bg-[#45267F] text-white py-12 relative z-[20]">
-        <div className="max-w-8xl  px-6 lg:px-32">
-          <div className="grid md:grid-cols-3 gap-8 place-items-center">
+        <div className="max-w-8xl px-6 lg:px-32">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 place-items-center">
             {services?.length > 0 &&
               services.map((service, i) => (
                 <div key={i} className="flex items-start space-x-4">

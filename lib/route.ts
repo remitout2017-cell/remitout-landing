@@ -65,7 +65,7 @@ export async function getWhyRemitout() {
 
 export async function getAllFaqs() {
 
-  const res = await fetch(`${payloadURL}/api/faqs`, {
+  const res = await fetch(`${payloadURL}/api/faqs?limit=40`, {
     cache: "no-store",
   });
 

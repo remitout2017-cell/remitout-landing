@@ -11,15 +11,15 @@ interface FaqItem {
 }
 
 const categories = [
-  { id: "pre-departure", label: "Pre-Departure Assistance" },
-  { id: "visa", label: "Visa Guidance" },
-  { id: "loan", label: "Loan Assistance" },
-  { id: "career", label: "Career Counseling" },
+  { id: "admission-support", label: "ADMISSION SUPPORT" },
+  { id: "loan-assistance", label: "LOAN ASSISTANCE" },
+  { id: "visa-assistance", label: "VISA ASSISTANCE" },
+  { id: "money-transfer", label: "MONEY TRANSFER" },
 ];
 
 export function FaqSection() {
   const [openItem, setOpenItem] = useState<number>(-1);
-  const [activeCategory, setActiveCategory] = useState("pre-departure");
+  const [activeCategory, setActiveCategory] = useState(categories[0]?.id || "");
   const [faqs, setFaqs] = useState<FaqItem[]>([]);
 
   useEffect(() => {
@@ -40,8 +40,9 @@ export function FaqSection() {
     setOpenItem(openItem === index ? -1 : index);
   };
 
+
   return (
-    <div className="w-full bg-white ">
+    <div className="w-full bg-white mb-10">
       <div className="px-4  md:max-w-4xl md:mx-auto md:px-6 md:py-16">
         <div className="text-center mb-8 md:mb-12 mt-12">
           <h1 className="text-[32px] font-bold md:text-4xl mb-3 md:mb-4 text-black leading-tight">

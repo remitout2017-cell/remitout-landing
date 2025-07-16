@@ -35,7 +35,7 @@ export default function ServicesSection() {
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-[36px] font-semibold md:text-4xl text-[#363636] mb-4">
-            Our <span className="text-[#45267f99] italic">Remittance</span>{" "}
+            Our <span className="hidden text-[#45267f99] italic">Remittance</span>{" "}
             Services
           </h2>
           <p className="text-[#8E8E8E] text-[18px] max-w-2xl mx-auto">
