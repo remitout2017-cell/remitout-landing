@@ -91,10 +91,10 @@ export default function WhyRemitoutSection() {
                   {renderIcon(item.iconType)}
                 </div>
                 <div className="absolute bottom-6 left-6 right-6 text-white">
-                  <h3 className="text-[22px] font-semibold mb-2">
+                  <h3 className="text-[22px] font-semibold mb-2 h-18 ">
                     {item.title}
                   </h3>
-                  <p className="text-base text-[#FFFFFF]/60 leading-[19.2px]">
+                  <p className="text-base text-[#FFFFFF]/60 leading-[19.2px] h-28">
                     {item.description}
                   </p>
                 </div>

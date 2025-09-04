@@ -151,14 +151,21 @@ export default function RemitoutLanding() {
             </div>
 
             <div className="space-y-4">
-              <h1 className="text-[32px] md:text-[50px] font-bold text-[#363636] tracking-[-1px] capitalize leading-[36px] md:leading-[55px]">
-                “From Admission to Arrival – We Power Your Entire Study Abroad
-                Journey”
-                <span className="hidden text-[#45267F]/60 italic">Top Online</span>
-                <br />
-                University Admissions • Education Loans • Visa Help • Money
-                Transfers — All in One Place
+              <h1 className="text-[32px] md:text-[50px] font-bold text-[#363636] tracking-[-1px] leading-tight md:leading-[60px] space-y-2">
+                <span className="block text-[#45267F]">
+                  From Admission to Arrival
+                </span>
+                <span className="block text-[#45267F]">
+                  We Power Your Entire{" "}
+                  <span className="text-[#45267F] italic">Study Abroad</span>{" "}
+                  Journey
+                </span>
+                <span className="block text-[18px] md:text-[20px] font-normal text-[#45267F] mt-4">
+                  University Admissions • Education Loans • Visa Help • Money
+                  Transfers — All in One Place
+                </span>
               </h1>
+
               {hero?.description && (
                 <p className="text-[#8E8E8E] text-base md:text-lg max-w-lg">
                   {hero.description}
