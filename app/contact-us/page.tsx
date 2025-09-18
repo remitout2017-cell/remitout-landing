@@ -10,6 +10,7 @@ import FaceBook from "@/components/icones/FaceBook";
 import Pinterest from "@/components/icones/Pinterest";
 import Insta from "@/components/icones/Insta";
 import { Enquiry } from "@/lib/route";
+import Footer from "@/components/Footer"
 
 export default function ContactUsPage() {
   const [formData, setFormData] = useState({
@@ -150,7 +151,7 @@ export default function ContactUsPage() {
                 src="/RegisterBannerBackground.webp"
                 alt="Background Banner"
                 fill
-                className="object-cover scale-120"
+                className="object-cover scale-110"
               />
             </div>
             <div className="relative z-10">
@@ -320,19 +321,20 @@ export default function ContactUsPage() {
         </div>
       </main>
       {/* Footer */}
-      <div className="md:h-[71px] bg-[#45267F] z-10 flex flex-col md:flex-row items-center justify-between py-4 md:px-40">
+      {/* <div className="md:h-[71px] bg-[#45267F] z-10 flex flex-col md:flex-row items-center justify-between py-4 md:px-40"> */}
         {/* Left: Copyright */}
-        <div className=" text-lg leading-[39px] text-[#E9E8EA] mb-2 md:mb-0">
+        {/* <div className=" text-lg leading-[39px] text-[#E9E8EA] mb-2 md:mb-0">
           ©Remitout@2025
-        </div>
+        </div> */}
 
         {/* Right: Support | Help */}
-        <div className="flex  items-center gap-4 text-[#E9E8EA] text-base font-semibold">
+        {/* <div className="flex  items-center gap-4 text-[#E9E8EA] text-base font-semibold">
           <span className="hover:underline cursor-pointer">Support</span>
           <div className="h-4 w-px bg-[#E9E8EA]"></div>
           <span className="hover:underline cursor-pointer">Help</span>
-        </div>
-      </div>
+        </div> */}
+      {/* </div> */}
+      <Footer />
     </div>
   );
 }
