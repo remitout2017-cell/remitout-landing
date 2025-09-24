@@ -83,7 +83,7 @@ export default function TestimonialCarousel() {
     <div className="relative h-[74vh] mb-55 md:mb-[10%]">
       <div className="max-w-8xl mx-4 md:mx-28 h-full relative overflow-hidden rounded-2xl">
         <Image
-          src="/TestimonialBanner.webp"
+          src="/TestimonialBannerNew.webp"
           alt="Students studying together"
           fill
           className="object-cover rounded-2xl"

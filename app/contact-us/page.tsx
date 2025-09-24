@@ -30,6 +30,11 @@ export default function ContactUsPage() {
     message: "",
   });
 
+  const [notification, setNotification] = useState<{
+    type: "success" | "error";
+    message: string;
+  } | null>(null);
+
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -45,16 +50,30 @@ export default function ContactUsPage() {
   const validate = () => {
     const newErrors = {
       fullName: formData.fullName ? "" : "Name is required.",
-      email: formData.email ? "" : "Email is required.",
-      phoneNumber: formData.phoneNumber ? "" : "Phone number is required.",
+      email: (() => {
+        if (!formData.email) return "Email is required.";
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email))
+          return "Please enter a valid email.";
+        return "";
+      })(),
+      phoneNumber: (() => {
+        if (!formData.phoneNumber) return "Phone number is required.";
+        const digitsOnly = formData.phoneNumber.replace(/\D/g, "");
+        if (digitsOnly.length !== 10)
+          return "Phone number must be exactly 10 digits.";
+        return "";
+      })(),
       serviceInterestedIn: formData.serviceInterestedIn
         ? ""
         : "Please select a service.",
       message: formData.message ? "" : "Message is required.",
     };
+
     setErrors(newErrors);
     return Object.values(newErrors).every((err) => err === "");
   };
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -62,7 +81,12 @@ export default function ContactUsPage() {
 
     try {
       await Enquiry(formData);
-      alert("✅ Thank you! Your enquiry was submitted.");
+      // Show success notification
+      setNotification({
+        type: "success",
+        message: "Thank you! Your enquiry was submitted successfully.",
+      });
+      // Clear form
       setFormData({
         fullName: "",
         email: "",
@@ -78,9 +102,19 @@ export default function ContactUsPage() {
         serviceInterestedIn: "",
         message: "",
       });
+
+      // Hide notification after 3 seconds
+      setTimeout(() => setNotification(null), 3000);
+
     } catch (error) {
       console.error("Frontend error:", error);
-      alert("❌ Submission failed. Please try again.");
+
+      setNotification({
+        type: "error",
+        message: "Submission failed. Please try again.",
+      });
+
+      setTimeout(() => setNotification(null), 3000);
     }
   };
 
@@ -98,7 +132,7 @@ export default function ContactUsPage() {
             <span className="hidden sm:inline-block text-white/40">|</span>
             <div className="hidden sm:flex items-center gap-1">
               <Mail />
-              <span>Support@remit.com</span>
+              <span>support@remitout.com</span>
             </div>
           </div>
 
@@ -173,6 +207,18 @@ export default function ContactUsPage() {
               <span className="text-[#45267F]/60 italic font-medium">Us</span>{" "}
               Today
             </h1>
+
+            {notification && (
+              <div
+                className={`fixed top-5 right-5 z-50 px-6 py-4 rounded-lg shadow-lg text-white ${
+                  notification.type === "success"
+                    ? "bg-green-500"
+                    : "bg-red-500"
+                }`}
+              >
+                {notification.message}
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Name */}
@@ -322,13 +368,13 @@ export default function ContactUsPage() {
       </main>
       {/* Footer */}
       {/* <div className="md:h-[71px] bg-[#45267F] z-10 flex flex-col md:flex-row items-center justify-between py-4 md:px-40"> */}
-        {/* Left: Copyright */}
-        {/* <div className=" text-lg leading-[39px] text-[#E9E8EA] mb-2 md:mb-0">
+      {/* Left: Copyright */}
+      {/* <div className=" text-lg leading-[39px] text-[#E9E8EA] mb-2 md:mb-0">
           ©Remitout@2025
         </div> */}
 
-        {/* Right: Support | Help */}
-        {/* <div className="flex  items-center gap-4 text-[#E9E8EA] text-base font-semibold">
+      {/* Right: Support | Help */}
+      {/* <div className="flex  items-center gap-4 text-[#E9E8EA] text-base font-semibold">
           <span className="hover:underline cursor-pointer">Support</span>
           <div className="h-4 w-px bg-[#E9E8EA]"></div>
           <span className="hover:underline cursor-pointer">Help</span>

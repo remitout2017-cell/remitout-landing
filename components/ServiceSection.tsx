@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import { GetServices } from "@/lib/route";
+import Link from "next/link";
 
 interface Service {
   id: string;
@@ -101,10 +102,13 @@ export default function ServicesSection() {
                       </p>
                     ))}
                   </div>
-                  <button className="flex items-center gap-2 text-[#FF7A00] font-medium text-base hover:text-[#FF7A00] transition-colors cursor-pointer">
+                  <Link
+                    href="/contact-us"
+                    className="flex items-center gap-2 text-[#FF7A00] font-medium text-base hover:text-[#FF7A00] transition-colors cursor-pointer"
+                  >
                     {service.buttonText || "Contact to Know more"}
                     <ExternalLink className="w-4 h-4" />
-                  </button>
+                  </Link>
                 </div>
               </div>
             );

@@ -97,7 +97,7 @@ export default function StudentTrustSection() {
               />
             </div>
 
-            <div className="absolute top-15 md:top-10 left-10 md:left-40 bg-white rounded-md md:rounded-xl shadow-lg p-4 md:p-6 z-10">
+            <div className="absolute top-15 md:top-5 left-10 md:left-32 bg-white rounded-md md:rounded-xl shadow-lg p-4 md:p-6 z-10">
               <div className="text-center">
                 <div className="relative w-16 md:w-22 h-16 md:h-22 mx-auto mb-3">
                   <svg
@@ -132,7 +132,7 @@ export default function StudentTrustSection() {
               </div>
             </div>
 
-            <div className="absolute bottom-[-15px] left-[65%] right-[2%] md:right-18 bg-[#45267F] shadow-[0_10px_60px_rgba(75,131,252,0.15)] px-6 py-8 text-white z-10 rounded-[7px]">
+            <div className="absolute bottom-[-15px] left-[70%] right-[2%] md:right-18 bg-[#45267F] shadow-[0_10px_60px_rgba(75,131,252,0.15)] px-6 py-8 text-white z-10 rounded-[7px]">
               <div className="text-center">
                 <div className="mx-auto mb-3 bg-white/20 rounded-lg flex items-center justify-center">
                   <Advisor />
