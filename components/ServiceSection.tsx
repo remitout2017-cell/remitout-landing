@@ -18,6 +18,8 @@ interface Service {
   buttonText?: string;
 }
 
+const API_URL = process.env.NEXT_PUBLIC_PAYLOAD_API;
+
 export default function ServicesSection() {
   const [services, setServices] = useState<Service[]>([]);
 
@@ -67,7 +69,7 @@ export default function ServicesSection() {
                   <Image
                     src={
                       service.image?.url
-                        ? `http://localhost:3001/${imageUrl}`
+                        ? `${API_URL}${imageUrl}`
                         : "/service_section02.webp"
                     }
                     alt={service.image?.alt || service.title}

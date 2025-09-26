@@ -5,6 +5,7 @@ import Image from "next/image";
 import Award from "./icones/Award";
 import PersonStar from "./icones/PersonStar";
 import { getWhyRemitout } from "@/lib/route";
+const API_URL = process.env.NEXT_PUBLIC_PAYLOAD_API;
 
 interface Feature {
   id: string;
@@ -70,7 +71,7 @@ export default function WhyRemitoutSection() {
                 <Image
                   src={
                     item.image?.url
-                      ? `http://localhost:3001/${item.image.url}`
+                      ? `${API_URL}${item.image.url}`
                       : "/why_remitout_01.webp"
                   }
                   alt={item.image?.alt || item.title}

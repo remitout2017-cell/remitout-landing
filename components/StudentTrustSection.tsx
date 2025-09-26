@@ -17,6 +17,8 @@ interface TrustData {
   imageBottomLeft?: { url: string };
 }
 
+const API_URL = process.env.NEXT_PUBLIC_PAYLOAD_API;
+
 export default function StudentTrustSection() {
   const [data, setData] = useState<TrustData | null>(null);
 
@@ -75,7 +77,7 @@ export default function StudentTrustSection() {
               <Image
                 src={
                   data.imageTopRight?.url
-                    ? `http://localhost:3001/${data.imageTopRight.url}`
+                    ? `${API_URL}${data.imageTopRight.url}`
                     : "/StudentTrust02.webp"
                 }
                 alt="Top Right"
@@ -88,7 +90,7 @@ export default function StudentTrustSection() {
               <Image
                 src={
                   data.imageBottomLeft?.url
-                    ? `http://localhost:3001/${data.imageBottomLeft.url}`
+                    ? `${API_URL}${data.imageBottomLeft.url}`
                     : "/StudentTrust01.webp"
                 }
                 alt="Top Right"
