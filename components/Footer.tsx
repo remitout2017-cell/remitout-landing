@@ -109,9 +109,9 @@ export default function Footer() {
                       : "/logo1.svg"
                   }
                   alt={footerContent.videoImage?.alt || "Video thumbnail"}
-                  width={400}
-                  height={300}
-                  className="w-full h-auto rounded-lg object-cover"
+                  width={200}
+                  height={150}
+                  className="w-[350px] h-[200px] rounded-lg object-contain"
                 />
               </a>
               {/* ) : (
