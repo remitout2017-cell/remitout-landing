@@ -71,7 +71,7 @@ export default function StudentTrustSection() {
 
           {/* Right Content */}
           <div className="relative h-96 lg:h-[500px]">
-            <div className="absolute top-0 right-0 w-56 h-56 md:w-[352px] md:h-[337px] rounded-md md:rounded-lg overflow-hidden shadow-lg">
+            <div className="absolute top-0 right-0 w-56 h-56 md:w-[352px] md:h-[337px] rounded-md md:rounded-lg overflow-hidden shadow-lg z-10">
               <Image
                 src={
                   data.imageTopRight?.url
@@ -84,11 +84,11 @@ export default function StudentTrustSection() {
               />
             </div>
 
-            <div className="absolute bottom-[-10px] left-1 w-56 h-56 md:w-[416px] md:h-[337px] rounded-md md:rounded-lg overflow-hidden shadow-lg">
+            <div className="absolute bottom-[-10px] left-1 w-56 h-56 md:w-[416px] md:h-[337px] rounded-md md:rounded-lg overflow-hidden shadow-lg z-0">
               <Image
                 src={
-                  data.imageTopRight?.url
-                    ? `http://localhost:3001/${data.imageTopRight.url}`
+                  data.imageBottomLeft?.url
+                    ? `http://localhost:3001/${data.imageBottomLeft.url}`
                     : "/StudentTrust01.webp"
                 }
                 alt="Top Right"

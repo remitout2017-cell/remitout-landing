@@ -106,25 +106,13 @@ export default function Footer() {
                   src={
                     footerContent.videoImage?.url
                       ? `http://localhost:3001/${footerContent.videoImage.url}`
-                      : "/Footer_Banner.jpg"
+                      : "/logo1.svg"
                   }
                   alt={footerContent.videoImage?.alt || "Video thumbnail"}
                   width={400}
                   height={300}
                   className="w-full h-auto rounded-lg object-cover"
                 />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="bg-white rounded-full p-3 cursor-pointer">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 text-[#4C2A9E] fill-[#4C2A9E]"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                    >
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                </div>
               </a>
               {/* ) : (
                 <div className="w-full h-[300px] bg-gray-300 rounded-lg" />
