@@ -205,10 +205,19 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-6 border-t border-[#4C2A9E] text-center md:text-left">
+        <div className="mt-12 pt-6 border-t border-[#4C2A9E] flex flex-col md:flex-row items-center justify-between text-center md:text-left gap-4">
           <p className="font-kumbh leading-7 text-[#D8D8D8] text-base">
             © 2025 Copyrights by Remitout. All Rights Reserved
           </p>
+          <div className="flex gap-4 text-sm text-[#D8D8D8]">
+            <Link href="/privacy-policy" className="hover:text-[#FF7A3D]">
+              Privacy Policy
+            </Link>
+            <span>|</span>
+            <Link href="/termsofuse" className="hover:text-[#FF7A3D]">
+              Terms of Use
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
