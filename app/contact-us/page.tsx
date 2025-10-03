@@ -11,20 +11,20 @@ import Pinterest from "@/components/icones/Pinterest";
 import Insta from "@/components/icones/Insta";
 import { Enquiry } from "@/lib/route";
 import Footer from "@/components/Footer"
-import type { Metadata } from "next";
+// import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Remitout - Contact Us",
-  description:
-    "Get in touch with Remitout for assistance with education loans, study abroad admissions, and remittance services. Reach out today!",
-  openGraph: {
-    title: "Remitout - Contact Us",
-    description:
-      "Contact Remitout for queries about education loans, admissions, and remittance services.",
-    url: "https://www.remitout.com/contact-us",
-    siteName: "Remitout",
-  },
-};
+// export const metadata: Metadata = {
+//   title: "Remitout - Contact Us",
+//   description:
+//     "Get in touch with Remitout for assistance with education loans, study abroad admissions, and remittance services. Reach out today!",
+//   openGraph: {
+//     title: "Remitout - Contact Us",
+//     description:
+//       "Contact Remitout for queries about education loans, admissions, and remittance services.",
+//     url: "https://www.remitout.com/contact-us",
+//     siteName: "Remitout",
+//   },
+// };
 
 
 export default function ContactUsPage() {
