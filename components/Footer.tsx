@@ -72,22 +72,33 @@ export default function Footer() {
       <div className="px-2 py-8 md:p-12 md:max-w-8xl md:mx-32">
         {/* Contact Info */}
         <div className="bg-[#45267F] rounded-xl p-6 m-2 md:m-0 mb-10">
-          <div className="flex flex-col md:flex-row md:justify-around gap-8">
-            <ContactItem
-              icon={<MapPin className="h-6 w-6 text-[#4C2A9E]" />}
-              title="Office Address"
-              content={footerContent.officeAddress || "Updating..."}
-            />
-            <ContactItem
-              icon={<Mail className="h-6 w-6 text-[#4C2A9E]" />}
-              title="Send Email"
-              content={footerContent.email || "Updating..."}
-            />
-            <ContactItem
-              icon={<Phone className="h-6 w-6 text-[#4C2A9E]" />}
-              title="Call Emergency"
-              content={footerContent.phone || "Updating..."}
-            />
+          <div className="flex flex-col md:flex-row justify-center md:justify-between items-center gap-6 md:gap-8 text-center md:text-left">
+            {/* Office Address */}
+            <div className="flex-1 max-w-xs md:max-w-md mx-auto">
+              <ContactItem
+                icon={<MapPin className="text-[#4C2A9E]" />}
+                title="Office Address"
+                content={footerContent.officeAddress || "Updating..."}
+              />
+            </div>
+
+            {/* Email */}
+            <div className="flex-1 max-w-xs mx-auto">
+              <ContactItem
+                icon={<Mail className="text-[#4C2A9E]" />}
+                title="Send Email"
+                content={footerContent.email || "Updating..."}
+              />
+            </div>
+
+            {/* Phone */}
+            <div className="flex-1 max-w-xs mx-auto">
+              <ContactItem
+                icon={<Phone className="text-[#4C2A9E]" />}
+                title="Call Emergency"
+                content={footerContent.phone || "Updating..."}
+              />
+            </div>
           </div>
         </div>
 

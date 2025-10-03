@@ -15,6 +15,8 @@ interface TrustData {
   advisorText: string;
   imageTopRight?: { url: string };
   imageBottomLeft?: { url: string };
+  satisfactionText: string;
+  headline: string;
 }
 
 const API_URL = process.env.NEXT_PUBLIC_PAYLOAD_API;
@@ -41,9 +43,10 @@ export default function StudentTrustSection() {
           <div className="space-y-8">
             <div className="space-y-1">
               <h2 className="text-[32px] md:text-4xl font-semibold text-[#363636] leading-[39.6px] tracking-[-1px] capitalize md:w-[70%]">
-                {data.studentCount?.toLocaleString()}+ Students Already Trust Us
-                — <span className="text-[#45267f]/60 italic">You&apos;re</span>{" "}
-                Next
+                {data.headline.replace(
+                  "{count}",
+                  data.studentCount.toLocaleString()
+                )}
               </h2>
               <p className="text-[#8E8E8E] text-base font-normal leading-[25px] max-w-lg">
                 {data.description}
@@ -127,14 +130,21 @@ export default function StudentTrustSection() {
                   </div>
                 </div>
                 <p className="text-xs md:text-base font-medium text-gray-700">
-                  Highly Satisfied
-                  <br />
-                  Students
+                  {
+                    data.satisfactionText
+                      ? data.satisfactionText.split("\n").map((line, idx) => (
+                          <span key={idx}>
+                            {line}
+                            <br />
+                          </span>
+                        ))
+                      : "Highly Satisfied\nStudents" /* fallback text */
+                  }
                 </p>
               </div>
             </div>
 
-            <div className="absolute bottom-[-15px] left-[70%] right-[2%] md:right-18 bg-[#45267F] shadow-[0_10px_60px_rgba(75,131,252,0.15)] px-6 py-8 text-white z-10 rounded-[7px]">
+            <div className="absolute bottom-[-15px] left-[70%] right-[2%] md:right-10 bg-[#45267F] shadow-[0_10px_60px_rgba(75,131,252,0.15)] px-6 py-8 text-white z-10 rounded-[7px]">
               <div className="text-center">
                 <div className="mx-auto mb-3 bg-white/20 rounded-lg flex items-center justify-center">
                   <Advisor />
