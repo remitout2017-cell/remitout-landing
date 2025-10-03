@@ -1,9 +1,51 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import type { Metadata } from "next";
+import Head from "next/head";
+
+
+export const metadata: Metadata = {
+  title: "Remitout - Privacy Policy",
+  description:
+    "Learn how Remitout collects, uses, and protects your data when using our education loan, admission, and remittance services.",
+  openGraph: {
+    title: "Remitout - Privacy Policy",
+    description:
+      "Learn how Remitout collects, uses, and protects your personal information.",
+    url: "https://www.remitout.com/privacy",
+    siteName: "Remitout",
+  },
+};
+
 
 export default function PrivacyPolicyPage() {
   return (
     <>
+      <Head>
+        <title>Remitout - Terms of Use</title>
+        <meta
+          name="description"
+          content="Read Remitout's Terms of Use covering eligibility, services, data usage, disclaimers, and liability. Stay informed before using our platform."
+        />
+        <link
+          rel="canonical"
+          href="https://remitout-landing.vercel.app/terms"
+        />
+        <meta property="og:title" content="Remitout - Terms of Use" />
+        <meta
+          property="og:description"
+          content="Understand Remitout's terms and conditions for using education loans, admissions, and remittance services."
+        />
+        <meta
+          property="og:url"
+          content="https://remitout-landing.vercel.app/terms"
+        />
+        <meta
+          property="og:image"
+          content="https://remitout-landing.vercel.app/og-image-terms.jpg"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Head>
       <Navbar />
       <main className="max-w-4xl mx-auto px-6 py-12">
         <h1 className="text-3xl font-bold mb-6">Privacy Policy</h1>

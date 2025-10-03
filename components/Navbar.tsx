@@ -28,7 +28,7 @@ const Navbar = () => {
           <Link href="/" passHref>
             <Image
               src="/remitout_logo.webp"
-              alt="Remitout Logo"
+              alt="Remitout education loan and remittance logo"
               width={138}
               height={48}
               className="object-contain cursor-pointer"

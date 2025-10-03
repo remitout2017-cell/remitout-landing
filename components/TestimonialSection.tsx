@@ -84,7 +84,7 @@ export default function TestimonialCarousel() {
       <div className="max-w-8xl mx-4 md:mx-28 h-full relative overflow-hidden rounded-2xl">
         <Image
           src="/TestimonialBannerNew.webp"
-          alt="Students studying together"
+          alt="Indian students abroad using Remitout for education loans"
           fill
           className="object-cover rounded-2xl"
           priority
