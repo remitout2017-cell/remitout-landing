@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Play, Pause } from "lucide-react";
+// import { Play, Pause } from "lucide-react";
 import Image from "next/image";
 import { Testimonials } from "@/lib/route";
 
@@ -68,6 +68,7 @@ export default function TestimonialCarousel() {
   }, [isPlaying, grouped.length]);
 
   const togglePlayPause = () => setIsPlaying((prev) => !prev);
+  console.log("playpause",togglePlayPause)
 
  const renderStars = (rating: number | string) => {
    const numericRating = Number(rating) || 0;
