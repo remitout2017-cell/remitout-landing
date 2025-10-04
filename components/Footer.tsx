@@ -2,12 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { MapPin, Mail, Phone, Facebook, Instagram } from "lucide-react";
+import { MapPin, Mail, Phone } from "lucide-react";
 import Image from "next/image";
 import {
   Footer as fetchFooterContent,
   Newsletter as submitNewsletter,
 } from "@/lib/route";
+import SocialLinks from "@/components/SocialLinks";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -32,6 +33,10 @@ export default function Footer() {
     email: "",
     phone: "",
   });
+
+  const gmailLink = (email: string) =>
+    `https://mail.google.com/mail/?view=cm&fs=1&to=${email}`;
+
 
   useEffect(() => {
     async function loadFooter() {
@@ -88,7 +93,20 @@ export default function Footer() {
               <ContactItem
                 icon={<Mail className="text-[#4C2A9E]" />}
                 title="Send Email"
-                content={footerContent.email || "Updating..."}
+                content={
+                  footerContent.email ? (
+                    <a
+                      href={gmailLink(footerContent.email)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline hover:text-gray-200"
+                    >
+                      {footerContent.email}
+                    </a>
+                  ) : (
+                    "Updating..."
+                  )
+                }
               />
             </div>
 
@@ -96,7 +114,7 @@ export default function Footer() {
             <div className="flex-1 max-w-xs mx-auto">
               <ContactItem
                 icon={<Phone className="text-[#4C2A9E]" />}
-                title="Call Emergency"
+                title="Emergency Contact"
                 content={footerContent.phone || "Updating..."}
               />
             </div>
@@ -118,24 +136,36 @@ export default function Footer() {
           <div className="flex flex-col items-center gap-2">
             <Mail className="text-3xl" />
             <h4 className="text-white font-semibold text-lg">Send Email</h4>
-            <a
-              href={`mailto:${footerContent.email}`}
-              className="text-white text-sm underline hover:text-gray-200"
-            >
-              {footerContent.email || "Updating..."}
-            </a>
+            {footerContent.email ? (
+              <a
+                href={
+                  footerContent.email ? gmailLink(footerContent.email) : "#"
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white text-sm underline hover:text-gray-200"
+              >
+                {footerContent.email || "Updating..."}
+              </a>
+            ) : (
+              <p className="text-white text-sm">Updating...</p>
+            )}
           </div>
 
           {/* Phone */}
           <div className="flex flex-col items-center gap-2">
             <Phone className=" text-3xl" />
             <h4 className="text-white font-semibold text-lg">Call Emergency</h4>
-            <a
-              href={`tel:${footerContent.phone}`}
-              className="text-white text-sm underline hover:text-gray-200"
-            >
-              {footerContent.phone || "Updating..."}
-            </a>
+            {footerContent.phone ? (
+              <a
+                href={`tel:${footerContent.phone}`}
+                className="text-white text-sm underline hover:text-gray-200"
+              >
+                {footerContent.phone}
+              </a>
+            ) : (
+              <p className="text-white text-sm">Updating...</p>
+            )}
           </div>
         </div>
 
@@ -255,7 +285,7 @@ export default function Footer() {
 
         <div className="mt-12 pt-6 border-t border-[#4C2A9E] flex flex-col md:flex-row items-center justify-between text-center md:text-left gap-4">
           <p className="font-kumbh leading-7 text-[#D8D8D8] text-base">
-            © 2025 Copyrights by Remitout. All Rights Reserved
+            © 2025 Copyright by Remitout. All Rights Reserved
           </p>
           <div className="flex gap-4 text-sm text-[#D8D8D8]">
             <Link href="/privacy-policy" className="hover:text-[#FF7A3D]">
@@ -279,7 +309,7 @@ function ContactItem({
 }: {
   icon: React.ReactNode;
   title: string;
-  content: string;
+  content: React.ReactNode;
 }) {
   return (
     <div className="flex items-center gap-4">
@@ -294,57 +324,3 @@ function ContactItem({
   );
 }
 
-function SocialLinks({
-  links,
-}: {
-  links: { facebook?: string; instagram?: string; customIcon?: string };
-}) {
-  return (
-    <div className="flex gap-4 justify-center">
-      {links?.facebook && (
-        <Link
-          href={links.facebook}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:opacity-80"
-        >
-          <Facebook className="h-6 w-6" />
-        </Link>
-      )}
-      {links?.instagram && (
-        <Link
-          href={links.instagram}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:opacity-80"
-        >
-          <Instagram className="h-6 w-6" />
-        </Link>
-      )}
-      {links?.customIcon && (
-        <Link
-          href={links.customIcon}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:opacity-80"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="h-6 w-6"
-          >
-            <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z" />
-            <circle cx="12" cy="12" r="4" />
-          </svg>
-        </Link>
-      )}
-    </div>
-  );
-}

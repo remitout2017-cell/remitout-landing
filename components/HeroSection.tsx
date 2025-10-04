@@ -8,9 +8,6 @@ import { Star } from "lucide-react";
 import Navbar from "./Navbar";
 import Phone from "./icones/Phone";
 import Mail from "./icones/Mail";
-import FaceBook from "./icones/FaceBook";
-import Pinterest from "./icones/Pinterest";
-import Insta from "./icones/Insta";
 import Tick from "./icones/Tick";
 import Book from "./icones/Book";
 import Flight from "./icones/Flight";
@@ -18,6 +15,9 @@ import PigMoney from "./icones/PigMoney";
 import { getHomePageContent, getNavContactDetails } from "@/lib/route";
 import Link from "next/link";
 import VisaAssistance from "./icones/VisaAssistance";
+import { Footer } from "@/lib/route";
+import SocialLinks from "@/components/SocialLinks";
+
 
 // Payload Icon Mapper
 const iconMap: Record<string, React.ReactElement> = {
@@ -40,7 +40,9 @@ interface HomePageData {
       rating: number;
       avatar?: { url: string };
     };
+    ctaLink?: string;
   };
+
   services: {
     title: string;
     description: string;
@@ -54,6 +56,26 @@ export default function RemitoutLanding() {
     phone: string;
     email: string;
   } | null>(null);
+  const [footerContent, setFooterContent] = useState<{
+    socialLinks?: {
+      facebook?: string;
+      instagram?: string;
+      customIcon?: string;
+    };
+  } | null>(null);
+
+ useEffect(() => {
+   async function loadFooterContent() {
+     try {
+       const res = await Footer();
+       const json = await res.json(); // NextResponse contains the JSON
+       setFooterContent(json?.docs?.[0] || {}); // your first document
+     } catch (err) {
+       console.error("Failed to load footer content", err);
+     }
+   }
+   loadFooterContent();
+ }, []);
 
   useEffect(() => {
     const fetchContent = async () => {
@@ -112,25 +134,16 @@ export default function RemitoutLanding() {
               </a>
             </div>
           </div>
+
           <div className="flex items-center gap-4 mt-2 sm:mt-0">
             <div className="hidden sm:flex items-center gap-2 font-poppins text-lg">
               <a href="/contact-us" className="underline hover:text-gray-200">
                 Contact Us
               </a>
-              <FaceBook />
-              <Pinterest />
-              <Insta />
+
+              {/* Use Footer SocialLinks */}
+              <SocialLinks links={footerContent?.socialLinks || {}} />
             </div>
-            {/* <span className="hidden sm:inline-block text-white/40">|</span> */}
-            {/* <div className="flex gap-2 font-poppins text-sm md:text-lg">
-              <a href="/login" className="underline hover:text-gray-200">
-                Login
-              </a>
-              <span className="text-white/50">/</span>
-              <a href="/register" className="underline hover:text-gray-200">
-                Register
-              </a>
-            </div> */}
           </div>
         </div>
       </div>
@@ -185,8 +198,8 @@ export default function RemitoutLanding() {
               )}
             </div>
 
-            <Link href="/contact-us">
-              <Button className="bg-[#FF7A00] text-white text-lg font-semibold px-20 py-5 cursor-pointer hover:bg-[#FF7A00] md:rounded-none w-full md:w-[60%] ">
+            <Link href={hero?.ctaLink || "/contact-us"}>
+              <Button className="bg-[#FF7A00] text-white text-lg font-semibold px-20 py-5 cursor-pointer hover:bg-[#FF7A00] md:rounded-none w-full md:w-[60%]">
                 {hero?.ctaText ?? "Get Started"}
               </Button>
             </Link>

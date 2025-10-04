@@ -17,6 +17,8 @@ interface TrustData {
   imageBottomLeft?: { url: string };
   satisfactionText: string;
   headline: string;
+  buttonText: string;
+  buttonLink?: string;
 }
 
 const API_URL = process.env.NEXT_PUBLIC_PAYLOAD_API;
@@ -71,9 +73,9 @@ export default function StudentTrustSection() {
             </div>
 
             <div className="pt-2 md:pt-4">
-              <Link href="/contact-us">
+              <Link href={data.buttonLink || "/contact-us"}>
                 <button className="bg-[#FF7A00] text-white font-semibold px-6 py-2.5 text-[15px] md:text-[16px] lg:text-[18px] xl:text-[20px] rounded-sm md:rounded-lg w-full sm:w-auto sm:px-10 md:px-12 sm:py-3 cursor-pointer hover:bg-[#E66D00] transition-colors">
-                  Contact to know more
+                  {data.buttonText || "Contact to know more"}
                 </button>
               </Link>
             </div>

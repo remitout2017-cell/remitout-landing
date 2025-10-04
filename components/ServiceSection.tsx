@@ -16,6 +16,7 @@ interface Service {
     alt?: string;
   };
   buttonText?: string;
+  buttonLink?: string;
 }
 
 const API_URL = process.env.NEXT_PUBLIC_PAYLOAD_API;
@@ -105,7 +106,7 @@ export default function ServicesSection() {
                     ))}
                   </div>
                   <Link
-                    href="/contact-us"
+                    href={service.buttonLink || "/contact-us"}
                     className="flex items-center gap-2 text-[#FF7A00] font-medium text-base hover:text-[#FF7A00] transition-colors cursor-pointer"
                   >
                     {service.buttonText || "Contact to Know more"}
