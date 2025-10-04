@@ -10,7 +10,6 @@ export async function Enquiry(data: {
   serviceInterestedIn: string;
   message: string;
 }) {
-
   const res = await fetch(`${payloadURL}/api/enquiries`, {
     method: "POST",
     headers: {
@@ -52,7 +51,6 @@ export async function GetServices() {
 }
 
 export async function getWhyRemitout() {
-
   const res = await fetch(`${payloadURL}/api/why-remitout`, {
     headers: { "Content-Type": "application/json" },
   });
@@ -64,7 +62,6 @@ export async function getWhyRemitout() {
 }
 
 export async function getAllFaqs() {
-
   const res = await fetch(`${payloadURL}/api/faqs?limit=40`, {
     cache: "no-store",
   });
@@ -77,7 +74,6 @@ export async function getAllFaqs() {
   return json.docs;
 }
 
-
 // Get In Touch Form Submission
 
 export async function submitGetInTouchForm(data: {
@@ -86,23 +82,21 @@ export async function submitGetInTouchForm(data: {
   message: string;
   acceptTerms: boolean;
 }) {
-
   const res = await fetch(`${payloadURL}/api/get-in-touch`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
   });
 
   if (!res.ok) {
     const error = await res.json();
-    throw new Error(error?.message || 'Failed to submit form');
+    throw new Error(error?.message || "Failed to submit form");
   }
 
   return res.json();
 }
-
 
 // Newsletter Subscription
 export async function Newsletter(req: Request) {
@@ -125,7 +119,6 @@ export async function Newsletter(req: Request) {
 
 // Footer Content
 export async function Footer() {
-
   const res = await fetch(`${payloadURL}/api/footer-content`);
 
   const data = await res.json();
@@ -179,7 +172,10 @@ export async function getNavContactDetails() {
     return NextResponse.json(contact);
   } catch (error) {
     console.error("Contact fetch error:", error);
-    return NextResponse.json({ error: "Failed to fetch contact details" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to fetch contact details" },
+      { status: 500 }
+    );
   }
 }
 
@@ -198,7 +194,7 @@ export async function getStudentTrustSectionContent() {
 // Get Why Remitout CTA Section
 export async function getWhyRemitoutCTA() {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_PAYLOAD_API}/api/why-remitout-cta?limit=1`, {
+    const res = await fetch(`${payloadURL}/api/why-remitout-cta?limit=1`, {
       next: { revalidate: 60 }, // optional cache control for ISR
     });
 
@@ -212,4 +208,13 @@ export async function getWhyRemitoutCTA() {
     console.error("Error fetching Why Remitout CTA:", error);
     return null;
   }
+}
+
+export async function getSEO() {
+  const res = await fetch(`${payloadURL}/api/globals/seo`);
+  if (!res.ok) {
+    throw new Error("Failed to fetch SEO data");
+  }
+  const data = await res.json();
+  return data;
 }

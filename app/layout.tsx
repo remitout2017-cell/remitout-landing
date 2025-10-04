@@ -1,24 +1,79 @@
-import type { Metadata } from "next";
+"use client";
 import Script from "next/script";
 import "./globals.css";
-
-export const metadata: Metadata = {
-  title:
-    "Remitout - Education Loan, Admission & Remittance Services for Students Abroad",
-  description:
-    "Remitout offers complete study abroad support - education loans, admission guidance, and RBI-compliant remittance. Trusted by students & parents for a hassle-free journey.",
-};
+import { useEffect, useState } from "react";
+import { getSEO } from "@/lib/route";
 
 const GTM_ID = "GTM-M45PXNHP";
+const API_URL = process.env.NEXT_PUBLIC_PAYLOAD_API;
+
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+   const [seo, setSEO] = useState<{
+     metaTitle?: string;
+     metaDescription?: string;
+     canonicalUrl?: string;
+     ogTitle?: string;
+     ogDescription?: string;
+     ogImage?: { url?: string };
+     ogImageUrl?: string;
+     ogUrl?: string;
+     twitterCard?: string;
+   }>({});
+
+   useEffect(() => {
+     const fetchSEO = async () => {
+       try {
+         const data = await getSEO();
+         setSEO(data);
+       } catch (err) {
+         console.error("Error fetching SEO", err);
+       }
+     };
+
+     fetchSEO();
+   }, []);
+
   return (
     <html lang="en">
       <head>
+        <title>{seo.metaTitle || "Remitout"}</title>
+        <meta
+          name="description"
+          content={seo.metaDescription || "Default description"}
+        />
+        <link
+          rel="canonical"
+          href={seo.canonicalUrl || "https://remitout-landing.vercel.app"}
+        />
+        <meta
+          property="og:title"
+          content={seo.ogTitle || seo.metaTitle || "Remitout"}
+        />
+        <meta
+          property="og:description"
+          content={seo.ogDescription || seo.metaDescription || ""}
+        />
+        <meta
+          property="og:image"
+          content={
+            seo.ogImage?.url
+              ? `${API_URL}${seo.ogImage.url}`
+              : seo.ogImageUrl || "/og-image.jpg"
+          }
+        />
+        <meta
+          property="og:url"
+          content={seo.ogUrl || "https://remitout-landing.vercel.app"}
+        />
+        <meta
+          name="twitter:card"
+          content={seo.twitterCard || "summary_large_image"}
+        />
         {/* GTM Script */}
         <Script id="gtm-script" strategy="afterInteractive">
           {`
@@ -29,50 +84,35 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','${GTM_ID}');
           `}
         </Script>
-        <link rel="canonical" href="https://remitout-landing.vercel.app" />
-        <meta
-          property="og:title"
-          content="Remitout - Education Loan, Admission & Remittance Services for Students Abroad"
-        />
-        <meta
-          property="og:description"
-          content="Fast education loans, expert admission guidance & secure remittance - all in one place."
-        />
-        <meta
-          property="og:image"
-          content="https://remitout-landing.vercel.app/og-image.jpg"
-        />
-        <meta property="og:url" content="https://remitout-landing.vercel.app" />
-        <meta name="twitter:card" content="summary_large_image" />
         <Script
           id="faq-schema"
           type="application/ld+json"
           strategy="afterInteractive"
         >
           {`
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How do I apply for an education loan?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "You can apply online through Remitout by filling out our contact form and submitting the required documents."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What services does Remitout provide?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "We connect students with educational consultants, universities, and banks for loans, admissions, and remittance services."
-        }
-      }
-    ]
-  }
-  `}
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "How do I apply for an education loan?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You can apply online through Remitout by filling out our contact form and submitting the required documents."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What services does Remitout provide?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We connect students with educational consultants, universities, and banks for loans, admissions, and remittance services."
+                  }
+                }
+              ]
+            }
+          `}
         </Script>
       </head>
       <body className="antialiased">
@@ -86,11 +126,11 @@ export default function RootLayout({
         </noscript>
         <Script id="ga4" strategy="afterInteractive">
           {`
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX'); // Replace with your GA4 Measurement ID
-  `}
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-XXXXXXXXXX'); // Replace with your GA4 Measurement ID
+          `}
         </Script>
         {children}
       </body>

@@ -45,10 +45,10 @@ export function FaqSection() {
     <div className="w-full bg-white mb-10">
       <div className="px-4  md:max-w-4xl md:mx-auto md:px-6 md:py-16">
         <div className="text-center mb-8 md:mb-12 mt-12">
-          <h1 className="text-[32px] font-bold md:text-4xl mb-3 md:mb-4 text-black leading-tight">
+          <h2 className="text-[32px] font-bold md:text-4xl mb-3 md:mb-4 text-black leading-tight">
             Frequently <span className="text-[#45267F]/60 italic">Asked</span>{" "}
             Questions
-          </h1>
+          </h2>
           <p className="text-[#8E8E8E] text-base text-[18px] md:text-lg">
             We have got you covered.
           </p>
