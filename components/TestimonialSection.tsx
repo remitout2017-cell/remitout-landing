@@ -69,15 +69,19 @@ export default function TestimonialCarousel() {
 
   const togglePlayPause = () => setIsPlaying((prev) => !prev);
 
-  const renderStars = (rating: number) =>
-    Array.from({ length: 5 }, (_, i) => (
-      <span
-        key={i}
-        className={`text-lg ${i < rating ? "text-orange-400" : "text-gray-300"}`}
-      >
-        ★
-      </span>
-    ));
+ const renderStars = (rating: number | string) => {
+   const numericRating = Number(rating) || 0;
+   return Array.from({ length: 5 }, (_, i) => (
+     <span
+       key={i}
+       className={`text-lg ${
+         i < numericRating ? "text-orange-400" : "text-gray-300"
+       }`}
+     >
+       ★
+     </span>
+   ));
+ };
 
   return (
     <div className="relative h-[74vh] mb-55 md:mb-[10%]">
@@ -91,7 +95,7 @@ export default function TestimonialCarousel() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/20 rounded-2xl" />
 
-        <button
+        {/* <button
           onClick={togglePlayPause}
           className="absolute top-1/2 left-1/2 transform -translate-x-1/2 sm:top-8 sm:right-8 sm:left-auto sm:translate-x-0 w-14 h-14 bg-white rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors z-20 shadow-lg"
           aria-label={isPlaying ? "Pause carousel" : "Play carousel"}
@@ -101,7 +105,7 @@ export default function TestimonialCarousel() {
           ) : (
             <Play className="w-6 h-6 text-orange-500 ml-1" />
           )}
-        </button>
+        </button> */}
 
         <div className="absolute top-20 left-0 right-0 w-full z-20 px-4 md:px-20">
           <div className="text-[32px] md:text-4xl font-semibold text-white leading-[39px] capitalize tracking-[-1px]">
@@ -144,7 +148,7 @@ export default function TestimonialCarousel() {
                           <Image
                             src={
                               testimonial.avatar?.url
-                                ? `${process.env.NEXT_PUBLIC_PAYLOAD_API || "http://localhost:3001"}${testimonial.avatar.url}`
+                                ? `${process.env.NEXT_PUBLIC_PAYLOAD_API}${testimonial.avatar.url}`
                                 : "/avatar.webp"
                             }
                             alt={testimonial.name}

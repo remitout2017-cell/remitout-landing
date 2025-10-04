@@ -71,7 +71,8 @@ export default function Footer() {
     <footer className="bg-[#251446] text-white">
       <div className="px-2 py-8 md:p-12 md:max-w-8xl md:mx-32">
         {/* Contact Info */}
-        <div className="bg-[#45267F] rounded-xl p-6 m-2 md:m-0 mb-10">
+        {/* Web Version - unchanged */}
+        <div className="hidden md:block bg-[#45267F] rounded-xl p-6 m-2 md:m-0 mb-10">
           <div className="flex flex-col md:flex-row justify-center md:justify-between items-center gap-6 md:gap-8 text-center md:text-left">
             {/* Office Address */}
             <div className="flex-1 max-w-xs md:max-w-md mx-auto">
@@ -99,6 +100,42 @@ export default function Footer() {
                 content={footerContent.phone || "Updating..."}
               />
             </div>
+          </div>
+        </div>
+
+        {/* Mobile Version - new layout */}
+        <div className="block md:hidden bg-[#45267F] rounded-xl p-4 m-2 mb-10 space-y-6 text-center">
+          {/* Office Address */}
+          <div className="flex flex-col items-center gap-2">
+            <MapPin className=" text-3xl" />
+            <h4 className="text-white font-semibold text-lg">Office Address</h4>
+            <p className="text-white text-sm">
+              {footerContent.officeAddress || "Updating..."}
+            </p>
+          </div>
+
+          {/* Email */}
+          <div className="flex flex-col items-center gap-2">
+            <Mail className="text-3xl" />
+            <h4 className="text-white font-semibold text-lg">Send Email</h4>
+            <a
+              href={`mailto:${footerContent.email}`}
+              className="text-white text-sm underline hover:text-gray-200"
+            >
+              {footerContent.email || "Updating..."}
+            </a>
+          </div>
+
+          {/* Phone */}
+          <div className="flex flex-col items-center gap-2">
+            <Phone className=" text-3xl" />
+            <h4 className="text-white font-semibold text-lg">Call Emergency</h4>
+            <a
+              href={`tel:${footerContent.phone}`}
+              className="text-white text-sm underline hover:text-gray-200"
+            >
+              {footerContent.phone || "Updating..."}
+            </a>
           </div>
         </div>
 

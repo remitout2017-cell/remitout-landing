@@ -5,6 +5,7 @@ import Image from "next/image";
 import Award from "./icones/Award";
 import PersonStar from "./icones/PersonStar";
 import { getWhyRemitout } from "@/lib/route";
+import { getWhyRemitoutCTA } from "@/lib/route";
 const API_URL = process.env.NEXT_PUBLIC_PAYLOAD_API;
 
 interface Feature {
@@ -17,6 +18,21 @@ interface Feature {
 
 export default function WhyRemitoutSection() {
   const [features, setFeatures] = useState<Feature[]>([]);
+  const [cta, setCTA] = useState<{
+    title: string;
+    description: string;
+    buttonText: string;
+    buttonLink?: string;
+    image?: { url?: string; alt?: string };
+  } | null>(null);
+
+  useEffect(() => {
+    const fetchCTA = async () => {
+      const data = await getWhyRemitoutCTA(); // fetch from payload
+      setCTA(data);
+    };
+    fetchCTA();
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -104,40 +120,47 @@ export default function WhyRemitoutSection() {
           })}
         </div>
 
-        {/* Bottom CTA - Static */}
-        <div className="relative">
-          <div className="absolute left-0 right-0 bg-white rounded-2xl py-4 md:py-8 px-3 md:px-10 shadow-sm w-[100%] md:w-[90%] md:mx-auto">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-              {/* Left Section */}
-              <div className="flex items-center gap-4 w-full md:w-1/2">
-                <div className="w-28 h-18 md:w-18 md:h-18 rounded-md md:rounded-xl overflow-hidden flex items-center justify-center bg-white">
-                  <Image
-                    src="/cil_book.webp"
-                    alt="Avatar"
-                    width={48}
-                    height={48}
-                    className="object-cover w-full h-full"
-                  />
+        {/* Bottom CTA - Dynamic */}
+        {cta && (
+          <div className="relative">
+            <div className="absolute left-0 right-0 bg-white rounded-2xl py-4 md:py-8 px-3 md:px-10 shadow-sm w-[100%] md:w-[90%] md:mx-auto">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="flex items-center gap-4 w-full md:w-1/2">
+                  <div className="w-28 h-18 md:w-18 md:h-18 rounded-md md:rounded-xl overflow-hidden flex items-center justify-center bg-white">
+                    <Image
+                      src={
+                        cta.image?.url
+                          ? `${API_URL}${cta.image.url}` // add base URL here
+                          : "/cil_book.webp"
+                      }
+                      alt={cta.image?.alt || "CTA Image"}
+                      width={48}
+                      height={48}
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-[20px] md:text-2xl font-medium text-[#363636] mb-1 leading-[28.8px] capitalize tracking-[-1px]">
+                      {cta.title}
+                    </h3>
+                    <p className="text-[#8E8E8E] md:leading-[25px]">
+                      {cta.description}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-[20px] md:text-2xl font-medium text-[#363636] mb-1 leading-[28.8px] capitalize tracking-[-1px]">
-                    Make The Smart Choice
-                  </h3>
-                  <p className="text-[#8E8E8E] md:leading-[25px]">
-                    Enroll today to make your admission a breeze
-                  </p>
-                </div>
-              </div>
 
-              {/* Button */}
-              <div className="w-full md:w-1/2 flex justify-end">
-                <button className="w-full md:w-auto bg-[#FF7A00] text-white px-8 py-2 md:py-3 rounded-sm md:rounded-md font-semibold transition-colors whitespace-nowrap text-lg md:text-2xl">
-                  Join the community
-                </button>
+                <div className="w-full md:w-1/2 flex justify-end">
+                  <a
+                    href={cta.buttonLink || "#"}
+                    className="w-full md:w-auto bg-[#FF7A00] text-white px-8 py-2 md:py-3 rounded-sm md:rounded-md font-semibold transition-colors whitespace-nowrap text-lg md:text-2xl text-center"
+                  >
+                    {cta.buttonText}
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );

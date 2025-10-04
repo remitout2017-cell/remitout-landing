@@ -194,3 +194,22 @@ export async function getStudentTrustSectionContent() {
     return NextResponse.json({ error: "Failed to fetch" }, { status: 500 });
   }
 }
+
+// Get Why Remitout CTA Section
+export async function getWhyRemitoutCTA() {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_PAYLOAD_API}/api/why-remitout-cta?limit=1`, {
+      next: { revalidate: 60 }, // optional cache control for ISR
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch Why Remitout CTA: ${res.statusText}`);
+    }
+
+    const data = await res.json();
+    return data?.docs?.[0] || null; // return first document only
+  } catch (error) {
+    console.error("Error fetching Why Remitout CTA:", error);
+    return null;
+  }
+}

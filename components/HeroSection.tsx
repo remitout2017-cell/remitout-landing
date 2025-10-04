@@ -92,12 +92,24 @@ export default function RemitoutLanding() {
           <div className="flex gap-4 font-poppins text-sm md:text-lg">
             <div className="flex gap-1">
               <Phone />
-              <span>{NavContactDetails?.phone}</span>
+              <a
+                href={`tel:${NavContactDetails?.phone}`}
+                className="hover:underline"
+              >
+                {NavContactDetails?.phone}
+              </a>
             </div>
             <span className="hidden sm:inline-block text-white/40">|</span>
             <div className="hidden sm:flex items-center gap-1">
               <Mail />
-              <span>{NavContactDetails?.email}</span>
+              <a
+                href={`https://mail.google.com/mail/?view=cm&to=${NavContactDetails?.email}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                {NavContactDetails?.email}
+              </a>
             </div>
           </div>
           <div className="flex items-center gap-4 mt-2 sm:mt-0">
