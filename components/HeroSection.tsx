@@ -41,6 +41,8 @@ interface HomePageData {
       avatar?: { url: string };
     };
     ctaLink?: string;
+    heading: string;
+    subheading: string;
   };
 
   services: {
@@ -177,18 +179,18 @@ export default function RemitoutLanding() {
 
             <div className="space-y-4">
               <h1 className="text-[32px] md:text-[50px] font-bold text-[#363636] tracking-[-1px] leading-tight md:leading-[60px] space-y-2">
-                <span className="block text-[#45267F]">
-                  From Admission to Arrival
-                </span>
-                <span className="block text-[#45267F]">
-                  We Power Your Entire{" "}
-                  <span className="text-[#45267F] italic">Study Abroad</span>{" "}
-                  Journey
-                </span>
-                <span className="block text-[18px] md:text-[20px] font-normal text-[#45267F] mt-4">
-                  University Admissions • Education Loans • Visa Help • Money
-                  Transfers — All in One Place
-                </span>
+                {hero?.heading && (
+                  <span
+                    className="block text-[#45267F]"
+                    dangerouslySetInnerHTML={{ __html: hero.heading }}
+                  />
+                )}
+
+                {hero?.subheading && (
+                  <span className="block text-[18px] md:text-[20px] font-normal text-[#45267F] mt-4">
+                    {hero.subheading}
+                  </span>
+                )}
               </h1>
 
               {hero?.description && (

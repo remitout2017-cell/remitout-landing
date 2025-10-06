@@ -17,9 +17,8 @@ export default function Footer() {
     officeAddress: string;
     email: string;
     phone: string;
-    videoUrl?: string;
     videoLink?: string;
-    videoImage?: {
+    image?: {
       url: string;
       alt?: string;
     };
@@ -182,13 +181,13 @@ export default function Footer() {
               >
                 <Image
                   src={
-                    footerContent.videoImage?.url
-                      ? `http://localhost:3001/${footerContent.videoImage.url}`
+                    footerContent.image?.url
+                      ? `http://localhost:3001/${footerContent.image.url}`
                       : "/logo1.svg"
                   }
-                  alt={footerContent.videoImage?.alt || "Video thumbnail"}
-                  width={200}
-                  height={150}
+                  alt={footerContent.image?.alt || "Thumbnail"}
+                  width={350}
+                  height={200}
                   className="w-[350px] h-[200px] rounded-lg object-contain"
                 />
               </a>
