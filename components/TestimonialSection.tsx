@@ -14,9 +14,6 @@ type Testimonial = {
     url?: string;
   };
 };
-const SkeletonCard = () => (
-  <div className="w-full md:w-1/2 lg:w-1/3 bg-gray-200 rounded-2xl p-4 animate-pulse h-[300px] md:h-[350px] m-2" />
-);
 
 
 const groupTestimonials = (
