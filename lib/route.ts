@@ -1,4 +1,3 @@
-import { NextResponse } from "next/server";
 
 const payloadURL = process.env.NEXT_PUBLIC_PAYLOAD_API;
 
@@ -10,23 +9,26 @@ export async function Enquiry(data: {
   serviceInterestedIn: string;
   message: string;
 }) {
-  const res = await fetch(`${payloadURL}/api/enquiries`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
+  try {
+    const res = await fetch(`${payloadURL}/api/enquiries`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
 
-  if (!res.ok) {
-    return NextResponse.json(
-      { error: "Failed to create enquiry" },
-      { status: 500 }
-    );
+    if (!res.ok) {
+      const errorData = await res.json().catch(() => ({}));
+      throw new Error(errorData?.error || "Failed to create enquiry");
+    }
+
+    const result = await res.json();
+    return result; // return plain JSON
+  } catch (err) {
+    console.error("[Enquiry] Error submitting enquiry:", err);
+    throw err; // throw to be caught in frontend
   }
-
-  const result = await res.json();
-  return NextResponse.json(result);
 }
 
 export async function GetServices() {
@@ -43,35 +45,50 @@ export async function GetServices() {
     }
 
     const data = await res.json();
-    return data.docs; // return the array directly
+    return data.docs; 
   } catch (error) {
     console.error("Service fetch error:", error);
-    return []; // return empty array on error
+    return []; 
   }
 }
 
 export async function getWhyRemitout() {
-  const res = await fetch(`${payloadURL}/api/why-remitout`, {
-    headers: { "Content-Type": "application/json" },
-  });
+  try {
+    const res = await fetch(`${payloadURL}/api/why-remitout`, {
+      headers: { "Content-Type": "application/json" },
+    });
 
-  if (!res.ok) throw new Error("Failed to fetch why-remitout data");
+    if (!res.ok) {
+      throw new Error(
+        `Failed to fetch why-remitout data: ${res.status} ${res.statusText}`
+      );
+    }
 
-  const data = await res.json();
-  return data.docs;
+    const data = await res.json();
+    return data.docs || []; // return empty array if docs not found
+  } catch (error) {
+    console.error("[getWhyRemitout] Error fetching data:", error);
+    return []; // fallback to empty array
+  }
 }
 
+
 export async function getAllFaqs() {
-  const res = await fetch(`${payloadURL}/api/faqs?limit=40`, {
-    cache: "no-store",
-  });
+  try {
+    const res = await fetch(`${payloadURL}/api/faqs?limit=40`, {
+      cache: "no-store",
+    });
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch FAQs");
+    if (!res.ok) {
+      throw new Error(`Failed to fetch FAQs: ${res.status} ${res.statusText}`);
+    }
+
+    const json = await res.json();
+    return json.docs || []; 
+  } catch (error) {
+    console.error("[getAllFaqs] Error fetching FAQs:", error);
+    return [];
   }
-
-  const json = await res.json();
-  return json.docs;
 }
 
 // Get In Touch Form Submission
@@ -99,42 +116,62 @@ export async function submitGetInTouchForm(data: {
 }
 
 // Newsletter Subscription
-export async function Newsletter(req: Request) {
-  const data = await req.json();
+export async function submitNewsletter(data: { email: string }) {
+  try {
+    const res = await fetch(`${payloadURL}/api/newsletters`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: data.email }),
+    });
 
-  const res = await fetch(`${payloadURL}/api/newsletters`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ email: data.email }),
-  });
+    if (!res.ok) {
+      console.error("Newsletter subscription failed", res.statusText);
+      return { success: false };
+    }
 
-  if (!res.ok) {
-    return NextResponse.json({ success: false }, { status: res.status });
+    return { success: true };
+  } catch (error) {
+    console.error("Newsletter subscription error", error);
+    return { success: false };
   }
-
-  return NextResponse.json({ success: true });
 }
 
-// Footer Content
-export async function Footer() {
-  const res = await fetch(`${payloadURL}/api/footer-content`);
 
-  const data = await res.json();
-  return NextResponse.json(data);
+// Footer Content
+export async function fetchFooter() {
+  try {
+    const res = await fetch(`${payloadURL}/api/footer-content`);
+    if (!res.ok) {
+      throw new Error(
+        `Failed to fetch footer content: ${res.status} ${res.statusText}`
+      );
+    }
+
+    const data = await res.json();
+    return data; // return plain JSON
+  } catch (error) {
+    console.error("[fetchFooterContent] Error fetching footer:", error);
+    return { docs: [{}] }; // safe fallback
+  }
 }
 
 //Testimonials
 export async function Testimonials() {
   try {
     const res = await fetch(`${payloadURL}/api/testimonial`);
-    const data = await res.json();
+    if (!res.ok) {
+      throw new Error(
+        `Failed to fetch testimonials: ${res.status} ${res.statusText}`
+      );
+    }
 
-    return NextResponse.json(data);
+    const data = await res.json();
+    return data; // return plain JSON
   } catch (err) {
-    console.error("[ERROR fetching testimonials]", err);
-    return NextResponse.json({ testimonials: [] }, { status: 500 });
+    console.error("[Testimonials] Error fetching testimonials:", err);
+    return { docs: [{ testimonials: [] }] }; // safe fallback
   }
 }
 
@@ -151,43 +188,42 @@ export async function getHomePageContent() {
     }
 
     const data = await res.json();
-    const homepage = data.docs?.[0] || []; // just the first doc
-
-    return NextResponse.json(homepage);
+    return data.docs?.[0] || null; // Return the first document directly
   } catch (error) {
     console.error("Homepage fetch error:", error);
-    return NextResponse.json(
-      { error: "Failed to fetch homepage data" },
-      { status: 500 }
-    );
+    return null;
   }
 }
 
 export async function getNavContactDetails() {
   try {
     const res = await fetch(`${payloadURL}/api/contactDetails`);
-    const data = await res.json();
-    const contact = data.docs?.[0] || []; // assuming only one set of details
+    if (!res.ok) throw new Error("Failed to fetch contact details");
 
-    return NextResponse.json(contact);
+    const data = await res.json();
+    const contact = data.docs?.[0] || null; // return a single contact object or null
+    return contact;
   } catch (error) {
     console.error("Contact fetch error:", error);
-    return NextResponse.json(
-      { error: "Failed to fetch contact details" },
-      { status: 500 }
-    );
+    return null; // return null on error
   }
 }
 
 export async function getStudentTrustSectionContent() {
   try {
     const res = await fetch(`${payloadURL}/api/studentTrustSection`);
+    if (!res.ok) {
+      throw new Error(
+        `Failed to fetch student trust section: ${res.status} ${res.statusText}`
+      );
+    }
+
     const data = await res.json();
-    const trustSection = data.docs?.[0] || [];
-    return NextResponse.json(trustSection);
+    const trustSection = data.docs?.[0] || null; 
+    return trustSection;
   } catch (err) {
-    console.error("Student Trust fetch error:", err);
-    return NextResponse.json({ error: "Failed to fetch" }, { status: 500 });
+    console.error("[getStudentTrustSectionContent] Error:", err);
+    return null; 
   }
 }
 

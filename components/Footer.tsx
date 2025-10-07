@@ -4,10 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { MapPin, Mail, Phone } from "lucide-react";
 import Image from "next/image";
-import {
-  Footer as fetchFooterContent,
-  Newsletter as submitNewsletter,
-} from "@/lib/route";
+import { fetchFooter, submitNewsletter } from "@/lib/route";
 import SocialLinks from "@/components/SocialLinks";
 
 export default function Footer() {
@@ -41,27 +38,23 @@ export default function Footer() {
     `https://mail.google.com/mail/?view=cm&fs=1&to=${email}`;
 
 
-  useEffect(() => {
-    async function loadFooter() {
-      const res = await fetchFooterContent();
-      const json = await res.json();
-      setFooterContent(json?.docs?.[0] || {});
+useEffect(() => {
+  async function loadFooter() {
+    try {
+      const data = await fetchFooter(); // already JSON
+      setFooterContent(data?.docs?.[0] || {});
+    } catch (err) {
+      console.error("Failed to load footer content", err);
     }
-    loadFooter();
-  }, []);
+  }
+  loadFooter();
+}, []);
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const res = await submitNewsletter(
-      new Request("", {
-        body: JSON.stringify({ email }),
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-      })
-    );
-
-    const json = await res.json();
+    const json = await submitNewsletter({ email });
 
     if (json?.success) {
       setMessage("Thank you for subscribing to our newsletter!");
@@ -69,10 +62,11 @@ export default function Footer() {
     } else {
       setMessage("Something went wrong. Please try again later.");
     }
+
     // Hide message after 4 seconds
     setTimeout(() => {
       setMessage(null);
-    }, 4000);                     
+    }, 4000);
   };
   
 

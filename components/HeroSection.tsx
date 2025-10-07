@@ -15,7 +15,7 @@ import PigMoney from "./icones/PigMoney";
 import { getHomePageContent, getNavContactDetails } from "@/lib/route";
 import Link from "next/link";
 import VisaAssistance from "./icones/VisaAssistance";
-import { Footer } from "@/lib/route";
+import { fetchFooter } from "@/lib/route";
 import SocialLinks from "@/components/SocialLinks";
 
 
@@ -66,39 +66,36 @@ export default function RemitoutLanding() {
     };
   } | null>(null);
 
- useEffect(() => {
-   async function loadFooterContent() {
-     try {
-       const res = await Footer();
-       const json = await res.json(); // NextResponse contains the JSON
-       setFooterContent(json?.docs?.[0] || {}); // your first document
-     } catch (err) {
-       console.error("Failed to load footer content", err);
-     }
-   }
-   loadFooterContent();
- }, []);
+useEffect(() => {
+  async function loadFooter() {
+    try {
+      const data = await fetchFooter(); // already JSON
+      setFooterContent(data?.docs?.[0] || {});
+    } catch (err) {
+      console.error("Failed to load footer content", err);
+    }
+  }
+  loadFooter();
+}, []);
 
   useEffect(() => {
-    const fetchContent = async () => {
-      try {
-        const res = await getHomePageContent();
-        const json = await res.json();
-        setData(json);
-      } catch (err) {
-        console.error("Failed to fetch home page content", err);
-      }
-    };
+     const fetchContent = async () => {
+       try {
+         const data = await getHomePageContent(); 
+         setData(data);
+       } catch (err) {
+         console.error("Failed to fetch home page content", err);
+       }
+     };
 
-    const fetchNavContactDetails = async () => {
-      try {
-        const res = await getNavContactDetails();
-        const json = await res.json();
-        setNavContactDetails(json);
-      } catch (err) {
-        console.error("Failed to fetch nav contact details", err);
-      }
-    };
+   const fetchNavContactDetails = async () => {
+     try {
+       const contact = await getNavContactDetails();
+       setNavContactDetails(contact);
+     } catch (err) {
+       console.error("Failed to fetch nav contact details", err);
+     }
+   };
 
     fetchContent();
     fetchNavContactDetails();
@@ -286,16 +283,24 @@ export default function RemitoutLanding() {
       {/* Services Section */}
       <section className="bg-[#45267F] text-white py-12 relative z-[20]">
         <div className="max-w-8xl px-6 lg:px-32">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 place-items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             {services?.length > 0 &&
               services.map((service, i) => (
-                <div key={i} className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-[#2E175A] rounded-lg flex items-center justify-center flex-shrink-0">
+                <div
+                  key={i}
+                  className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left space-y-3 sm:space-y-0 sm:space-x-4"
+                >
+                  {/* Icon */}
+                  <div className="w-14 h-14 bg-[#2E175A] rounded-xl flex items-center justify-center flex-shrink-0 mx-auto sm:mx-4">
                     {iconMap[service.iconType]}
                   </div>
-                  <div>
-                    <h3 className="text-2xl font-bold mb-2">{service.title}</h3>
-                    <p className="text-base text-white/70">
+
+                  {/* Text */}
+                  <div className="max-w-xs sm:max-w-none mt-3 sm:mt-0">
+                    <h3 className="text-xl font-semibold mb-1 sm:mb-2">
+                      {service.title}
+                    </h3>
+                    <p className="text-sm text-white/70 leading-relaxed">
                       {service.description}
                     </p>
                   </div>

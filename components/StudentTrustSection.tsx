@@ -28,10 +28,14 @@ export default function StudentTrustSection() {
 
   useEffect(() => {
     const fetchStudentsTrustSection = async () => {
-      const res = await getStudentTrustSectionContent();
-      const jsonData = await res.json();
-      setData(jsonData);
+      try {
+        const data = await getStudentTrustSectionContent(); 
+        setData(data);
+      } catch (err) {
+        console.error("Failed to fetch Student Trust Section", err);
+      }
     };
+
     fetchStudentsTrustSection();
   }, []);
 

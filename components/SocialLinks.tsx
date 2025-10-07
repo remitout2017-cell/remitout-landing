@@ -75,9 +75,12 @@ export default function SocialLinks({ links }: SocialLinksProps) {
         const extra = item as AdditionalLink;
 
         // Prepend Payload server URL if needed
-        const src = extra.icon?.url?.startsWith("http")
-          ? extra.icon.url
-          : `http://localhost:3001/${extra.icon?.url}`; // replace with your Payload URL in prod
+        const src = extra.icon?.url
+          ? extra.icon.url.startsWith("http")
+            ? extra.icon.url
+            : `${process.env.NEXT_PUBLIC_PAYLOAD_URL || "http://localhost:3001"}${extra.icon.url}`
+          : "";
+
 
         return (
           <Link

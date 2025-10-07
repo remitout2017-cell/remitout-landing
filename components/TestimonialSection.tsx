@@ -32,20 +32,19 @@ export default function TestimonialCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
 
-  useEffect(() => {
-    const fetchTestimonials = async () => {
-      try {
-        const res = await Testimonials();
-        const json = await res.json();
-        const records = json.docs?.[0]?.testimonials || [];
-        setTestimonials(records);
-      } catch (err) {
-        console.error("Error fetching testimonials", err);
-      }
-    };
+useEffect(() => {
+  const fetchTestimonials = async () => {
+    try {
+      const data = await Testimonials();
+      const records = data.docs?.[0]?.testimonials || [];
+      setTestimonials(records);
+    } catch (err) {
+      console.error("Error fetching testimonials", err);
+    }
+  };
 
-    fetchTestimonials();
-  }, []);
+  fetchTestimonials();
+}, []);
 
 
   useEffect(() => {
