@@ -6,6 +6,7 @@ import Tick from "./icones/Tick";
 import { useEffect, useState } from "react";
 import { getStudentTrustSectionContent } from "@/lib/route";
 import Link from "next/link";
+import StudentTrustSkeleton from "./StudentTrustSkeleton";
 
 interface TrustData {
   studentCount: number;
@@ -39,7 +40,7 @@ export default function StudentTrustSection() {
     fetchStudentsTrustSection();
   }, []);
 
-  if (!data) return null;
+   if (!data) return <StudentTrustSkeleton />;
 
   return (
     <section className="bg-[#F5F5FA] pb-16 md:pb-22 pt-32 md:pt-42 lg:pt-55 px-4 md:px-8">

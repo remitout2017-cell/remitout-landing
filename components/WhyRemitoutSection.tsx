@@ -53,6 +53,46 @@ export default function WhyRemitoutSection() {
         return null;
     }
   };
+  if (!features.length) {
+    return (
+      <section className="py-16 px-4 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          {/* Header Skeleton */}
+          <div className="text-center mb-12 animate-pulse">
+            <div className="h-8 w-48 bg-gray-300 mx-auto mb-4 rounded"></div>
+            <div className="h-5 w-80 bg-gray-200 mx-auto rounded"></div>
+          </div>
+
+          {/* Feature Cards Skeleton */}
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-6 mb-18">
+            {[...Array(3)].map((_, i) => (
+              <div
+                key={i}
+                className="relative rounded-xl overflow-hidden h-[300px] md:h-[403px] bg-gray-200 animate-pulse"
+              ></div>
+            ))}
+          </div>
+
+          {/* CTA Skeleton */}
+          <div className="relative animate-pulse">
+            <div className="absolute left-0 right-0 bg-white rounded-2xl py-4 md:py-8 px-3 md:px-10 shadow-sm w-[100%] md:w-[90%] md:mx-auto">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="flex items-center gap-4 w-full md:w-1/2">
+                  <div className="w-28 h-18 md:w-18 md:h-18 bg-gray-300 rounded-md md:rounded-xl"></div>
+                  <div className="flex flex-col gap-2">
+                    <div className="h-6 w-48 bg-gray-300 rounded"></div>
+                    <div className="h-4 w-64 bg-gray-200 rounded"></div>
+                  </div>
+                </div>
+                <div className="w-full md:w-1/2 h-10 bg-gray-300 rounded mt-4 md:mt-0"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
 
   return (
     <section className="py-16 px-4 bg-gray-50">

@@ -105,6 +105,29 @@ useEffect(() => {
 
   const { hero, services } = data;
 
+  if (!data || !NavContactDetails || !footerContent) {
+    return (
+      <div className="min-h-screen flex flex-col gap-4 p-4">
+        {/* Hero Skeleton */}
+        <div className="bg-gray-200 h-80 md:h-[400px] rounded animate-pulse"></div>
+
+        {/* Services Skeleton */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mt-8">
+          {[...Array(4)].map((_, i) => (
+            <div
+              key={i}
+              className="flex flex-col items-center space-y-3 animate-pulse"
+            >
+              <div className="w-14 h-14 bg-gray-300 rounded-xl"></div>
+              <div className="h-6 w-20 bg-gray-300 rounded"></div>
+              <div className="h-4 w-28 bg-gray-200 rounded"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+  
   return (
     <div className="min-h-screen bg-white relative">
       {/* Topbar */}
