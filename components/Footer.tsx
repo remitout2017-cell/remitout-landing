@@ -25,7 +25,11 @@ export default function Footer() {
     socialLinks?: {
       facebook?: string;
       instagram?: string;
-      customIcon?: string;
+      additionalLinks?: {
+        label: string;
+        icon?: { url: string; alt?: string };
+        link: string;
+      }[];
     };
   }>({
     officeAddress: "",
@@ -70,6 +74,7 @@ export default function Footer() {
       setMessage(null);
     }, 4000);                     
   };
+  
 
   return (
     <footer className="bg-[#251446] text-white">
