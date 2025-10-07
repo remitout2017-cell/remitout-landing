@@ -82,7 +82,7 @@ useEffect(() => {
               <ContactItem
                 icon={<MapPin className="text-[#4C2A9E]" />}
                 title="Office Address"
-                content={footerContent.officeAddress || "Updating..."}
+                content={footerContent.officeAddress }
               />
             </div>
 
@@ -113,7 +113,7 @@ useEffect(() => {
               <ContactItem
                 icon={<Phone className="text-[#4C2A9E]" />}
                 title="Emergency Contact"
-                content={footerContent.phone || "Updating..."}
+                content={footerContent.phone }
               />
             </div>
           </div>
@@ -126,7 +126,7 @@ useEffect(() => {
             <MapPin className=" text-3xl" />
             <h4 className="text-white font-semibold text-lg">Office Address</h4>
             <p className="text-white text-sm">
-              {footerContent.officeAddress || "Updating..."}
+              {footerContent.officeAddress }
             </p>
           </div>
 
@@ -143,7 +143,7 @@ useEffect(() => {
                 rel="noopener noreferrer"
                 className="text-white text-sm underline hover:text-gray-200"
               >
-                {footerContent.email || "Updating..."}
+                {footerContent.email}
               </a>
             ) : (
               <p className="text-white text-sm">Updating...</p>
