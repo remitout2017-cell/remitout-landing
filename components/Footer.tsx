@@ -102,7 +102,7 @@ useEffect(() => {
                       {footerContent.email}
                     </a>
                   ) : (
-                    "Updating..."
+                    ""
                   )
                 }
               />
@@ -146,7 +146,7 @@ useEffect(() => {
                 {footerContent.email}
               </a>
             ) : (
-              <p className="text-white text-sm">Updating...</p>
+              <p className="text-white text-sm"> </p>
             )}
           </div>
 
@@ -162,7 +162,7 @@ useEffect(() => {
                 {footerContent.phone}
               </a>
             ) : (
-              <p className="text-white text-sm">Updating...</p>
+              <p className="text-white text-sm"> </p>
             )}
           </div>
         </div>
