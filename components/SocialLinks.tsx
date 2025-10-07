@@ -24,6 +24,7 @@ export interface SocialLinksProps {
   };
 }
 
+
 export default function SocialLinks({ links }: SocialLinksProps) {
   if (!links) return null;
 
@@ -74,12 +75,14 @@ export default function SocialLinks({ links }: SocialLinksProps) {
         // Additional link
         const extra = item as AdditionalLink;
 
-        // Prepend Payload server URL if needed
-        const src = extra.icon?.url
-          ? extra.icon.url.startsWith("http")
-            ? extra.icon.url
-            : `${process.env.NEXT_PUBLIC_PAYLOAD_URL || "http://localhost:3001"}${extra.icon.url}`
-          : "";
+        const src = (() => {
+          if (!extra.icon?.url) return null; // no URL
+          if (extra.icon.url.startsWith("http")) return extra.icon.url; // absolute URL
+          const base = process.env.NEXT_PUBLIC_PAYLOAD_API?.replace(/\/$/, ""); // remove trailing slash
+          if (!base) return null; // fallback if env not set
+          return `${base}${extra.icon.url.startsWith("/") ? "" : "/"}${extra.icon.url}`;
+        })();
+          
 
 
         return (
@@ -90,13 +93,15 @@ export default function SocialLinks({ links }: SocialLinksProps) {
             rel="noopener noreferrer"
             className="hover:opacity-80"
           >
-            <Image
-              src={src}
-              alt={extra.label || "social icon"}
-              width={24}
-              height={24}
-              className="h-6 w-6 object-contain"
-            />
+            {src && (
+              <Image
+                src={src}
+                alt={extra.label || "icon"}
+                width={24}
+                height={24}
+                className="h-6 w-6 object-contain"
+              />
+            )}
           </Link>
         );
       })}
