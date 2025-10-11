@@ -10,6 +10,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 
+
 # Copy the rest of the code
 COPY . .
 

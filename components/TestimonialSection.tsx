@@ -149,7 +149,7 @@ useEffect(() => {
                           <Image
                             src={
                               testimonial.avatar?.url
-                                ? `${process.env.NEXT_PUBLIC_PAYLOAD_API}${testimonial.avatar.url}`
+                                ? `http://66.116.196.83:5000$${testimonial.avatar.url}`
                                 : "/avatar.webp"
                             }
                             alt={testimonial.name}

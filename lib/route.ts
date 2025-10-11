@@ -1,5 +1,5 @@
 
-const payloadURL = process.env.NEXT_PUBLIC_PAYLOAD_API;
+const payloadURL = "http://66.116.196.83:5000";
 
 export async function Enquiry(data: {
   fullName: string;

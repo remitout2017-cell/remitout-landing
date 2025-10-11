@@ -78,8 +78,7 @@ export default function SocialLinks({ links }: SocialLinksProps) {
         const src = (() => {
           if (!extra.icon?.url) return null; // no URL
           if (extra.icon.url.startsWith("http")) return extra.icon.url; // absolute URL
-          const base = process.env.NEXT_PUBLIC_PAYLOAD_API?.replace(/\/$/, ""); // remove trailing slash
-          if (!base) return null; // fallback if env not set
+          const base = "http://66.116.196.83:5000"; // hardcoded IP
           return `${base}${extra.icon.url.startsWith("/") ? "" : "/"}${extra.icon.url}`;
         })();
           
