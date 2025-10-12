@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   devIndicators: false,
   images: {
-    domains: ["localhost", "remitout-cms.vercel.app"], // 👈 allow localhost
+    domains: ["localhost", "remitout-cms.vercel.app", "loan.remitout.com"], // 👈 allow localhost
     remotePatterns: [
       {
         protocol: "http",
@@ -16,6 +16,11 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "remitout-cms.vercel.app",
         pathname: "/media/**",
+      },
+      {
+        protocol: "https",
+        hostname: "loan.remitout.com",
+        pathname: "/media/**", // <-- allow production media
       },
     ],
   },
