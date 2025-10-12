@@ -48,7 +48,7 @@ export default function RootLayout({
         />
         <link
           rel="canonical"
-          href={seo.canonicalUrl || "https://remitout-landing.vercel.app"}
+          href={seo.canonicalUrl || "https://loan.remitout.com"}
         />
         <meta
           property="og:title"
@@ -68,7 +68,7 @@ export default function RootLayout({
         />
         <meta
           property="og:url"
-          content={seo.ogUrl || "https://remitout-landing.vercel.app"}
+          content={seo.ogUrl || "http://loan.remitout.com"}
         />
         <meta
           name="twitter:card"

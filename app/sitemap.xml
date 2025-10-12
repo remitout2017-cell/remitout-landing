@@ -5,7 +5,7 @@
 >
   <!-- Home Page -->
   <url>
-    <loc>https://remitout-landing.vercel.app/</loc>
+    <loc>http://loan.remitout.com/</loc>
     <lastmod>2025-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -13,7 +13,7 @@
 
   <!-- Education Loan Page (Main Service Focus) -->
   <url>
-    <loc>https://remitout-landing.vercel.app/education-loan</loc>
+    <loc>http://loan.remitout.com/education-loan</loc>
     <lastmod>2025-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
@@ -21,7 +21,7 @@
 
   <!-- Admission Support Page -->
   <url>
-    <loc>https://remitout-landing.vercel.app/admission-support</loc>
+    <loc>http://loan.remitout.com/admission-support</loc>
     <lastmod>2025-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
@@ -29,7 +29,7 @@
 
   <!-- Remittance Services Page -->
   <url>
-    <loc>https://remitout-landing.vercel.app/remittance</loc>
+    <loc>http://loan.remitout.com/remittance</loc>
     <lastmod>2025-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -37,7 +37,7 @@
 
   <!-- Testimonials Page -->
   <url>
-    <loc>https://remitout-landing.vercel.app/testimonials</loc>
+    <loc>http://loan.remitout.com/testimonials</loc>
     <lastmod>2025-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -45,7 +45,7 @@
 
   <!-- FAQs Page -->
   <url>
-    <loc>https://remitout-landing.vercel.app/faqs</loc>
+    <loc>http://loan.remitout.com/faqs</loc>
     <lastmod>2025-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -53,7 +53,7 @@
 
   <!-- Privacy Policy -->
   <url>
-    <loc>https://remitout-landing.vercel.app/privacy-policy</loc>
+    <loc>http://loan.remitout.com/privacy-policy</loc>
     <lastmod>2025-10-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
@@ -61,7 +61,7 @@
 
   <!-- Terms of Use -->
   <url>
-    <loc>https://remitout-landing.vercel.app/terms-of-use</loc>
+    <loc>http://loan.remitout.com/terms-of-use</loc>
     <lastmod>2025-10-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>

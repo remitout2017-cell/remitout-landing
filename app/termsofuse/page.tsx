@@ -26,22 +26,16 @@ export default function TermsOfUsePage() {
           name="description"
           content="Read Remitout's Terms of Use covering eligibility, services, data usage, disclaimers, and liability. Stay informed before using our platform."
         />
-        <link
-          rel="canonical"
-          href="https://remitout-landing.vercel.app/terms"
-        />
+        <link rel="canonical" href="http://loan.remitout.com/terms" />
         <meta property="og:title" content="Remitout - Terms of Use" />
         <meta
           property="og:description"
           content="Understand Remitout's terms and conditions for using education loans, admissions, and remittance services."
         />
-        <meta
-          property="og:url"
-          content="https://remitout-landing.vercel.app/terms"
-        />
+        <meta property="og:url" content="http://loan.remitout.com/terms" />
         <meta
           property="og:image"
-          content="https://remitout-landing.vercel.app/og-image-terms.jpg"
+          content="http://loan.remitout.com/og-image-terms.jpg"
         />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
