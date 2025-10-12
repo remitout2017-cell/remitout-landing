@@ -149,7 +149,7 @@ useEffect(() => {
                           <Image
                             src={
                               testimonial.avatar?.url
-                                ? `http://66.116.196.83:5000$${testimonial.avatar.url}`
+                                ? `https://loan.remitout.com$${testimonial.avatar.url}`
                                 : "/avatar.webp"
                             }
                             alt={testimonial.name}

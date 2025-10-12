@@ -78,7 +78,7 @@ export default function SocialLinks({ links }: SocialLinksProps) {
         const src = (() => {
           if (!extra.icon?.url) return null; // no URL
           if (extra.icon.url.startsWith("http")) return extra.icon.url; // absolute URL
-          const base = "http://66.116.196.83:5000"; // hardcoded IP
+          const base = "https://loan.remitout.com"; // hardcoded IP
           return `${base}${extra.icon.url.startsWith("/") ? "" : "/"}${extra.icon.url}`;
         })();
           

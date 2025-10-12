@@ -1,5 +1,5 @@
 
-const payloadURL = "http://66.116.196.83:5000";
+const payloadURL = "https://loan.remitout.com";
 
 export async function Enquiry(data: {
   fullName: string;

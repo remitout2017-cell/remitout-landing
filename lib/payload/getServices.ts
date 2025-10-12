@@ -1,5 +1,5 @@
 export async function getServices() {
-  const payloadURL = "http://66.116.196.83:5000";
+  const payloadURL = "https://loan.remitout.com";
 
   const res = await fetch(`${payloadURL}/api/services`, {
     headers: { "Content-Type": "application/json" },

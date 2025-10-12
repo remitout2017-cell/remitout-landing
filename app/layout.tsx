@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { getSEO } from "@/lib/route";
 
 const GTM_ID = "GTM-M45PXNHP";
-const API_URL = "http://66.116.196.83:5000";
+const API_URL = "http://loan.remitout.com";
 
 
 export default function RootLayout({

@@ -6,7 +6,7 @@ import Award from "./icones/Award";
 import PersonStar from "./icones/PersonStar";
 import { getWhyRemitout } from "@/lib/route";
 import { getWhyRemitoutCTA } from "@/lib/route";
-const API_URL = "http://66.116.196.83:5000";
+const API_URL = "https://loan.remitout.com";
 
 interface Feature {
   id: string;

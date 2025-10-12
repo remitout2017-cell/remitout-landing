@@ -19,7 +19,7 @@ interface Service {
   buttonLink?: string;
 }
 
-const API_URL = "http://66.116.196.83:5000";
+const API_URL = "https://loan.remitout.com";
 
 export default function ServicesSection() {
   const [services, setServices] = useState<Service[]>([]);

@@ -22,7 +22,7 @@ interface TrustData {
   buttonLink?: string;
 }
 
-const API_URL = "http://66.116.196.83:5000";
+const API_URL = "https://loan.remitout.com";
 
 export default function StudentTrustSection() {
   const [data, setData] = useState<TrustData | null>(null);
