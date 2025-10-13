@@ -220,6 +220,7 @@ export async function getStudentTrustSectionContent() {
 
     const data = await res.json();
     const trustSection = data.docs?.[0] || null; 
+    console.log("Fetched Student Trust Section:", trustSection);
     return trustSection;
   } catch (err) {
     console.error("[getStudentTrustSectionContent] Error:", err);
@@ -230,7 +231,7 @@ export async function getStudentTrustSectionContent() {
 // Get Why Remitout CTA Section
 export async function getWhyRemitoutCTA() {
   try {
-    const res = await fetch(`${payloadURL}/api/why-remitout-cta?limit=1`, {
+    const res = await fetch(`${payloadURL}/api/why-remitout-cta`, {
       next: { revalidate: 60 }, // optional cache control for ISR
     });
 

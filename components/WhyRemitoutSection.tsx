@@ -170,7 +170,7 @@ export default function WhyRemitoutSection() {
                     <Image
                       src={
                         cta.image?.url
-                          ? `${API_URL}${cta.image.url}` // add base URL here
+                          ? `${API_URL}${cta.image.url}` 
                           : "/cil_book.webp"
                       }
                       alt={cta.image?.alt || "CTA Image"}
