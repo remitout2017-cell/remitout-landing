@@ -13,6 +13,12 @@ const nextConfig: NextConfig = {
         pathname: "/media/**",
       },
       {
+        protocol: "http",
+        hostname: "localhost",
+        port: "3001",
+        pathname: "/api/media/**", // Added for API media endpoint
+      },
+      {
         protocol: "https",
         hostname: "remitout-cms.vercel.app",
         pathname: "/media/**",
@@ -21,6 +27,11 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "loan.remitout.com",
         pathname: "/media/**", // <-- allow production media
+      },
+      {
+        protocol: "https",
+        hostname: "loan.remitout.com",
+        pathname: "/api/media/**",
       },
     ],
   },
