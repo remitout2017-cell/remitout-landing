@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+// import Image from "next/image";
 import { Facebook, Instagram } from "lucide-react";
 
 export interface AdditionalLink {
@@ -93,12 +93,13 @@ export default function SocialLinks({ links }: SocialLinksProps) {
             className="hover:opacity-80"
           >
             {src && (
-              <Image
+              <img
                 src={src}
                 alt={extra.label || "icon"}
                 width={24}
                 height={24}
                 className="h-6 w-6 object-contain"
+                loading="lazy"
               />
             )}
           </Link>

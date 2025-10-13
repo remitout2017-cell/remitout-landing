@@ -167,15 +167,16 @@ export default function WhyRemitoutSection() {
               <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div className="flex items-center gap-4 w-full md:w-1/2">
                   <div className="w-28 h-18 md:w-18 md:h-18 rounded-md md:rounded-xl overflow-hidden flex items-center justify-center bg-white">
-                    <Image
+                    <img
                       src={
                         cta.image?.url
-                          ? `${API_URL}${cta.image.url}` 
+                          ? `${API_URL}${cta.image.url}`
                           : "/cil_book.webp"
                       }
                       alt={cta.image?.alt || "CTA Image"}
                       width={48}
                       height={48}
+                      loading="lazy"
                       className="object-cover w-full h-full"
                     />
                   </div>
