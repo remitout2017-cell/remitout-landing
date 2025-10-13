@@ -41,13 +41,13 @@ const Navbar = () => {
           <Link href="#" className="text-[#1A1A1A]  font-medium ">
             Home
           </Link>
-          <Link href="#services" className="ext-[#1A1A1A]  font-medium">
+          <Link href="/#services" className="text-[#1A1A1A] font-medium">
             Our Services
           </Link>
-          <Link href="#testimonials" className="ext-[#1A1A1A]  font-medium">
+          <Link href="/#testimonials" className="text-[#1A1A1A] font-medium">
             Testimonials
           </Link>
-          <Link href="#faqs" className="ext-[#1A1A1A] font-medium">
+          <Link href="/#faqs" className="text-[#1A1A1A] font-medium">
             FAQs
           </Link>
           {/* <Link href="#Contact" className="ext-[#1A1A1A] font-medium">
@@ -100,21 +100,21 @@ const Navbar = () => {
               Home
             </Link>
             <Link
-              href="#services"
+              href="/#services"
               onClick={() => setMobileMenuOpen(false)}
               className="block bg-white border-b px-4 py-3 text-[#45267F] font-medium"
             >
               Our Services
             </Link>
             <Link
-              href="#testimonials"
+              href="/#testimonials"
               onClick={() => setMobileMenuOpen(false)}
               className="block bg-white border-b px-4 py-3 text-[#45267F] font-medium"
             >
               Testimonials
             </Link>
             <Link
-              href="#faqs"
+              href="/#faqs"
               onClick={() => setMobileMenuOpen(false)}
               className="block bg-white border-b px-4 py-3 text-[#45267F] font-medium"
             >
