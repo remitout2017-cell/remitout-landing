@@ -108,7 +108,7 @@ export default function StudentTrustSection() {
               <Image
                 src={getImageUrl(
                   data.imageTopRight?.url,
-                  "/StudentTrust02.webp"
+                  "/trust-us-1.png"
                 )}
                 alt="Top Right"
                 fill
@@ -122,7 +122,7 @@ export default function StudentTrustSection() {
               <Image
                 src={getImageUrl(
                   data.imageBottomLeft?.url,
-                  "/StudentTrust01.webp"
+                  "/trust-us-2.jpg"
                 )}
                 alt="Bottom Left"
                 fill
