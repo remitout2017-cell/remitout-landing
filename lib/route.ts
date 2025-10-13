@@ -220,7 +220,6 @@ export async function getStudentTrustSectionContent() {
 
     const data = await res.json();
     const trustSection = data.docs?.[0] || null; 
-    console.log("Fetched Student Trust Section:", trustSection);
     return trustSection;
   } catch (err) {
     console.error("[getStudentTrustSectionContent] Error:", err);

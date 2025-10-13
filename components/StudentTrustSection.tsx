@@ -30,7 +30,7 @@ export default function StudentTrustSection() {
   useEffect(() => {
     const fetchStudentsTrustSection = async () => {
       try {
-        const data = await getStudentTrustSectionContent(); 
+        const data = await getStudentTrustSectionContent();
         setData(data);
       } catch (err) {
         console.error("Failed to fetch Student Trust Section", err);
@@ -40,8 +40,21 @@ export default function StudentTrustSection() {
     fetchStudentsTrustSection();
   }, []);
 
-if (!data) {
-    return null; 
+  // Helper function to construct full image URL
+  const getImageUrl = (imageUrl: string | undefined, fallback: string) => {
+    if (!imageUrl) return fallback;
+
+    // If URL already starts with http/https, return as is
+    if (imageUrl.startsWith("https")) {
+      return imageUrl;
+    }
+
+    // Otherwise, prepend API_URL
+    return `${API_URL}${imageUrl}`;
+  };
+
+  if (!data) {
+    return null;
   }
 
   return (
@@ -93,11 +106,10 @@ if (!data) {
             {/* Top Right Image */}
             <div className="absolute top-0 right-0 w-48 h-48 md:w-64 md:h-60 lg:w-80 lg:h-72 xl:w-[352px] xl:h-[337px] rounded-md md:rounded-lg overflow-hidden shadow-lg z-10">
               <Image
-                src={
-                  data.imageTopRight?.url
-                    ? `${API_URL}${data.imageTopRight.url}`
-                    : "/StudentTrust02.webp"
-                }
+                src={getImageUrl(
+                  data.imageTopRight?.url,
+                  "/StudentTrust02.webp"
+                )}
                 alt="Top Right"
                 fill
                 className="object-cover"
@@ -108,11 +120,10 @@ if (!data) {
             {/* Bottom Left Image */}
             <div className="absolute bottom-0 left-0 w-48 h-48 md:w-72 md:h-60 lg:w-96 lg:h-72 xl:w-[416px] xl:h-[337px] rounded-md md:rounded-lg overflow-hidden shadow-lg z-0">
               <Image
-                src={
-                  data.imageBottomLeft?.url
-                    ? `${API_URL}${data.imageBottomLeft.url}`
-                    : "/StudentTrust01.webp"
-                }
+                src={getImageUrl(
+                  data.imageBottomLeft?.url,
+                  "/StudentTrust01.webp"
+                )}
                 alt="Bottom Left"
                 fill
                 className="object-cover"
