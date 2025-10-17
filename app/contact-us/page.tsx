@@ -326,7 +326,8 @@ export default function ContactUsPage() {
                   </option>
                   <option value="consultation">Consultation</option>
                   <option value="money-transfer">Money Transfer</option>
-                  <option value="business-services">Business Services</option>
+                  <option value="visa-services">Visa Services</option>
+                  <option value="education-loan">Education Loan</option>
                   <option value="other">Other</option>
                 </select>
                 {errors.serviceInterestedIn && (
