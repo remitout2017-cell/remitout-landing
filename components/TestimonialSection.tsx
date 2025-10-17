@@ -146,10 +146,10 @@ useEffect(() => {
                       </p>
                       <div className="flex justify-between items-center">
                         <div className="flex items-center gap-2">
-                          <Image
+                          <img
                             src={
                               testimonial.avatar?.url
-                                ? `https://loan.remitout.com$${testimonial.avatar.url}`
+                                ? `https://loan.remitout.com${testimonial.avatar.url}`
                                 : "/avatar.webp"
                             }
                             alt={testimonial.name}
