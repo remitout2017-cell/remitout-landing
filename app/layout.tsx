@@ -35,6 +35,18 @@ export default function RootLayout({
 
     fetchSEO();
   }, []);
+  const defaultSEO = {
+    metaTitle: "Education Loan for Abroad Studies | Remitout Finance",
+    metaDescription:
+      "Apply online for an overseas education loan in India. Compare lenders, get fast approval, and study abroad with trusted financial guidance from Remitout.",
+    canonicalUrl: "https://loan.remitout.com",
+    ogTitle: "Remitout Education Loan | Fast Approval for Study Abroad",
+    ogDescription:
+      "Simplify your overseas education loan with expert help. Trusted by 1000+ students.",
+    ogImageUrl: "https://loan.remitout.com/og-image.jpg",
+    ogUrl: "https://loan.remitout.com",
+    twitterCard: "summary_large_image",
+  };
 
   return (
     <html lang="en">
