@@ -5,6 +5,43 @@ import { useEffect, useState } from "react";
 import { getSEO } from "@/lib/route";
 
 const API_URL = "http://loan.remitout.com";
+export async function generateMetadata() {
+  try {
+    const res = await fetch("https://loan.remitout.com/api/globals/seo", { cache: "no-store" });
+    if (!res.ok) throw new Error("Failed to fetch SEO data");
+    const data = await res.json();
+
+    return {
+      title: data.metaTitle || "Remitout | Education Loans for Abroad Studies",
+      description: data.metaDescription || "Apply for abroad education loans, admission guidance & RBI-compliant remittance with Remitout.",
+      openGraph: {
+        title: data.ogTitle || "Remitout - Education Loans and Remittance Support",
+        description: data.ogDescription || "Simplify your overseas education finance and remittance — trusted by 1000+ students.",
+        url: data.canonicalUrl || "https://loan.remitout.com",
+        images: [
+          {
+            url: data.ogImage?.url || "https://loan.remitout.com/og-image.jpg",
+            width: 1200,
+            height: 630,
+            alt: "Remitout - Education Loan Platform",
+          },
+        ],
+      },
+      alternates: {
+        canonical: data.canonicalUrl || "https://loan.remitout.com",
+      },
+      twitter: {
+        card: "summary_large_image",
+      },
+    };
+  } catch (error) {
+    console.error("Metadata generation error:", error);
+    return {
+      title: "Remitout | Education Loans for Abroad Studies",
+      description: "Simplify your study abroad finance journey with Remitout.",
+    };
+  }
+}
 
 export default function RootLayout({
   children,
@@ -35,19 +72,7 @@ export default function RootLayout({
 
     fetchSEO();
   }, []);
-  const defaultSEO = {
-    metaTitle: "Education Loan for Abroad Studies | Remitout Finance",
-    metaDescription:
-      "Apply online for an overseas education loan in India. Compare lenders, get fast approval, and study abroad with trusted financial guidance from Remitout.",
-    canonicalUrl: "https://loan.remitout.com",
-    ogTitle: "Remitout Education Loan | Fast Approval for Study Abroad",
-    ogDescription:
-      "Simplify your overseas education loan with expert help. Trusted by 1000+ students.",
-    ogImageUrl: "https://loan.remitout.com/og-image.jpg",
-    ogUrl: "https://loan.remitout.com",
-    twitterCard: "summary_large_image",
-  };
-
+ 
   return (
     <html lang="en">
       <head>
