@@ -68,7 +68,7 @@ useEffect(() => {
   }, [isPlaying, grouped.length]);
 
   const togglePlayPause = () => setIsPlaying((prev) => !prev);
-  console.log("playpause",togglePlayPause)
+  // console.log("playpause",togglePlayPause)
 
  const renderStars = (rating: number | string) => {
    const numericRating = Number(rating) || 0;

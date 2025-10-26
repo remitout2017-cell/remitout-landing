@@ -1,44 +1,34 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
-import Head from "next/head";
 
 export const metadata: Metadata = {
   title: "Remitout - Terms of Use",
   description:
-    "Read Remitout's Terms of Use to understand the rules and conditions for using our education loan, admission, and remittance services.",
+    "Read Remitout's Terms of Use covering eligibility, services, data usage, disclaimers, and liability. Stay informed before using our platform.",
+  alternates: { canonical: "https://loan.remitout.com/terms" },
   openGraph: {
     title: "Remitout - Terms of Use",
     description:
-      "Read Remitout's Terms of Use to understand the rules and conditions for using our services.",
-    url: "https://www.remitout.com/terms",
+      "Read Remitout's Terms of Use to understand the rules and conditions for using our education loan, admission, and remittance services.",
+    url: "https://loan.remitout.com/terms",
     siteName: "Remitout",
+    images: [
+      {
+        url: "https://loan.remitout.com/og-image-terms.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Remitout Terms of Use",
+      },
+    ],
   },
+  twitter: { card: "summary_large_image" },
 };
 
 
 export default function TermsOfUsePage() {
   return (
     <>
-      <Head>
-        <title>Remitout - Terms of Use</title>
-        <meta
-          name="description"
-          content="Read Remitout's Terms of Use covering eligibility, services, data usage, disclaimers, and liability. Stay informed before using our platform."
-        />
-        <link rel="canonical" href="http://loan.remitout.com/terms" />
-        <meta property="og:title" content="Remitout - Terms of Use" />
-        <meta
-          property="og:description"
-          content="Understand Remitout's terms and conditions for using education loans, admissions, and remittance services."
-        />
-        <meta property="og:url" content="http://loan.remitout.com/terms" />
-        <meta
-          property="og:image"
-          content="http://loan.remitout.com/og-image-terms.jpg"
-        />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
       <Navbar />
       <main className="max-w-4xl mx-auto px-6 py-12">
         <h1 className="text-3xl font-bold mb-6">Terms of Use</h1>

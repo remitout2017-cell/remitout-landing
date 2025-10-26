@@ -8,7 +8,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 export async function generateMetadata(): Promise<Metadata> {
   try {
     const res = await fetch("https://loan.remitout.com/api/globals/seo", {
-      cache: "no-store",
+        next: { revalidate: 60 },     
     });
     if (!res.ok) throw new Error("Failed to fetch SEO data");
     const data = await res.json();
