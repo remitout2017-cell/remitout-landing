@@ -142,7 +142,7 @@ export default function ContactUsPage() {
           <div className="flex  gap-4 font-poppins text-sm md:text-lg">
             <div className="flex  gap-1">
               <Phone />
-              <span>+91 84519 02017</span>
+              <span>+91 84519 02017.</span>
             </div>
             <span className="hidden sm:inline-block text-white/40">|</span>
             <div className="hidden sm:flex items-center gap-1">
