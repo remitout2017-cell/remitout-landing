@@ -1,11 +1,9 @@
+# *
 User-agent: *
 Allow: /
-Sitemap: https://remitout-landing.vercel.app/sitemap.xml
 
-# Block system and next.js build files
-Disallow: /_next/
-Disallow: /api/
-Disallow: /static/
+# Host
+Host: https://loan.remitout.com
 
-# Optional: Prevent indexing of staging or preview domains
-Disallow: /preview/
+# Sitemaps
+Sitemap: https://loan.remitout.com/sitemap.xml

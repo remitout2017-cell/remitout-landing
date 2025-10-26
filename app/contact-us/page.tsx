@@ -120,7 +120,13 @@ export default function ContactUsPage() {
 
       // Hide notification after 3 seconds
       setTimeout(() => setNotification(null), 3000);
-
+      if (typeof window !== "undefined" && window?.gtag) {
+        window?.gtag("event", "lead_submit", {
+          event_category: "lead_submit form",
+          event_label: "Register With Us Today",
+          value: 1,
+        });
+      }
     } catch (error) {
       console.error("Frontend error:", error);
 

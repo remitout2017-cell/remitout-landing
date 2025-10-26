@@ -1,6 +1,9 @@
+// app/layout.tsx
 import LayoutClient from "@/components/LayoutClient";
 import "./globals.css";
 import type { Metadata } from "next";
+import AnalyticsProvider from "@/app/providers/AnalyticsProvider";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
@@ -11,16 +14,17 @@ export async function generateMetadata(): Promise<Metadata> {
     const data = await res.json();
 
     return {
-      title: data.metaTitle || "Remitout | Education Loans for Abroad Studies",
+      title:
+        data.metaTitle ||
+        "Education Loan for Abroad | Apply Online & Compare Banks | Remitout",
       description:
         data.metaDescription ||
-        "Apply for abroad education loans, admission guidance & RBI-compliant remittance with Remitout.",
+        "Compare top banks & get the best education loan for studying abroad. Fast approvals, options without collateral, RBI-authorized partners. Check eligibility now.",
       openGraph: {
-        title:
-          data.ogTitle || "Remitout - Education Loans and Remittance Support",
+        title: data.ogTitle || "Education Loan for Abroad | Remitout",
         description:
           data.ogDescription ||
-          "Simplify your overseas education finance and remittance — trusted by 1000+ students.",
+          "Apply for education loans for Canada, UK, Germany and USA. Compare lenders, get fast approvals and expert support from ex-bankers.",
         url: data.canonicalUrl || "https://loan.remitout.com",
         images: [
           {
@@ -51,8 +55,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className="antialiased">
-        {/* Client-side scripts and dynamic SEO */}
+        {/* Client-side scripts, dynamic SEO, GA4, Google Ads */}
         <LayoutClient />
+        <AnalyticsProvider />
+        {/* WhatsApp Quick Link */}
+        <WhatsAppButton
+          phoneNumber="9819176629" // Replace with your WhatsApp number
+          prefilledMessage="Hi, I am interested in applying for an education loan."
+        />
         {children}
       </body>
     </html>
