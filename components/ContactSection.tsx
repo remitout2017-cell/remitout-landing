@@ -45,6 +45,14 @@ export default function ContactSection() {
         message: "",
         acceptTerms: false,
       });
+
+      if (typeof window !== "undefined" && window?.gtag) {
+        window?.gtag("event", "lead_submit", {
+          event_category: "contact us form",
+          event_label: "contact us",
+          value: 1,
+        });
+      }
     } catch (error) {
       console.error("Form error:", error);
       alert("❌ Submission failed. Please try again.");
