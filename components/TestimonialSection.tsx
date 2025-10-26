@@ -67,7 +67,7 @@ useEffect(() => {
     return () => clearInterval(interval);
   }, [isPlaying, grouped.length]);
 
-  const togglePlayPause = () => setIsPlaying((prev) => !prev);
+  // const togglePlayPause = () => setIsPlaying((prev) => !prev);
   // console.log("playpause",togglePlayPause)
 
  const renderStars = (rating: number | string) => {
