@@ -1,3 +1,5 @@
+import { useCallback } from "react";
+
 export function useTracking() {
     //  Google Conversion Event
     const trackGoogleConversion = (conversionLabel: string, value?: number) => {
@@ -12,21 +14,31 @@ export function useTracking() {
     };
 
     // Facebook Standard Event ( PageView, Purchase, Lead)
-    const trackFacebookEvent = (eventName: string, data?: Record<string, any>) => {
+    const trackFacebookEvent = useCallback((eventName: string, data?: Record<string, any>) => {
         if (typeof window !== "undefined" && window.fbq) {
-            window.fbq("track", eventName, data || {});
-            console.log("Facebook Standard Event:", eventName, data);
+            try {
+                window.fbq("track", eventName, data || {});
+                if (process.env.NODE_ENV === 'development') {
+                    console.log("Facebook Standard Event:", eventName);
+                }
+            } catch (error) {
+                console.error("Error tracking Facebook event:", error);
+            }
         }
-    };
-
+    }, []);
     // Facebook Custom Event
     const trackFacebookCustomEvent = (eventName: string, data?: Record<string, any>) => {
         if (typeof window !== "undefined" && window?.fbq) {
-            window?.fbq("trackCustom", eventName, data || {});
-            console.log("Facebook Custom Event:", eventName, data);
+            try {
+                window.fbq("trackCustom", eventName, data || {});
+                if (process.env.NODE_ENV === 'development') {
+                    console.log("Facebook Custom Event:", eventName, data);
+                }
+            } catch (error) {
+                console.error("Error tracking Facebook custom event:", error);
+            }
         }
     };
-
     return {
         trackGoogleConversion,
         trackFacebookEvent,

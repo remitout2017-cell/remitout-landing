@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Script from "next/script";
 import { getSEO } from "@/lib/route";
-import { GA_MEASUREMENT_ID, GOOGLE_ADS_ID } from "@/lib/gtag";
+import { GA_MEASUREMENT_ID, GOOGLE_ADS_ID, FB_PIXEL_ID } from "@/lib/gtag";
 
 const API_URL = "http://loan.remitout.com";
 
@@ -138,7 +138,7 @@ export default function LayoutClient() {
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '24644541608561899');
+            fbq('init', ${FB_PIXEL_ID});
             fbq('track', 'PageView');
           `}
       </Script>
@@ -147,7 +147,7 @@ export default function LayoutClient() {
           height="1"
           width="1"
           style={{ display: "none" }}
-          src="https://www.facebook.com/tr?id=24644541608561899&ev=PageView&noscript=1"
+          src={`https://www.facebook.com/tr?id=${FB_PIXEL_ID}&ev=PageView&noscript=1`}
           alt="facebook pixel"
         />
       </noscript>
