@@ -1,6 +1,6 @@
 "use client";
 
-import { useGoogleConversion } from "@/app/hooks/useGoogleConversion";
+import { useTracking } from "@/app/hooks/useTracking";
 
 interface WhatsAppButtonProps {
     phoneNumber: string; // WhatsApp number with country code, e.g., "919999999999"
@@ -13,11 +13,11 @@ export default function WhatsAppButton({
     prefilledMessage = "Hello, I want to inquire about education loans.",
     label = "Chat on WhatsApp",
 }: WhatsAppButtonProps) {
-    const { triggerConversion } = useGoogleConversion();
+    const { trackGoogleConversion } = useTracking();
 
     const handleClick = () => {
         // Fire Google Ads conversion
-        triggerConversion("WHATSAPP_CLICK", 1);
+        trackGoogleConversion("WHATSAPP_CLICK");
 
         // Open WhatsApp link
         const encodedMessage = encodeURIComponent(prefilledMessage);

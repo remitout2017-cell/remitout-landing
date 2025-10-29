@@ -1,8 +1,9 @@
-// global.d.ts
-export { };
-
 declare global {
     interface Window {
-        gtag?: (...args: any[]) => void;
+        fbq: (...args: any[]) => void;
+        gtag: (...args: any[]) => void;
+        dataLayer: Record<string, any>[];
     }
 }
+
+export { };
