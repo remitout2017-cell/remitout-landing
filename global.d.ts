@@ -1,8 +1,8 @@
-// global.d.ts
-export { };
-
 declare global {
     interface Window {
-        gtag?: (...args: any[]) => void;
-    }
+        gtag?: (command: string, eventName: string, params?: GoogleEventParams) => void;
+        fbq?: (action: string, eventName: string, data?: FacebookEventData) => void;
+        dataLayer?: Record<string, any>[];    }
 }
+
+export { };
