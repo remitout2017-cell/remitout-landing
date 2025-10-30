@@ -2,6 +2,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Script from "next/script";
+import Head from "next/head";
 import { getSEO } from "@/lib/route";
 import { GA_MEASUREMENT_ID, GOOGLE_ADS_ID, FB_PIXEL_ID } from "@/lib/gtag";
 
@@ -36,7 +37,7 @@ export default function LayoutClient() {
 
   return (
     <>
-      <head>
+      <Head>
         {/* Dynamic SEO */}
         <title>{seo.metaTitle || "Remitout"}</title>
         <meta name="description" content={seo.metaDescription || "Default description"} />
@@ -49,7 +50,7 @@ export default function LayoutClient() {
         />
         <meta property="og:url" content={seo.ogUrl || "http://loan.remitout.com"} />
         <meta name="twitter:card" content={seo.twitterCard || "summary_large_image"} />
-      </head>
+      </Head>
 
       {/* Sitemap */}
       <link rel="sitemap" type="application/xml" href="https://loan.remitout.com/sitemap.xml" />
